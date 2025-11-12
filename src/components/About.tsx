@@ -4,25 +4,22 @@ export const About = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-center text-primary">
-            About Me
+            What I Do
           </h2>
           <p className="text-center text-muted-foreground mb-16 text-lg">
-            Technical expertise meets entrepreneurial drive
+            Transforming expertise into scalable automation systems
           </p>
           
-          <div className="bg-card rounded-2xl p-8 sm:p-12 shadow-sm border border-border">
+          <div className="bg-card rounded-2xl p-8 sm:p-12 shadow-lg border border-border">
             <div className="space-y-6 text-lg text-foreground leading-relaxed">
               <p>
-                31-year-old entrepreneur specializing in automation and AI agents, with deep expertise in building operational systems that scale. I focus on creating efficient, partnership-driven solutions that bridge technical excellence with business pragmatism.
+                I help companies transform their expertise into automated newsletter systems. As co-founder of <span className="font-semibold text-primary">LetterOperators</span>, I've built AI-powered workflows that handle everything from content curation to delivery—eliminating hours of manual work while maintaining quality.
               </p>
               <p>
-                As co-founder of <span className="font-semibold text-primary">LetterOperators</span>, I lead operations and full-stack automation, building AI-powered newsletter systems that handle 250,000+ emails weekly. My technical expertise spans n8n workflows, API integrations, and content automation—always focused on creating systems that work reliably at scale.
+                My expertise spans n8n automation, API integrations, and content systems that scale. I focus on creating reliable operations that work consistently, allowing businesses to focus on their expertise rather than newsletter logistics.
               </p>
               <p>
-                I operate with a disciplined approach: 2-hour daily work blocks optimized for maximum impact, building enablers that free up time for deeper exploration into areas like space economy and deep tech. My work ethic centers on efficiency over perfection, with a strong preference for partnerships over cold outreach.
-              </p>
-              <p>
-                Currently working with a 6-month runway, I'm focused on high-impact projects that leverage my operational expertise while creating space to explore emerging technologies in the space and deep tech sectors.
+                Based in <span className="font-medium">Rzeszów, Poland</span>, working with clients globally through partnership-driven approach. Every system I build is designed for scale, reliability, and continuous improvement.
               </p>
             </div>
           </div>

@@ -1,69 +1,116 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Workflow, Bot, FileText, Settings } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 const services = [
   {
     icon: Bot,
-    iconBg: "bg-accent/10",
-    iconColor: "text-accent",
+    iconBg: "bg-purple-100",
+    iconColor: "text-purple-600",
     title: "Newsletter Automation & AI Agents",
-    description: "Complete newsletter systems from content curation to delivery. AI-powered processing with quality control and multi-platform publishing.",
+    description: "Complete automation setup from content curation to delivery with AI-powered quality control.",
+    deliverables: [
+      "Complete automation setup",
+      "AI-powered content curation",
+      "Quality control systems",
+      "Multi-platform publishing",
+    ],
+    timeline: "2-4 weeks",
   },
   {
     icon: Workflow,
-    iconBg: "bg-accent-orange/10",
-    iconColor: "text-accent-orange",
+    iconBg: "bg-blue-100",
+    iconColor: "text-blue-600",
     title: "n8n Workflow Development",
-    description: "Complex automation workflows and API integrations. Building scalable systems that handle high-volume operations reliably.",
+    description: "Custom workflow design with complex API integrations and monitoring systems.",
+    deliverables: [
+      "Custom workflow design",
+      "API integrations",
+      "Error handling & monitoring",
+      "Complete documentation",
+    ],
+    timeline: "1-3 weeks",
   },
   {
     icon: FileText,
-    iconBg: "bg-primary/10",
-    iconColor: "text-primary",
+    iconBg: "bg-cyan-100",
+    iconColor: "text-cyan-600",
     title: "Content Automation Systems",
-    description: "AI-powered content processing, curation, and quality control. Semantic search, RAG systems, and intelligent content routing.",
+    description: "AI-powered content processing with semantic search and intelligent routing.",
+    deliverables: [
+      "Content curation pipeline",
+      "AI processing integration",
+      "Quality assurance systems",
+      "Performance analytics",
+    ],
+    timeline: "2-3 weeks",
   },
   {
     icon: Settings,
-    iconBg: "bg-muted",
-    iconColor: "text-foreground",
+    iconBg: "bg-pink-100",
+    iconColor: "text-pink-600",
     title: "Technical Operations",
-    description: "Full-stack automation and system optimization. Streamlining workflows, building enablers, and eliminating manual processes.",
+    description: "Full-stack automation and system optimization for operational excellence.",
+    deliverables: [
+      "Workflow optimization",
+      "System integration",
+      "Process automation",
+      "Ongoing support",
+    ],
+    timeline: "1-4 weeks",
   },
 ];
 
 export const Services = () => {
   return (
-    <section id="services" className="py-24 bg-section-alt">
+    <section id="services" className="py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-center text-primary">
           What I Offer
         </h2>
         <p className="text-center text-muted-foreground mb-16 text-lg max-w-3xl mx-auto">
-          Technical expertise focused on automation, AI integration, and operational excellence
+          Comprehensive automation services with clear deliverables and timelines
         </p>
         
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <Card
                 key={index}
-                className="hover:shadow-md transition-all duration-300 border border-border bg-card animate-fade-in"
+                className="hover:shadow-xl transition-all duration-300 border-2 border-border bg-card animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardHeader>
-                  <div className={`w-14 h-14 ${service.iconBg} rounded-xl flex items-center justify-center mb-4`}>
-                    <Icon className={`w-7 h-7 ${service.iconColor}`} />
+                  <div className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mb-4`}>
+                    <Icon className={`w-8 h-8 ${service.iconColor}`} />
                   </div>
-                  <CardTitle className="text-xl font-bold text-primary">
+                  <CardTitle className="text-xl font-bold text-primary mb-2">
                     {service.title}
                   </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-foreground/80 text-base leading-relaxed">
+                  <CardDescription className="text-base text-foreground/80 leading-relaxed">
                     {service.description}
                   </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-primary mb-3 text-sm">DELIVERABLES</h4>
+                    <div className="space-y-2">
+                      {service.deliverables.map((item, i) => (
+                        <div key={i} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-foreground/80">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="pt-3 border-t border-border">
+                    <Badge variant="secondary" className="text-sm">
+                      Timeline: {service.timeline}
+                    </Badge>
+                  </div>
                 </CardContent>
               </Card>
             );

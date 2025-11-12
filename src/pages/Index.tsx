@@ -1,29 +1,29 @@
 import { Hero } from "@/components/Hero";
+import { ByTheNumbers } from "@/components/ByTheNumbers";
 import { About } from "@/components/About";
+import { HowItWorks } from "@/components/HowItWorks";
 import { CaseStudies } from "@/components/CaseStudies";
 import { Services } from "@/components/Services";
 import { TechnicalExpertise } from "@/components/TechnicalExpertise";
-import { Approach } from "@/components/Approach";
+import { Testimonials } from "@/components/Testimonials";
+import { TechStack } from "@/components/TechStack";
 import { Contact } from "@/components/Contact";
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Hero />
+      <ByTheNumbers />
       <About />
+      <HowItWorks />
       <CaseStudies />
       <Services />
       <TechnicalExpertise />
-      <Approach />
+      <Testimonials />
+      <TechStack />
       <Contact />
-      
-      <footer className="py-12 bg-accent-dark text-primary-foreground border-t border-border">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm opacity-90">
-            © {new Date().getFullYear()} Maciek Zawadzki. Building AI-powered operations from Rzeszów, Poland.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
