@@ -17,9 +17,9 @@ const Index = () => {
       <Approach />
       <Contact />
       
-      <footer className="py-8 bg-primary text-primary-foreground">
+      <footer className="py-12 bg-accent-dark text-primary-foreground border-t border-border">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-sm">
+          <p className="text-sm opacity-90">
             © {new Date().getFullYear()} Maciek Zawadzki. Building AI-powered operations from Rzeszów, Poland.
           </p>
         </div>

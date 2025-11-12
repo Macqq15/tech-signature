@@ -11,26 +11,28 @@ const principles = [
 
 export const Approach = () => {
   return (
-    <section id="approach" className="py-24 bg-section-bg">
+    <section id="approach" className="py-24 bg-section-alt">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4 text-center text-primary">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-center text-primary">
             Approach & Philosophy
           </h2>
           <p className="text-center text-muted-foreground mb-12 text-lg">
             How I work and what drives my approach to building systems
           </p>
           
-          <Card className="border-2 border-accent/20">
-            <CardContent className="pt-8">
-              <div className="space-y-4">
+          <Card className="border border-border bg-card shadow-sm">
+            <CardContent className="pt-10 pb-10">
+              <div className="space-y-5">
                 {principles.map((principle, index) => (
                   <div
                     key={index}
                     className="flex items-start gap-4 animate-fade-in"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center mt-0.5">
+                      <CheckCircle2 className="w-4 h-4 text-accent" />
+                    </div>
                     <p className="text-lg text-foreground">{principle}</p>
                   </div>
                 ))}

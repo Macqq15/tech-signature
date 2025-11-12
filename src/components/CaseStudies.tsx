@@ -59,10 +59,10 @@ export const CaseStudies = () => {
   return (
     <section id="case-studies" className="py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold mb-4 text-center text-primary">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-center text-primary">
           Featured Projects
         </h2>
-        <p className="text-center text-muted-foreground mb-16 text-lg max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-16 text-lg max-w-3xl mx-auto">
           A selection of ventures showcasing automation expertise, operational excellence, and entrepreneurial drive
         </p>
         
@@ -70,7 +70,7 @@ export const CaseStudies = () => {
           {caseStudies.map((study, index) => (
             <Card
               key={index}
-              className="hover:shadow-xl transition-all duration-300 border-2 hover:border-accent/50 animate-fade-in"
+              className="hover:shadow-lg transition-all duration-300 border border-border bg-card animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardHeader>
@@ -89,10 +89,10 @@ export const CaseStudies = () => {
                 </p>
                 
                 <div>
-                  <h4 className="font-semibold text-primary mb-2">Metrics:</h4>
+                  <h4 className="font-semibold text-primary mb-2 text-sm">METRICS</h4>
                   <div className="flex flex-wrap gap-2">
                     {study.metrics.map((metric, i) => (
-                      <Badge key={i} variant="secondary" className="text-sm">
+                      <Badge key={i} variant="secondary" className="text-sm font-medium">
                         {metric}
                       </Badge>
                     ))}
@@ -100,13 +100,13 @@ export const CaseStudies = () => {
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold text-primary mb-2">My Role:</h4>
+                  <h4 className="font-semibold text-primary mb-2 text-sm">MY ROLE</h4>
                   <p className="text-muted-foreground text-sm">{study.role}</p>
                 </div>
                 
                 {study.technologies.length > 0 && (
                   <div>
-                    <h4 className="font-semibold text-primary mb-2">Technology Stack:</h4>
+                    <h4 className="font-semibold text-primary mb-2 text-sm">TECHNOLOGY STACK</h4>
                     <div className="flex flex-wrap gap-2">
                       {study.technologies.map((tech, i) => (
                         <Badge key={i} variant="outline" className="text-xs">
@@ -118,7 +118,7 @@ export const CaseStudies = () => {
                 )}
                 
                 {study.highlight && (
-                  <div className="pt-2 border-t border-border">
+                  <div className="pt-3 border-t border-border">
                     <p className="text-sm text-accent font-medium">
                       ✨ {study.highlight}
                     </p>
