@@ -17,36 +17,36 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 220 80% 20%;
 
-    --primary: 220 80% 20%;
+    --primary: 211 63% 16%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 220 20% 96%;
-    --secondary-foreground: 220 80% 20%;
+    --secondary-foreground: 211 63% 16%;
 
     --muted: 220 15% 90%;
     --muted-foreground: 220 20% 50%;
 
-    --accent: 180 100% 50%;
-    --accent-foreground: 220 80% 20%;
+    --accent: 46 99% 57%;
+    --accent-foreground: 211 63% 16%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 220 15% 88%;
     --input: 220 15% 88%;
-    --ring: 180 100% 50%;
+    --ring: 46 99% 57%;
 
     --radius: 0.75rem;
 
     /* Custom tokens */
-    --accent-dark: 220 80% 20%;
-    --accent-orange: 25 95% 60%;
+    --accent-dark: 211 63% 16%;
+    --accent-ruby: 350 62% 35%;
     --section-alt: 40 30% 94%;
     
     /* Gradient tokens */
-    --gradient-purple-blue: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-teal-purple: linear-gradient(135deg, #13b0f5 0%, #667eea 100%);
-    --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    --gradient-navy-ruby: linear-gradient(135deg, hsl(211 63% 16%) 0%, hsl(350 62% 35%) 100%);
+    --gradient-ruby-gold: linear-gradient(135deg, hsl(350 62% 35%) 0%, hsl(46 99% 57%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(211 63% 16%) 0%, hsl(350 62% 35%) 50%, hsl(46 99% 57%) 100%);
   }
 
   .dark {
@@ -59,7 +59,7 @@ All colors MUST be HSL.
     --popover: 220 70% 8%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 180 100% 50%;
+    --primary: 46 99% 57%;
     --primary-foreground: 220 70% 12%;
 
     --secondary: 220 50% 18%;
@@ -68,7 +68,7 @@ All colors MUST be HSL.
     --muted: 220 50% 18%;
     --muted-foreground: 220 20% 65%;
 
-    --accent: 180 100% 50%;
+    --accent: 46 99% 57%;
     --accent-foreground: 220 70% 12%;
 
     --destructive: 0 62.8% 50%;
@@ -76,10 +76,10 @@ All colors MUST be HSL.
 
     --border: 220 50% 18%;
     --input: 220 50% 18%;
-    --ring: 180 100% 50%;
+    --ring: 46 99% 57%;
 
-    --accent-dark: 220 80% 20%;
-    --accent-orange: 25 95% 60%;
+    --accent-dark: 211 63% 16%;
+    --accent-ruby: 350 62% 35%;
     --section-alt: 220 65% 10%;
   }
 }

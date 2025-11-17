@@ -59,7 +59,7 @@ export default {
         },
         "section-alt": "hsl(var(--section-alt))",
         "accent-dark": "hsl(var(--accent-dark))",
-        "accent-orange": "hsl(var(--accent-orange))",
+        "accent-ruby": "hsl(var(--accent-ruby))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -111,9 +111,9 @@ export default {
         "glow": "glow 2s ease-in-out infinite",
       },
       backgroundImage: {
-        "gradient-purple-blue": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        "gradient-teal-purple": "linear-gradient(135deg, #13b0f5 0%, #667eea 100%)",
-        "gradient-hero": "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)",
+        "gradient-navy-ruby": "linear-gradient(135deg, hsl(211 63% 16%) 0%, hsl(350 62% 35%) 100%)",
+        "gradient-ruby-gold": "linear-gradient(135deg, hsl(350 62% 35%) 0%, hsl(46 99% 57%) 100%)",
+        "gradient-hero": "linear-gradient(135deg, hsl(211 63% 16%) 0%, hsl(350 62% 35%) 50%, hsl(46 99% 57%) 100%)",
       },
     },
   },

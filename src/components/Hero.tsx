@@ -49,14 +49,6 @@ export const Hero = () => {
                 See How It Works
                 <ArrowRight className="ml-2" />
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => scrollToSection("case-studies")}
-                className="text-lg px-8 py-6 h-auto border-2 border-white text-white hover:bg-white hover:text-primary"
-              >
-                View Case Studies
-              </Button>
             </div>
           </div>
 
@@ -64,7 +56,7 @@ export const Hero = () => {
           <div className="flex justify-center lg:justify-end animate-fade-in-right">
             <div className="relative">
               {/* Glow Effect */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-400 to-pink-400 rounded-full blur-2xl opacity-30 animate-glow" />
+              <div className="absolute -inset-4 bg-gradient-ruby-gold rounded-full blur-2xl opacity-30 animate-glow" />
               
               {/* Photo Container */}
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white/20 backdrop-blur-sm shadow-2xl">
@@ -77,10 +69,10 @@ export const Hero = () => {
               
               {/* Floating Tech Icons */}
               <div className="absolute -top-4 -right-4 w-16 h-16 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 animate-float">
-                <Workflow className="w-8 h-8 text-cyan-300" />
+                <Workflow className="w-8 h-8 text-accent" />
               </div>
               <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 animate-float" style={{ animationDelay: "1.5s" }}>
-                <Zap className="w-8 h-8 text-pink-300" />
+                <Zap className="w-8 h-8 text-accent" />
               </div>
             </div>
           </div>
