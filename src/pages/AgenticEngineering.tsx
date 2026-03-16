@@ -42,7 +42,7 @@ import trebitLogo from "@/assets/trebit.webp";
 import monumoLogo from "@/assets/monumo logo.svg";
 import cameronLogo from "@/assets/Cameron_hair_logo_sklep(3).svg";
 import jewelryLabLogo from "@/assets/JewelryLab logo.webp";
-import founderPhoto from "@/assets/my photo-Photoroom.png";
+import founderPhoto from "@/assets/founder-photo.jpg";
 
 const brandLogos = [
   { name: "Trebit", src: trebitLogo, h: "h-7" },
