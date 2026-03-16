@@ -102,9 +102,9 @@ export const aeTranslations = {
       subtitle: "Before Agentic Engineering, I built growth and automation systems across e-commerce, newsletters, and content. All AI-native, all generating revenue without me.",
       items: [
         {
-          title: "Newsletter Growth Engine: Built & Sold",
+          title: "AI Newsletter Platform: Built & Sold",
           result: "250K+ emails/week",
-          desc: "Co-built and exited a newsletter automation platform serving 20+ publications. Cut production from 12 hours to 45 minutes. Acquired February 2026.",
+          desc: "Co-built and exited an AI platform that autonomously found content, evaluated sources, and wrote newsletters in each client's voice. 20+ publications, 92% time savings. Acquired February 2026.",
           tag: "Exit",
         },
         {
@@ -125,7 +125,7 @@ export const aeTranslations = {
       title: "Who's Behind This",
       name: "Maciej Marek",
       role: "Systems Builder",
-      bio: "I started in enterprise operations at HP and Akamai — environments where systems cannot fail. Then I went the opposite direction: startups, e-commerce, creator economy. I co-built and sold a newsletter platform sending 250K+ emails weekly. I built growth automation driving $10M+ in e-commerce revenue. Now I build AI agent systems that replace the manual work I used to do.",
+      bio: "I started in enterprise operations at HP and Akamai — environments where systems cannot fail. Then I went the opposite direction: startups, e-commerce, creator economy. I co-built and sold an AI-powered newsletter platform that autonomously found content, evaluated sources, and wrote entire newsletters in each client's voice — sending 250K+ emails weekly across 20+ publications with minimal human input. I built growth automation driving $10M+ in e-commerce revenue. Now I build AI agent systems that do the same thing: run your operations without you.",
       cta: "That's what Agentic Engineering is: everything I've learned about building systems that run without you — packaged into AI agents that work 24/7.",
       linkedin: "https://www.linkedin.com/in/maciej-marek/",
     },
@@ -429,9 +429,9 @@ export const aeTranslations = {
       subtitle: "Zanim powstało Agentic Engineering, budowałem automatyzację wzrostu w e-commerce, newsletterach i contencie. Wszystkie AI-native, wszystkie generujące przychody beze mnie.",
       items: [
         {
-          title: "Silnik Wzrostu Newsletterów: Zbudowany i Sprzedany",
+          title: "Platforma AI Newsletterów: Zbudowana i Sprzedana",
           result: "250K+ maili/tydzień",
-          desc: "Współtworzyłem i sprzedałem platformę automatyzacji newsletterów dla 20+ publikacji. Czas produkcji z 12 godzin do 45 minut. Przejęty luty 2026.",
+          desc: "Współtworzyłem i sprzedałem platformę AI, która autonomicznie znajdowała treści, oceniała źródła i pisała newslettery w głosie klienta. 20+ publikacji, 92% oszczędności czasu. Przejęty luty 2026.",
           tag: "Exit",
         },
         {
@@ -452,7 +452,7 @@ export const aeTranslations = {
       title: "Kto Za Tym Stoi",
       name: "Maciej Marek",
       role: "Budowniczy Systemów",
-      bio: "Zaczynałem w korporacyjnych operacjach w HP i Akamai — środowiskach gdzie systemy nie mogą paść. Potem poszedłem w drugą stronę: startupy, e-commerce, creator economy. Współtworzyłem i sprzedałem platformę newsletterową wysyłającą 250K+ maili tygodniowo. Zbudowałem automatyzację wzrostu generującą $10M+ przychodu w e-commerce. Teraz buduję systemy agentów AI, które zastępują ręczną pracę, którą sam kiedyś wykonywałem.",
+      bio: "Zaczynałem w korporacyjnych operacjach w HP i Akamai — środowiskach gdzie systemy nie mogą paść. Potem poszedłem w drugą stronę: startupy, e-commerce, creator economy. Współtworzyłem i sprzedałem platformę newsletterową napędzaną AI, która autonomicznie znajdowała treści, oceniała źródła i pisała całe newslettery w głosie każdego klienta — wysyłając 250K+ maili tygodniowo dla 20+ publikacji przy minimalnym udziale człowieka. Zbudowałem automatyzację wzrostu generującą $10M+ przychodu w e-commerce. Teraz buduję systemy agentów AI, które robią to samo: prowadzą Twoje operacje bez Ciebie.",
       cta: "To jest Agentic Engineering: wszystko czego nauczyłem się o budowaniu systemów, które działają bez Ciebie — spakowane w agentów AI pracujących 24/7.",
       linkedin: "https://www.linkedin.com/in/maciej-marek/",
     },
