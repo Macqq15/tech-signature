@@ -31,14 +31,10 @@ const WBtn = ({ children, variant = "primary", className = "", onClick, href }: 
 // Bump modal appears pre-checkout. Combined price updates based on bumps selected.
 
 const STRIPE_LINKS = {
-  base:        "https://buy.stripe.com/00w7sFe9e56H5YM32Qg7e00",  // LTO $14.95 (AI Board only)
-  bump1_only:  "https://buy.stripe.com/7sYaERd5afLl4UI9reg7e01",  // LTO + Lead Gen = $21.95
-  bump2_only:  "https://buy.stripe.com/cNicMZ8OU1Uv5YMavig7e02",  // LTO + Content Machine = $21.95
-  bump3_only:  "TODO_STRIPE_LINK_BUMP3_ONLY",                     // LTO + Niche Social = $21.95
-  bump1_2:     "https://buy.stripe.com/fZu5kx9SYar14UIbzmg7e03",  // LTO + Lead Gen + Content = $28.95
-  bump1_3:     "TODO_STRIPE_LINK_BUMP1_BUMP3",                    // LTO + Lead Gen + Niche Social = $28.95
-  bump2_3:     "TODO_STRIPE_LINK_BUMP2_BUMP3",                    // LTO + Content + Niche Social = $28.95
-  all_three:   "TODO_STRIPE_LINK_ALL_THREE",                      // LTO + all 3 bumps = $35.95
+  base:       "https://buy.stripe.com/00w7sFe9e56H5YM32Qg7e00",  // LTO $14.95 (AI Board only)
+  bump1_only: "https://buy.stripe.com/7sYaERd5afLl4UI9reg7e01",  // LTO + Lead Gen = $21.95
+  bump2_only: "https://buy.stripe.com/cNicMZ8OU1Uv5YMavig7e02",  // LTO + Content Machine = $21.95
+  both_bumps: "https://buy.stripe.com/fZu5kx9SYar14UIbzmg7e03",  // LTO + both bumps = $28.95
 };
 
 const faqs = [
@@ -76,17 +72,12 @@ const faqs = [
 function BumpModal({ onClose }: { onClose: () => void }) {
   const [bump1, setBump1] = useState(false);
   const [bump2, setBump2] = useState(false);
-  const [bump3, setBump3] = useState(false);
 
-  const total = 14.95 + (bump1 ? 7 : 0) + (bump2 ? 7 : 0) + (bump3 ? 7 : 0);
+  const total = 14.95 + (bump1 ? 7 : 0) + (bump2 ? 7 : 0);
   let link = STRIPE_LINKS.base;
-  if (bump1 && bump2 && bump3)      link = STRIPE_LINKS.all_three;
-  else if (bump1 && bump2)          link = STRIPE_LINKS.bump1_2;
-  else if (bump1 && bump3)          link = STRIPE_LINKS.bump1_3;
-  else if (bump2 && bump3)          link = STRIPE_LINKS.bump2_3;
-  else if (bump1)                   link = STRIPE_LINKS.bump1_only;
-  else if (bump2)                   link = STRIPE_LINKS.bump2_only;
-  else if (bump3)                   link = STRIPE_LINKS.bump3_only;
+  if (bump1 && bump2)      link = STRIPE_LINKS.both_bumps;
+  else if (bump1)          link = STRIPE_LINKS.bump1_only;
+  else if (bump2)          link = STRIPE_LINKS.bump2_only;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
@@ -100,7 +91,7 @@ function BumpModal({ onClose }: { onClose: () => void }) {
         </button>
 
         <h3 className="text-2xl font-black text-center mb-2">Add Any of These?</h3>
-        <p className="text-sm text-slate-500 text-center mb-6">Three optional AI skills, $7 each. Check what you want.</p>
+        <p className="text-sm text-slate-500 text-center mb-6">Two optional AI skills, $7 each. Check what you want.</p>
 
         <label className="bg-amber-50 border-2 border-amber-200 hover:border-amber-400 rounded-xl p-4 mb-3 flex gap-3 cursor-pointer transition-colors">
           <input
@@ -117,7 +108,7 @@ function BumpModal({ onClose }: { onClose: () => void }) {
           </div>
         </label>
 
-        <label className="bg-amber-50 border-2 border-amber-200 hover:border-amber-400 rounded-xl p-4 mb-3 flex gap-3 cursor-pointer transition-colors">
+        <label className="bg-amber-50 border-2 border-amber-200 hover:border-amber-400 rounded-xl p-4 mb-5 flex gap-3 cursor-pointer transition-colors">
           <input
             type="checkbox"
             checked={bump2}
@@ -128,21 +119,6 @@ function BumpModal({ onClose }: { onClose: () => void }) {
             <h4 className="text-amber-700 font-bold text-sm mb-1">+ AI Content Machine — $7</h4>
             <p className="text-slate-600 text-xs leading-relaxed">
               Feed 10-20 past posts/emails → skill learns your voice → writes LinkedIn, newsletters, client emails in YOUR voice (not ChatGPT's).
-            </p>
-          </div>
-        </label>
-
-        <label className="bg-amber-50 border-2 border-amber-200 hover:border-amber-400 rounded-xl p-4 mb-5 flex gap-3 cursor-pointer transition-colors">
-          <input
-            type="checkbox"
-            checked={bump3}
-            onChange={(e) => setBump3(e.target.checked)}
-            className="mt-1 w-4 h-4 accent-amber-500 flex-shrink-0"
-          />
-          <div>
-            <h4 className="text-amber-700 font-bold text-sm mb-1">+ Niche AI Social Playbook — $7</h4>
-            <p className="text-slate-600 text-xs leading-relaxed">
-              Self-host Postiz (open-source scheduler) + 3 skills that pick a niche, write captions, schedule posts, and run client approvals. Charge $79-149/mo per seat. No n8n, no Zapier — agent decides.
             </p>
           </div>
         </label>
