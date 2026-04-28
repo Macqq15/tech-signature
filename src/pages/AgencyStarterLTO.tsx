@@ -32,8 +32,8 @@ const WBtn = ({ children, variant = "primary", className = "", onClick, href }: 
 
 const STRIPE_LINKS = {
   base:       "https://buy.stripe.com/00w7sFe9e56H5YM32Qg7e00",  // LTO $14.95 (AI Board only)
-  bump1_only: "https://buy.stripe.com/7sYaERd5afLl4UI9reg7e01",  // LTO + Lead Gen = $21.95
-  bump2_only: "https://buy.stripe.com/cNicMZ8OU1Uv5YMavig7e02",  // LTO + Content Machine = $21.95
+  bump1_only: "https://buy.stripe.com/cNicMZ8OU1Uv5YMavig7e02",  // LTO + Lead Gen Agent = $21.95 (verified via agent-browser 2026-04-26)
+  bump2_only: "https://buy.stripe.com/7sYaERd5afLl4UI9reg7e01",  // LTO + Content Machine = $21.95 (verified via agent-browser 2026-04-26)
   both_bumps: "https://buy.stripe.com/fZu5kx9SYar14UIbzmg7e03",  // LTO + both bumps = $28.95
 };
 
@@ -60,7 +60,7 @@ const faqs = [
   },
   {
     q: "What's the upgrade path if I want more?",
-    a: "Optional, no pushy upsells: $197 Diagnostic Call (45-min 1:1 to plan deployment), $497 Wiring Service (2-hour hands-on call, we configure everything together), Tier 2 Done-For-You AI Agents ($3.5-5K setup + monthly) — custom-built automation generating briefings, reports, alerts 24/7."
+    a: "Optional, no pushy upsells: $297 Wiring Service (2-hour hands-on call — we configure everything together, you walk out with a tested system), Tier 2 Done-For-You AI Agents ($3.5-5K setup + monthly) — custom-built automation generating briefings, reports, alerts 24/7."
   },
   {
     q: "Sahil Lavingia's skills are free on GitHub. Why pay you?",
@@ -213,12 +213,12 @@ export default function AgencyStarterLTO() {
             <img src={founderPhoto} alt="Maciej Marek" className="w-28 h-28 rounded-full object-cover border-4 border-emerald-100 shadow-xl" />
             <div className="text-center">
               <p className="font-black text-lg">Maciej Marek</p>
-              <p className="text-sm text-emerald-600 font-semibold">Systems Builder. Sold his last company for 5 figures.</p>
+              <p className="text-sm text-emerald-600 font-semibold">CTO @ Constellation Commerce · Systems Builder · 5-figure exit Feb 2026</p>
             </div>
           </div>
           <div className="space-y-5 text-slate-600 leading-relaxed">
             <p>
-              I ran a newsletter operations company processing 250K transactions per week. And I was drowning. Status updates, client reports, invoice follow-ups, prospect research. The same repetitive decisions, over and over. 40+ hours a week on ops alone.
+              Currently I'm CTO at Constellation Commerce, where I deploy AI agents for 8-figure Amazon brands across cosmetics, CPG, and industrial goods (including a top UK beauty house). Before that — I ran a newsletter operations company processing 250K transactions per week. And I was drowning. Status updates, client reports, invoice follow-ups, prospect research. The same repetitive decisions, over and over. 40+ hours a week on ops alone.
             </p>
             <p>
               I tried everything. Hired copywriters. Outsourced reporting to VAs. Batched newsletters. Every solution just moved the bottleneck. <span className="font-bold text-slate-900">The problem wasn&rsquo;t the tasks. The problem was that every strategic call still needed me.</span>

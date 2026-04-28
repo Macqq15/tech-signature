@@ -5,10 +5,17 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
+import ModernIndex from "./pages/ModernIndex";
+import LetterOperators from "./pages/LetterOperators";
 import AgenticEngineering from "./pages/AgenticEngineering";
+import AgenticEngineeringV2 from "./pages/AgenticEngineeringV2";
+import AgenticEngineeringV3 from "./pages/AgenticEngineeringV3";
+import AgencyStarter from "./pages/AgencyStarter";
 import AgencyStarterLTO from "./pages/AgencyStarterLTO";
 import AgencyOTO1 from "./pages/AgencyOTO1";
 import AgencyOTO2 from "./pages/AgencyOTO2";
+import AgencyOTO3 from "./pages/AgencyOTO3";
+import AgencyThankYou from "./pages/AgencyThankYou";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,11 +34,18 @@ const App = () => (
         <BrowserRouter basename={import.meta.env.BASE_URL}>
           <Routes>
             <Route path="/" element={<RootRoute />} />
+            <Route path="/modern" element={<ModernIndex />} />
             <Route path="/old" element={<Index />} />
+            <Route path="/letter-operators" element={<LetterOperators />} />
             <Route path="/agentic-engineering" element={<AgenticEngineering />} />
+            <Route path="/agentic-engineering-v2" element={<AgenticEngineeringV2 />} />
+            <Route path="/agentic-engineering-v3" element={<AgenticEngineeringV3 />} />
+            <Route path="/agency-starter" element={<AgencyStarter />} />
             <Route path="/agency-starter-lto" element={<AgencyStarterLTO />} />
             <Route path="/agency-oto1" element={<AgencyOTO1 />} />
             <Route path="/agency-oto2" element={<AgencyOTO2 />} />
+            <Route path="/agency-oto3" element={<AgencyOTO3 />} />
+            <Route path="/agency-thank-you" element={<AgencyThankYou />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

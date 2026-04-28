@@ -11,77 +11,90 @@ All colors MUST be HSL.
     --background: 0 0% 100%;
     --foreground: 220 80% 20%;
 
-    --card: 0 0% 100%;
+    --card: 0 0% 98%;
     --card-foreground: 220 80% 20%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 220 80% 20%;
 
-    --primary: 220 75% 18%;
+    --primary: 220 90% 56%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 220 20% 96%;
     --secondary-foreground: 220 75% 18%;
 
-    --muted: 220 15% 90%;
-    --muted-foreground: 220 20% 50%;
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 15% 45%;
 
-    --accent: 175 75% 40%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 220 15% 96%;
+    --accent-foreground: 220 80% 20%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
-    --ring: 175 75% 40%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 90% 56%;
 
     --radius: 0.75rem;
 
     /* Custom tokens */
     --accent-dark: 220 75% 18%;
-    --accent-teal: 175 75% 40%;
+    --accent-blue: 220 90% 56%;
     --section-alt: 220 15% 98%;
 
     /* Gradient tokens */
-    --gradient-navy-teal: linear-gradient(135deg, hsl(220 75% 18%) 0%, hsl(175 75% 40%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(220 75% 18%) 0%, hsl(220 65% 25%) 50%, hsl(175 75% 40%) 100%);
-    --gradient-purple-blue: linear-gradient(135deg, hsl(220 75% 25%) 0%, hsl(210 75% 35%) 100%);
-    --gradient-teal-purple: linear-gradient(135deg, hsl(175 75% 40%) 0%, hsl(220 75% 35%) 100%);
+    --gradient-navy-blue: linear-gradient(135deg, hsl(220 75% 18%) 0%, hsl(220 90% 56%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 75% 18%) 0%, hsl(220 65% 25%) 50%, hsl(220 90% 56%) 100%);
+    --gradient-blue: linear-gradient(135deg, hsl(220 75% 25%) 0%, hsl(210 75% 35%) 100%);
+    --gradient-blue-indigo: linear-gradient(135deg, hsl(220 90% 56%) 0%, hsl(260 75% 55%) 100%);
+  }
+
+  /* Warm palette scoped to Agentic Engineering page */
+  .ae-warm {
+    --background: 50 33% 98%;
+    --card: 48 25% 97%;
+    --accent: 45 20% 95%;
+    --secondary: 44 18% 95%;
+    --muted: 43 12% 92%;
+    --border: 40 12% 89%;
+    --input: 40 12% 89%;
+    --section-alt: 46 18% 97%;
   }
 
   .dark {
-    --background: 220 70% 8%;
+    /* Deep Black Theme */
+    --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
 
-    --card: 220 60% 12%;
+    --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 220 70% 8%;
+    --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 175 75% 50%;
-    --primary-foreground: 220 70% 12%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
 
-    --secondary: 220 50% 18%;
+    --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 220 50% 18%;
-    --muted-foreground: 220 20% 65%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
 
-    --accent: 175 75% 50%;
-    --accent-foreground: 220 70% 12%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 50%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 50% 18%;
-    --input: 220 50% 18%;
-    --ring: 175 75% 50%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
 
-    --accent-dark: 220 75% 18%;
+    --accent-dark: 240 10% 3.9%;
     --accent-teal: 175 75% 50%;
-    --section-alt: 220 65% 10%;
+    --section-alt: 240 3.7% 8%;
   }
 }
 
@@ -99,9 +112,189 @@ All colors MUST be HSL.
   }
 
   .bg-grid-pattern {
-    background-image: 
+    background-image:
       linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
     background-size: 40px 40px;
+  }
+}
+
+@layer utilities {
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50;
+  }
+
+  .glass-card {
+    @apply bg-black/40 border border-white/10 backdrop-blur-md shadow-xl;
+  }
+
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Corner bracket effect for cards */
+  .corner-bracket {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: hsl(var(--primary) / 0.5);
+    border-style: solid;
+    transition: all 0.3s ease;
+  }
+
+  .corner-tl {
+    top: 0;
+    left: 0;
+    border-width: 1px 0 0 1px;
+    border-top-left-radius: 0.5rem;
+  }
+
+  .corner-tr {
+    top: 0;
+    right: 0;
+    border-width: 1px 1px 0 0;
+    border-top-right-radius: 0.5rem;
+  }
+
+  .corner-bl {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 1px 1px;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  .corner-br {
+    bottom: 0;
+    right: 0;
+    border-width: 0 1px 1px 0;
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  .group:hover .corner-bracket {
+    width: 100%;
+    height: 100%;
+    border-color: hsl(var(--primary));
+    opacity: 1;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-gradient-x {
+    animation: gradient-x 3s ease infinite;
+    background-size: 200% 200%;
+  }
+
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% auto;
+    animation: gradient 3s ease infinite;
+  }
+
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+
+  /* Agent network flowing line animations */
+  .animate-flow-down {
+    animation: flow-down 2.5s linear infinite;
+  }
+  .animate-flow-right {
+    animation: flow-right 2.5s linear infinite;
+    animation-delay: 0.5s;
+  }
+  .animate-flow-left {
+    animation: flow-left 2.5s linear infinite;
+    animation-delay: 1s;
+  }
+  .animate-flow-up {
+    animation: flow-up 2.5s linear infinite;
+    animation-delay: 0.8s;
+  }
+
+  @keyframes flow-down {
+    0% { stroke-dashoffset: 20; }
+    100% { stroke-dashoffset: -20; }
+  }
+  @keyframes flow-right {
+    0% { stroke-dashoffset: 20; }
+    100% { stroke-dashoffset: -20; }
+  }
+  @keyframes flow-left {
+    0% { stroke-dashoffset: -20; }
+    100% { stroke-dashoffset: 20; }
+  }
+  @keyframes flow-up {
+    0% { stroke-dashoffset: -20; }
+    100% { stroke-dashoffset: 20; }
+  }
+
+  /* Slow ping for center hub */
+  .animate-ping-slow {
+    animation: ping-slow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  @keyframes ping-slow {
+    0% { transform: scale(1); opacity: 0.4; }
+    75%, 100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  /* Bell wiggle */
+  .animate-wiggle {
+    animation: wiggle 3s ease-in-out infinite;
+  }
+  @keyframes wiggle {
+    0%, 85%, 100% { transform: rotate(0deg); }
+    88% { transform: rotate(-8deg); }
+    91% { transform: rotate(8deg); }
+    94% { transform: rotate(-6deg); }
+    97% { transform: rotate(4deg); }
+  }
+
+  /* Floating action labels */
+  .animate-float-label {
+    animation: float-label 4s ease-in-out infinite;
+  }
+  @keyframes float-label {
+    0%, 100% { opacity: 0; transform: translateY(4px); }
+    15%, 70% { opacity: 1; transform: translateY(0); }
+    85% { opacity: 0; transform: translateY(-4px); }
   }
 }
