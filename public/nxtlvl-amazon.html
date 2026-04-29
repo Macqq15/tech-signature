@@ -136,37 +136,66 @@
     .smap-canvas { background: transparent !important; border-color: var(--mm-border) !important; max-height: none !important; padding: 6px; }
     .smap-mobile { background: transparent !important; }
 
-    /* Status indicator on each card */
+    /* Card override — depth, organ stripe, stronger border */
+    .smap-node {
+      box-shadow: 0 2px 6px hsl(220 30% 30% / 0.06), 0 1px 2px hsl(220 30% 30% / 0.04) !important;
+      border-left-width: 3px !important;
+      transition: box-shadow 0.15s ease, transform 0.15s ease !important;
+    }
+    .smap-node:hover {
+      box-shadow: 0 8px 22px hsl(220 30% 30% / 0.12), 0 2px 6px hsl(220 30% 30% / 0.08) !important;
+      transform: translateY(-1px);
+    }
+    .smap-node.locked {
+      box-shadow: 0 0 0 2px var(--mm-blue), 0 8px 22px hsl(220 30% 30% / 0.18) !important;
+      transform: translateY(-1px);
+    }
+
+    /* Organ-specific left stripe colors */
+    .smap-node[data-organ="DNA"]    { border-left-color: #1e293b !important; }
+    .smap-node[data-organ="Brain"]  { border-left-color: #3b82f6 !important; }
+    .smap-node[data-organ="Voice"]  { border-left-color: #ff5630 !important; }
+    .smap-node[data-organ="Heart"]  { border-left-color: #ec4899 !important; }
+    .smap-node[data-organ="Hands"]  { border-left-color: #22c55e !important; }
+    .smap-node[data-organ="Immune"] { border-left-color: #a855f7 !important; }
+
+    /* Override organ badges with distinct colors */
+    .smap-node-badge.smap-badge-dna    { background: #1e293b !important; color: white !important; border-color: #1e293b !important; }
+    .smap-node-badge.smap-badge-brain  { background: rgba(59,130,246,0.12) !important; color: #1d4ed8 !important; border-color: rgba(59,130,246,0.35) !important; }
+    .smap-node-badge.smap-badge-voice  { background: rgba(255,86,48,0.12) !important; color: #c2410c !important; border-color: rgba(255,86,48,0.35) !important; }
+    .smap-node-badge.smap-badge-heart  { background: rgba(236,72,153,0.12) !important; color: #be185d !important; border-color: rgba(236,72,153,0.35) !important; }
+    .smap-node-badge.smap-badge-hands  { background: rgba(34,197,94,0.12) !important; color: #15803d !important; border-color: rgba(34,197,94,0.35) !important; }
+    .smap-node-badge.smap-badge-immune { background: rgba(168,85,247,0.12) !important; color: #7e22ce !important; border-color: rgba(168,85,247,0.35) !important; }
+
+    /* Status dot in card corner */
     .smap-node .status-dot {
       position: absolute;
       top: 10px;
       right: 10px;
-      width: 9px;
-      height: 9px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       box-shadow: 0 0 0 2px white;
     }
-    .smap-node.locked {
-      box-shadow: 0 0 0 2px var(--mm-blue), 0 8px 22px hsl(220 30% 30% / 0.18) !important;
-    }
 
-    .status-built { background: var(--status-built); }
+    .status-built   { background: var(--status-built); }
     .status-partial { background: var(--status-partial); }
     .status-planned { background: var(--status-planned); }
-    .status-future { background: var(--status-future); }
+    .status-future  { background: var(--status-future); }
 
-    /* Phase axis labels rendered inside SVG, plus DOM labels */
+    /* Phase axis pills */
     .phase-pill {
       position: absolute;
-      left: 6px;
-      width: 110px;
+      left: 4px;
+      width: 100px;
       padding: 8px 10px;
       border-radius: 8px;
       color: white;
       pointer-events: none;
+      box-shadow: 0 2px 6px hsl(220 30% 30% / 0.10);
     }
     .phase-pill .ph-num {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -174,7 +203,7 @@
       margin-bottom: 3px;
     }
     .phase-pill .ph-sub {
-      font-size: 10.5px;
+      font-size: 10px;
       line-height: 1.35;
       opacity: 0.95;
       display: block;
@@ -273,15 +302,16 @@
 
   <script>
   (function () {
-    var NODE_W = 200, NODE_H = 100;
-    var PHASE_AXIS_W = 130;
-    var ROW_GAP = 130;
-    var PHASE_GAP = 24;
-    var HEADER_H = 56;
-    var PATH_X = [PHASE_AXIS_W + 30 + NODE_W / 2,
-                  PHASE_AXIS_W + 30 + NODE_W / 2 + 240,
-                  PHASE_AXIS_W + 30 + NODE_W / 2 + 480];
-    var MAP_W = PHASE_AXIS_W + 30 + 3 * NODE_W + 2 * 40 + 30;
+    var NODE_W = 200, NODE_H = 88;
+    var PHASE_AXIS_W = 116;
+    var ROW_GAP = 108;
+    var PHASE_GAP = 18;
+    var HEADER_H = 16;
+    var COL_GAP = 56;
+    var PATH_X = [PHASE_AXIS_W + 24 + NODE_W / 2,
+                  PHASE_AXIS_W + 24 + NODE_W / 2 + NODE_W + COL_GAP,
+                  PHASE_AXIS_W + 24 + NODE_W / 2 + 2 * (NODE_W + COL_GAP)];
+    var MAP_W = PHASE_AXIS_W + 24 + 3 * NODE_W + 2 * COL_GAP + 24;
 
     var PHASES = [
       { id: 0, label: 'Phase 0', subtitle: 'Spike (week 1)', color: '#6366f1' },
@@ -451,7 +481,7 @@
       if (seenEdge[from + '-' + to]) return;
       seenEdge[from + '-' + to] = true;
       var horizontal = (Math.abs(a.y - b.y) < 1);
-      edges.push({ from: from, to: to, horizontal: horizontal, color: 'rgba(176,91,64,0.45)' });
+      edges.push({ from: from, to: to, horizontal: horizontal, color: 'rgba(255,86,48,0.85)' });
     }
     DEPS.forEach(function (d) { addEdge(d[0], d[1]); });
 
@@ -502,30 +532,21 @@
       var focusSlug = lockedSlug || hoverSlug;
       var chain = focusSlug ? prereqChain(focusSlug) : null;
 
-      // SVG: phase bands + path column header backgrounds + edges
+      // SVG: subtle phase bands + edges
       var svgHtml = '';
 
-      // Phase bands (background tints across full width except phase axis)
+      // Subtle phase axis tint only (no full-width bands — keep map clean)
       phaseRanges.forEach(function (pr) {
-        svgHtml += '<rect x="' + (PHASE_AXIS_W + 6) + '" y="' + pr.startY + '" width="' + (MAP_W - PHASE_AXIS_W - 12) + '" height="' + pr.height + '" fill="' + pr.phase.color + '" opacity="0.04" rx="10" />';
-        // Phase axis pill background
-        svgHtml += '<rect x="6" y="' + pr.startY + '" width="' + (PHASE_AXIS_W - 12) + '" height="' + pr.height + '" fill="' + pr.phase.color + '" opacity="0.10" rx="10" />';
+        svgHtml += '<rect x="2" y="' + pr.startY + '" width="' + (PHASE_AXIS_W - 4) + '" height="' + pr.height + '" fill="' + pr.phase.color + '" opacity="0.06" rx="10" />';
       });
 
-      // Path column headers
-      PATHS.forEach(function (path, pi) {
-        var cx = PATH_X[pi];
-        svgHtml += '<rect x="' + (cx - NODE_W / 2) + '" y="6" width="' + NODE_W + '" height="38" fill="' + path.color + '" rx="8" />';
-        svgHtml += '<text x="' + cx + '" y="30" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="ui-sans-serif,system-ui,sans-serif" letter-spacing="0.06em">' + path.label.toUpperCase() + '</text>';
-      });
-
-      // Edges
+      // Edges (coral, prominent — like aibizneslab)
       edges.forEach(function (e) {
         var a = nodeMap[e.from], b = nodeMap[e.to];
         var hl = chain && chain.edges[e.from + '-' + e.to];
         var dim = chain && !hl;
-        var sw = hl ? 2.6 : 2;
-        var op = dim ? 0.12 : (hl ? 1 : 0.55);
+        var sw = hl ? 2.8 : 2.2;
+        var op = dim ? 0.12 : (hl ? 1 : 0.85);
         svgHtml += '<path d="' + edgePath(a, b, e.horizontal) + '" fill="none" stroke="' + e.color + '" stroke-width="' + sw + '" stroke-linecap="round" stroke-dasharray="6 5" style="opacity:' + op + '" />';
       });
 
@@ -557,6 +578,7 @@
         el.style.left = (n.x - NODE_W / 2) + 'px';
         el.style.top = (n.y - NODE_H / 2) + 'px';
         el.dataset.slug = n.slug;
+        el.dataset.organ = n.system;
         el.innerHTML =
           '<span class="status-dot status-' + n.status + '"></span>' +
           '<div class="smap-node-header">' +
