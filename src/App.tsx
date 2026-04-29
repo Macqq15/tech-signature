@@ -16,6 +16,9 @@ import AgencyOTO1 from "./pages/AgencyOTO1";
 import AgencyOTO2 from "./pages/AgencyOTO2";
 import AgencyOTO3 from "./pages/AgencyOTO3";
 import AgencyThankYou from "./pages/AgencyThankYou";
+import TikTokFlowPrivacy from "./pages/TikTokFlowPrivacy";
+import TikTokFlowTerms from "./pages/TikTokFlowTerms";
+import TikTokFlowCallback from "./pages/TikTokFlowCallback";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -46,6 +49,9 @@ const App = () => (
             <Route path="/agency-oto2" element={<AgencyOTO2 />} />
             <Route path="/agency-oto3" element={<AgencyOTO3 />} />
             <Route path="/agency-thank-you" element={<AgencyThankYou />} />
+            <Route path="/tiktokflow/privacy" element={<TikTokFlowPrivacy />} />
+            <Route path="/tiktokflow/terms" element={<TikTokFlowTerms />} />
+            <Route path="/tiktokflow/callback" element={<TikTokFlowCallback />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
