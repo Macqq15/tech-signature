@@ -1,0 +1,48 @@
+/* AIBIZNESLAB v2 — Design tokens (Lab Club v2 DNA)
+ * Source: PROJEKTY/AIBL-NETWORK/labclub/styles/v2.css:1-42
+ * 14 kolorów + 3 fonty + 3 layout tokens
+ */
+
+:root {
+    /* Core palette — light canvas, singular warm accent */
+    --bg: #FAFAFA;
+    --bg-elev-1: #FFFFFF;
+    --bg-elev-2: #F4F4F4;
+    --bg-elev-3: #EDEDED;
+    --border: rgba(10, 10, 10, 0.08);
+    --border-strong: rgba(10, 10, 10, 0.14);
+    --text: #0A0A0A;
+    --text-dim: rgba(10, 10, 10, 0.70);
+    --text-faint: rgba(10, 10, 10, 0.45);
+    --text-mute: rgba(10, 10, 10, 0.28);
+
+    /* Single accent — electric ember (jedyny akcent w v2) */
+    --accent: #FF5630;
+    --accent-soft: rgba(255, 86, 48, 0.10);
+    --accent-line: rgba(255, 86, 48, 0.35);
+    --ok: #16A34A;
+
+    /* Typography */
+    --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-serif: 'Instrument Serif', 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    /* Layout */
+    --max: 1240px;
+    --radius: 14px;
+    --radius-sm: 8px;
+}
+
+/* Dark mode opt-in via [data-theme="dark"] */
+:root[data-theme="dark"] {
+    --bg: #0A0A0A;
+    --bg-elev-1: #111111;
+    --bg-elev-2: #161616;
+    --bg-elev-3: #1D1D1D;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    --text: #F5F5F5;
+    --text-dim: rgba(245, 245, 245, 0.65);
+    --text-faint: rgba(245, 245, 245, 0.40);
+    --text-mute: rgba(245, 245, 245, 0.24);
+}

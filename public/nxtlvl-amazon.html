@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amazon Agency Systems Map — working draft</title>
+  <title>Amazon Agency Systems Map — working draft (private)</title>
   <meta name="robots" content="noindex,nofollow" />
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/core.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/legacy.css">
+  <link rel="stylesheet" href="/assets/css/nxtlvl-v2.css">
+
   <style>
     :root {
-      --bg: hsl(0 0% 100%);
-      --fg: hsl(220 80% 20%);
-      --muted: hsl(220 15% 45%);
-      --blue: hsl(220 90% 56%);
-      --card: hsl(0 0% 98%);
-      --card-hover: hsl(220 30% 96%);
-      --border: hsl(220 13% 91%);
-      --shadow: 0 4px 16px hsl(220 30% 30% / 0.08);
+      --mm-bg: hsl(0 0% 100%);
+      --mm-fg: hsl(220 80% 20%);
+      --mm-muted: hsl(220 15% 45%);
+      --mm-blue: hsl(220 90% 56%);
+      --mm-card: hsl(0 0% 98%);
+      --mm-border: hsl(220 13% 91%);
 
       --phase-0: #6366f1;
       --phase-1: #3b82f6;
@@ -22,24 +27,18 @@
       --phase-3: #a855f7;
       --phase-4: #6b7280;
 
-      --path-foundation: #c94a2a;
-      --path-intelligence: #a27436;
-      --path-revenue: #2a5c4e;
-
       --status-built: #10b981;
       --status-partial: #f59e0b;
       --status-planned: #3b82f6;
       --status-future: #9ca3af;
     }
 
-    * { box-sizing: border-box; }
-
     html, body {
       margin: 0;
       padding: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--mm-bg) !important;
+      color: var(--mm-fg) !important;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -48,8 +47,8 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse at 20% 10%, hsl(220 90% 56% / 0.04), transparent 50%),
-        radial-gradient(ellipse at 80% 90%, hsl(260 75% 55% / 0.03), transparent 50%);
+        radial-gradient(ellipse at 20% 10%, hsl(220 90% 56% / 0.05), transparent 50%),
+        radial-gradient(ellipse at 80% 90%, hsl(260 75% 55% / 0.04), transparent 50%);
       pointer-events: none;
       z-index: 0;
     }
@@ -68,7 +67,7 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--blue);
+      color: var(--mm-blue);
       background: hsl(220 90% 56% / 0.08);
       border: 1px solid hsl(220 90% 56% / 0.25);
       border-radius: 999px;
@@ -82,6 +81,7 @@
       font-weight: 800;
       letter-spacing: -0.02em;
       margin: 0 0 16px;
+      color: var(--mm-fg);
     }
 
     h1.title .accent {
@@ -94,67 +94,9 @@
     p.subtitle {
       font-size: clamp(15px, 1.4vw, 18px);
       line-height: 1.6;
-      color: var(--muted);
+      color: var(--mm-muted);
       max-width: 720px;
       margin: 0 0 40px;
-    }
-
-    .controls {
-      display: flex;
-      gap: 28px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-bottom: 32px;
-      padding: 16px 20px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-    }
-
-    .control-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .control-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .toggle {
-      display: inline-flex;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 3px;
-      gap: 2px;
-    }
-
-    .toggle button {
-      padding: 7px 14px;
-      border: none;
-      background: transparent;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      color: var(--muted);
-      transition: all 0.15s ease;
-    }
-
-    .toggle button.active {
-      background: var(--blue);
-      color: white;
-      box-shadow: 0 2px 6px hsl(220 90% 56% / 0.3);
-    }
-
-    .toggle button:hover:not(.active) {
-      color: var(--fg);
-      background: var(--card-hover);
     }
 
     .legend {
@@ -162,192 +104,50 @@
       gap: 18px;
       flex-wrap: wrap;
       font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 24px;
+      color: var(--mm-muted);
+      margin-bottom: 20px;
     }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-dot { width: 9px; height: 9px; border-radius: 50%; }
 
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .legend-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
+    .map-and-panel {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 20px;
+      align-items: start;
     }
 
     .map-shell {
-      display: grid;
-      gap: 24px;
-      grid-template-columns: 1fr;
-    }
-
-    .map-shell.has-side-panel {
-      grid-template-columns: 1fr 340px;
-    }
-
-    .map-canvas {
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: var(--mm-card);
+      border: 1px solid var(--mm-border);
       border-radius: 18px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-      min-height: 600px;
+      padding: 22px;
+      box-shadow: 0 8px 28px hsl(220 30% 30% / 0.08);
     }
 
-    /* ============ LAYOUT A — Phase swim lanes ============ */
-    .layout-a .phase-row {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 20px;
-      padding: 22px 0;
-      border-top: 1px dashed var(--border);
-    }
-    .layout-a .phase-row:first-child { border-top: none; padding-top: 4px; }
-
-    .layout-a .phase-label {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding-top: 4px;
-    }
-
-    .layout-a .phase-label .ph-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: white;
-      padding: 4px 10px;
-      border-radius: 6px;
-      align-self: flex-start;
-    }
-
-    .layout-a .phase-label .ph-sub {
+    .map-note {
       font-size: 12px;
-      color: var(--muted);
-      line-height: 1.4;
+      color: var(--mm-muted);
+      margin: 0 0 12px;
+      opacity: 0.85;
     }
 
-    .layout-a .phase-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-content: flex-start;
-    }
+    .smap-wrapper { background: transparent !important; }
+    .smap-canvas { background: transparent !important; border-color: var(--mm-border) !important; max-height: none !important; padding: 6px; }
+    .smap-mobile { background: transparent !important; }
 
-    /* ============ LAYOUT B — Path columns × phase rows ============ */
-    .layout-b .grid-table {
-      display: grid;
-      grid-template-columns: 130px repeat(3, 1fr);
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .layout-b .grid-header {
-      padding: 14px 16px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: white;
-      border-right: 1px solid hsl(0 0% 100% / 0.12);
-    }
-    .layout-b .grid-header:last-child { border-right: none; }
-    .layout-b .grid-header.corner { background: hsl(220 13% 91%); color: var(--muted); }
-    .layout-b .grid-header.path-foundation { background: var(--path-foundation); }
-    .layout-b .grid-header.path-intelligence { background: var(--path-intelligence); }
-    .layout-b .grid-header.path-revenue { background: var(--path-revenue); }
-
-    .layout-b .phase-cell {
-      padding: 14px 12px;
-      border-top: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-      background: var(--card);
-      min-height: 90px;
-    }
-    .layout-b .phase-cell:last-child { border-right: none; }
-
-    .layout-b .phase-rowhead {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      justify-content: center;
-      background: white;
-    }
-
-    .layout-b .phase-rowhead .ph-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: white;
-      padding: 4px 8px;
-      border-radius: 6px;
-      align-self: flex-start;
-    }
-
-    .layout-b .phase-rowhead .ph-sub {
-      font-size: 11px;
-      color: var(--muted);
-      line-height: 1.35;
-    }
-
-    .layout-b .phase-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    /* ============ Card ============ */
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--path-foundation);
-      border-radius: 10px;
-      padding: 10px 12px 10px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--fg);
-      cursor: pointer;
-      transition: all 0.15s ease;
-      position: relative;
-      min-width: 160px;
-      max-width: 220px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .card:hover, .card.locked {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px hsl(220 30% 30% / 0.12);
-      background: var(--card-hover);
-    }
-
-    .card.locked {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 2px hsl(220 90% 56% / 0.15), 0 6px 18px hsl(220 30% 30% / 0.12);
-    }
-
-    .card.path-foundation { border-left-color: var(--path-foundation); }
-    .card.path-intelligence { border-left-color: var(--path-intelligence); }
-    .card.path-revenue { border-left-color: var(--path-revenue); }
-
-    .card .status-dot {
+    /* Status indicator on each card */
+    .smap-node .status-dot {
+      position: absolute;
+      top: 10px;
+      right: 10px;
       width: 9px;
       height: 9px;
       border-radius: 50%;
-      flex-shrink: 0;
+      box-shadow: 0 0 0 2px white;
     }
-
-    .card .card-name {
-      flex: 1;
-      line-height: 1.25;
+    .smap-node.locked {
+      box-shadow: 0 0 0 2px var(--mm-blue), 0 8px 22px hsl(220 30% 30% / 0.18) !important;
     }
 
     .status-built { background: var(--status-built); }
@@ -355,23 +155,44 @@
     .status-planned { background: var(--status-planned); }
     .status-future { background: var(--status-future); }
 
-    /* ============ Side Panel ============ */
-    .side-panel {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 24px;
-      position: sticky;
-      top: 24px;
-      height: fit-content;
-      max-height: calc(100vh - 48px);
-      overflow-y: auto;
-      box-shadow: var(--shadow);
+    /* Phase axis labels rendered inside SVG, plus DOM labels */
+    .phase-pill {
+      position: absolute;
+      left: 6px;
+      width: 110px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      color: white;
+      pointer-events: none;
+    }
+    .phase-pill .ph-num {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .phase-pill .ph-sub {
+      font-size: 10.5px;
+      line-height: 1.35;
+      opacity: 0.95;
+      display: block;
     }
 
-    .side-panel.hidden { display: none; }
-
-    .side-panel .sp-status {
+    /* Side panel */
+    .side-panel {
+      background: var(--mm-card);
+      border: 1px solid var(--mm-border);
+      border-radius: 18px;
+      padding: 22px;
+      position: sticky;
+      top: 24px;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+      box-shadow: 0 8px 28px hsl(220 30% 30% / 0.08);
+    }
+    .sp-status {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -379,421 +200,444 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 12px;
+      color: var(--mm-muted);
+      margin-bottom: 10px;
     }
-
-    .side-panel .sp-name {
+    .sp-name {
       font-size: 22px;
       font-weight: 800;
       line-height: 1.2;
       margin: 0 0 8px;
-      color: var(--fg);
+      color: var(--mm-fg);
     }
-
-    .side-panel .sp-meta {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-
-    .side-panel .sp-tag {
+    .sp-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+    .sp-tag {
       font-size: 11px;
       font-weight: 600;
       padding: 3px 9px;
       border-radius: 999px;
       background: white;
-      border: 1px solid var(--border);
-      color: var(--muted);
+      border: 1px solid var(--mm-border);
+      color: var(--mm-muted);
     }
-
-    .side-panel .sp-desc {
+    .sp-desc {
       font-size: 14px;
       line-height: 1.6;
-      color: var(--fg);
+      color: var(--mm-fg);
+      margin: 0;
     }
-
-    .side-panel .sp-empty {
-      color: var(--muted);
+    .sp-empty {
+      color: var(--mm-muted);
       font-size: 14px;
       line-height: 1.5;
       font-style: italic;
     }
 
-    /* ============ Popover ============ */
-    .popover {
-      position: absolute;
-      z-index: 100;
-      max-width: 320px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px 18px;
-      box-shadow: 0 12px 32px hsl(220 30% 30% / 0.18);
-      pointer-events: none;
-      opacity: 0;
-      transform: translateY(4px);
-      transition: opacity 0.12s ease, transform 0.12s ease;
-    }
-
-    .popover.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .popover .pv-name {
-      font-size: 15px;
-      font-weight: 700;
-      margin: 0 0 6px;
-      color: var(--fg);
-    }
-
-    .popover .pv-meta {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-
-    .popover .pv-tag {
-      font-size: 10px;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 999px;
-      background: var(--card);
-      color: var(--muted);
-      border: 1px solid var(--border);
-    }
-
-    .popover .pv-desc {
-      font-size: 13px;
-      line-height: 1.5;
-      color: var(--fg);
-    }
-
-    @media (max-width: 900px) {
-      .map-shell.has-side-panel { grid-template-columns: 1fr; }
+    @media (max-width: 1100px) {
+      .map-and-panel { grid-template-columns: 1fr; }
       .side-panel { position: static; max-height: none; }
-      .layout-a .phase-row { grid-template-columns: 1fr; }
-      .layout-b .grid-table { grid-template-columns: 100px repeat(3, 1fr); font-size: 11px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <span class="eyebrow">Working document · Amazon Agency</span>
-    <h1 class="title">29 systems. 5 phases.<br><span class="accent">Map to an autonomous Amazon agency.</span></h1>
-    <p class="subtitle">Each card is a system the agency runs. Click or hover to see what it does, why it matters, and how it works. Toggle layouts to compare.</p>
-
-    <div class="controls">
-      <div class="control-group">
-        <span class="control-label">Layout</span>
-        <div class="toggle" data-toggle="layout">
-          <button data-value="a" class="active">A · Phase Lanes</button>
-          <button data-value="b">B · Paths × Phases</button>
-        </div>
-      </div>
-      <div class="control-group">
-        <span class="control-label">Hover</span>
-        <div class="toggle" data-toggle="hover">
-          <button data-value="side" class="active">Side Panel</button>
-          <button data-value="popover">Popover</button>
-        </div>
-      </div>
-    </div>
+    <h1 class="title">29 systems. 5 phases. 6 organs.<br><span class="accent">Map to an autonomous Amazon agency.</span></h1>
+    <p class="subtitle">Each card is a system the agency runs. Hover or click to see what it does, why it matters, and how it works. Phases run top-to-bottom; paths run as columns; arrows show dependencies.</p>
 
     <div class="legend">
       <div class="legend-item"><span class="legend-dot status-built"></span>Built</div>
-      <div class="legend-item"><span class="legend-dot status-partial"></span>Partial / foundation exists</div>
-      <div class="legend-item"><span class="legend-dot status-planned"></span>Planned (in spec)</div>
+      <div class="legend-item"><span class="legend-dot status-partial"></span>Partial</div>
+      <div class="legend-item"><span class="legend-dot status-planned"></span>Planned</div>
       <div class="legend-item"><span class="legend-dot status-future"></span>Future (post-MVP)</div>
-      <div class="legend-item" style="margin-left:18px"><span class="legend-dot" style="background:var(--path-foundation)"></span>Foundation & Ops</div>
-      <div class="legend-item"><span class="legend-dot" style="background:var(--path-intelligence)"></span>Intelligence Loop</div>
-      <div class="legend-item"><span class="legend-dot" style="background:var(--path-revenue)"></span>Revenue Engine</div>
     </div>
 
-    <div class="map-shell has-side-panel" id="mapShell">
-      <div class="map-canvas" id="mapCanvas"></div>
+    <div class="map-and-panel">
+      <div class="map-shell">
+        <p class="map-note">Map in beta. Blocks and connections may change as the program evolves.</p>
+        <div class="smap-wrapper">
+          <div class="smap-canvas" id="smapCanvas">
+            <div class="smap-viewport" id="smapViewport" style="position:relative;">
+              <svg class="smap-svg" id="smapSvg" style="position:absolute;inset:0;width:100%;height:100%;"></svg>
+            </div>
+          </div>
+          <div class="smap-mobile" id="smapMobile"></div>
+        </div>
+      </div>
+
       <aside class="side-panel" id="sidePanel">
         <div class="sp-empty">Hover or click any card to see its description here.</div>
       </aside>
     </div>
   </div>
 
-  <div class="popover" id="popover"></div>
-
   <script>
-    const PHASES = [
+  (function () {
+    var NODE_W = 200, NODE_H = 100;
+    var PHASE_AXIS_W = 130;
+    var ROW_GAP = 130;
+    var PHASE_GAP = 24;
+    var HEADER_H = 56;
+    var PATH_X = [PHASE_AXIS_W + 30 + NODE_W / 2,
+                  PHASE_AXIS_W + 30 + NODE_W / 2 + 240,
+                  PHASE_AXIS_W + 30 + NODE_W / 2 + 480];
+    var MAP_W = PHASE_AXIS_W + 30 + 3 * NODE_W + 2 * 40 + 30;
+
+    var PHASES = [
       { id: 0, label: 'Phase 0', subtitle: 'Spike (week 1)', color: '#6366f1' },
-      { id: 1, label: 'Phase 1', subtitle: 'Foundation + Listings + Ads + Research (weeks 2-4)', color: '#3b82f6' },
-      { id: 2, label: 'Phase 2', subtitle: 'Compliance + Traffic + Email (weeks 5-7)', color: '#0d9488' },
-      { id: 3, label: 'Phase 3', subtitle: 'Influencer + Scale (weeks 8-10)', color: '#a855f7' },
-      { id: 4, label: 'Phase 4', subtitle: 'Agency Growth (post-MVP)', color: '#6b7280' }
+      { id: 1, label: 'Phase 1', subtitle: 'Foundation, listings, ads, research (weeks 2-4)', color: '#3b82f6' },
+      { id: 2, label: 'Phase 2', subtitle: 'Compliance, traffic, email (weeks 5-7)', color: '#0d9488' },
+      { id: 3, label: 'Phase 3', subtitle: 'Influencer, scale (weeks 8-10)', color: '#a855f7' },
+      { id: 4, label: 'Phase 4', subtitle: 'Agency growth (post-MVP)', color: '#6b7280' }
     ];
 
-    const PATHS = [
-      { id: 'foundation', label: 'Foundation & Ops' },
-      { id: 'intelligence', label: 'Intelligence Loop' },
-      { id: 'revenue', label: 'Revenue Engine' }
+    var PATHS = [
+      { key: 'foundation', label: 'Foundation & Ops', color: 'rgba(201,74,42,0.5)' },
+      { key: 'intelligence', label: 'Intelligence Loop', color: 'rgba(162,116,54,0.52)' },
+      { key: 'revenue', label: 'Revenue Engine', color: 'rgba(42,92,78,0.5)' }
     ];
 
-    const SYSTEMS = [
-      { id: 'spike', name: 'Foundation Spike', phase: 0, path: 'foundation', status: 'planned',
+    var SYSTEMS = [
+      { slug: 'spike', title: 'Foundation Spike', system: 'DNA', phase: 0, path: 'foundation', status: 'planned',
         desc: 'A one-week test build to validate the whole stack: which cloud (GCP vs. AWS), which AI agent runtime (Hermes, custom Claude Agent SDK, or other), and whether they can run our existing playbooks on a real client without breaking. Like renting a car before buying — we plug in one task (writing his listings), measure cost/speed/quality, then commit. Output: a go/no-go on the platform.' },
 
-      { id: 'cloud-cto', name: 'Cloud CTO', phase: 1, path: 'foundation', status: 'partial',
+      { slug: 'cloud-cto', title: 'Cloud CTO', system: 'DNA', phase: 1, path: 'foundation', status: 'partial',
         desc: 'The engine room. Every AI system runs on a managed cloud platform (GCP or AWS — TBD), with each client walled off in their own memory space so brand voice, data, and credentials never cross between clients. Like a serviced office — same building, locked suites.' },
-      { id: 'cost-vault', name: 'Cost & Security Vault', phase: 1, path: 'foundation', status: 'planned',
-        desc: 'Caps daily spending per client (so a buggy script can\'t blow $1,000 overnight), stores API keys in an encrypted secret store, and controls which AI can touch which client. The specific tooling (Secrets Manager, IAM rules, billing caps) depends on whether we land on GCP or AWS — same pattern either way.' },
-      { id: 'review-pipeline', name: 'Human Review Pipeline', phase: 1, path: 'foundation', status: 'planned',
+      { slug: 'cost-vault', title: 'Cost & Security Vault', system: 'Immune', phase: 1, path: 'foundation', status: 'planned',
+        desc: 'Caps daily spending per client (so a buggy script can\'t blow $1,000 overnight), stores API keys in an encrypted secret store, and controls which AI can touch which client. The specific tooling depends on whether we land on GCP or AWS — same pattern either way.' },
+      { slug: 'review-pipeline', title: 'Human Review Pipeline', system: 'Hands', phase: 1, path: 'foundation', status: 'planned',
         desc: 'The brake pedal. The AI sends "I want to do X — approve?" requests to a queue: small stuff (bid tweaks) auto-runs, medium stuff (new ad campaigns, listing copy) waits for a human "yes," and anything client-facing always needs a human. Stops the AI from going rogue.' },
-      { id: 'knowledge-hub', name: 'Knowledge Hub', phase: 1, path: 'intelligence', status: 'partial',
+      { slug: 'knowledge-hub', title: 'Knowledge Hub', system: 'Brain', phase: 1, path: 'intelligence', status: 'partial',
         desc: 'The agency\'s brain. Every SOP, playbook, Amazon\'s rulebook, and each client\'s brand guide is loaded into a searchable AI library. The AI looks up our documents before writing anything, instead of guessing.' },
-      { id: 'crm', name: 'Client CRM', phase: 1, path: 'intelligence', status: 'planned',
+      { slug: 'crm', title: 'Client CRM', system: 'Brain', phase: 1, path: 'intelligence', status: 'planned',
         desc: 'A single source of truth: each client\'s products, work history, payments, churn risk. Every other system reads from here. Lightweight (Notion, Airtable, or a managed cloud database — picked once Phase 0 settles the platform).' },
-      { id: 'listing-engine', name: 'Listing Optimization Engine', phase: 1, path: 'revenue', status: 'built',
-        desc: 'The agency\'s #1 paid service, automated. AI generates titles, bullets, descriptions, and search terms for each product; a second AI audits the result against compliance rules and brand guides; a human approves before publishing. Built on skills that already work — we plug them into the agent.' },
-      { id: 'image-studio', name: 'Image & A+ Studio', phase: 1, path: 'revenue', status: 'built',
-        desc: 'Generates the visual side of every listing: hero shots, lifestyle photos, infographics, premium "A+" pages. Each client\'s brand colors, fonts, and overlays are baked in, so every visual feels consistent across their catalog. Built on Python image-compositing plus Google\'s Gemini AI.' },
-      { id: 'market-intel', name: 'Market Intelligence Engine', phase: 1, path: 'intelligence', status: 'partial',
+      { slug: 'market-intel', title: 'Market Intelligence Engine', system: 'Brain', phase: 1, path: 'intelligence', status: 'partial',
         desc: 'The diagnostic that opens every engagement. Scrapes competitor products, pulls keyword data, tracks competitor pricing, finds gaps in the marketplace, and looks at Amazon-specific signals (best-seller ranks, trending niches). Outputs a clean client-facing positioning brief: "This is where you are. This is where we\'ll get you in 90 days."' },
-      { id: 'amazon-ads', name: 'Amazon Ads Manager', phase: 1, path: 'revenue', status: 'planned',
+      { slug: 'listing-engine', title: 'Listing Optimization Engine', system: 'Voice', phase: 1, path: 'revenue', status: 'built',
+        desc: 'The agency\'s #1 paid service, automated. AI generates titles, bullets, descriptions, and search terms for each product; a second AI audits the result against compliance rules and brand guides; a human approves before publishing. Built on skills that already work — we plug them into the agent.' },
+      { slug: 'image-studio', title: 'Image & A+ Studio', system: 'Voice', phase: 1, path: 'revenue', status: 'built',
+        desc: 'Generates the visual side of every listing: hero shots, lifestyle photos, infographics, premium "A+" pages. Each client\'s brand colors, fonts, and overlays are baked in, so every visual feels consistent across their catalog. Built on Python image-compositing plus Google\'s Gemini AI.' },
+      { slug: 'amazon-ads', title: 'Amazon Ads Manager', system: 'Voice', phase: 1, path: 'revenue', status: 'planned',
         desc: 'Runs Sponsored Products, Brands, and Display campaigns across each client\'s account. AI auto-pauses bad ads and tweaks bids hourly within ±15% (no human needed), proposes new campaigns and keyword sets for human approval. Most immediate ROI lever for clients.' },
 
-      { id: 'compliance', name: 'Compliance Guardian', phase: 2, path: 'foundation', status: 'planned',
+      { slug: 'compliance', title: 'Compliance Guardian', system: 'Immune', phase: 2, path: 'foundation', status: 'planned',
         desc: 'Watches each client\'s account daily for silent killers: product suppressions, policy violations, restricted-category flags, label issues. When something flags, the client gets an alert and the AI drafts the fix or appeal. One missed compliance issue can shut a client\'s whole account.' },
-      { id: 'external-traffic', name: 'External Traffic Manager', phase: 2, path: 'revenue', status: 'partial',
+      { slug: 'external-traffic', title: 'External Traffic Manager', system: 'Voice', phase: 2, path: 'revenue', status: 'partial',
         desc: 'Drives traffic from Meta, Google, and TikTok into Amazon listings or QR landing pages — outside traffic Amazon rewards with better organic ranking. AI generates ad variants, manages bids per platform, and routes performance data back into Amazon Ads Manager so the two channels work together. Same Tier 1/2/3 approval logic.' },
-      { id: 'qr-email', name: 'QR → Email Capture', phase: 2, path: 'revenue', status: 'planned',
+      { slug: 'qr-email', title: 'QR → Email Capture', system: 'Voice', phase: 2, path: 'revenue', status: 'planned',
         desc: 'A unique angle. A QR on the product label sends customers to a landing page; they enter their email for a discount or guide, and join a per-client email list the agency owns (not Amazon\'s). This builds the client an email asset that compounds even if Amazon shuts their account.' },
-      { id: 'email-ops', name: 'AI Email Operations', phase: 2, path: 'revenue', status: 'planned',
+      { slug: 'email-ops', title: 'AI Email Operations', system: 'Voice', phase: 2, path: 'revenue', status: 'planned',
         desc: 'Handles all client email work: weekly newsletters, post-purchase flows, win-backs, support replies. AI drafts and queues; a human approves the first version of each sequence, then proven sequences auto-run forever. Same Tier 1/2/3 gating.' },
-      { id: 'review-manager', name: 'Review Manager', phase: 2, path: 'revenue', status: 'planned',
+      { slug: 'review-manager', title: 'Review Manager', system: 'Heart', phase: 2, path: 'revenue', status: 'planned',
         desc: 'Reads every new review on every client\'s products. Drafts a response in the brand\'s voice, flags patterns ("three reviews this week mention the lid breaking" → escalate to client), tracks rating trends. The agency catches problems before the client even notices.' },
-      { id: 'finance', name: 'AI Finance Controller', phase: 2, path: 'revenue', status: 'planned',
+      { slug: 'finance', title: 'AI Finance Controller', system: 'Heart', phase: 2, path: 'revenue', status: 'planned',
         desc: 'Per-client profit & loss tracking: what they pay us minus actual cost (cloud time, API fees, management hours). Auto-generates invoices and alerts if a client is unprofitable. Built on Stripe + the chosen cloud platform\'s billing API.' },
 
-      { id: 'avatar-studio', name: 'AI Influencer & Avatar Studio', phase: 3, path: 'revenue', status: 'planned',
-        desc: 'Creates a consistent AI persona per brand and uses it across both short-form videos (UGC-style ads, product demos, email VSLs) and graphics (Instagram posts, banner ads, thumbnails). One persona, infinite content, fraction of the cost of real influencers. Built on HeyGen/Synthesia for video, Gemini for graphics.' },
-      { id: 'inventory', name: 'Inventory & Shipment Intel', phase: 3, path: 'foundation', status: 'future',
+      { slug: 'inventory', title: 'Inventory & Shipment Intel', system: 'Immune', phase: 3, path: 'foundation', status: 'future',
         desc: 'Watches FBA stock levels, predicts when each product will run out, and alerts the client to reorder. Stockouts are the silent revenue killer on Amazon — this prevents them. Built on a Seller Central scraper plus a simple forecasting model.' },
-      { id: 'onboarding', name: 'Onboarding & CS Autopilot', phase: 3, path: 'revenue', status: 'future',
-        desc: 'When a new client signs, the AI runs a 30-day plan automatically: SKU audit, priority listing fixes, ad-account setup, first results report. After that, it watches a per-client "health score" and flags any drifting toward churn before they leave.' },
-      { id: 'notification-hub', name: 'Notification Hub', phase: 3, path: 'intelligence', status: 'planned',
-        desc: 'Every system emits signals ("CPC spiked," "angry review," "low stock," "compliance flag"). This is the central post office that routes each one to the right person: Roger if relational, Maciej if technical, client if they need to act. Built on a cloud event bus (Pub/Sub on GCP, EventBridge on AWS — same pattern).' },
-      { id: 'monitoring', name: 'Monitoring Portal', phase: 3, path: 'foundation', status: 'planned',
+      { slug: 'monitoring', title: 'Monitoring Portal', system: 'Immune', phase: 3, path: 'foundation', status: 'planned',
         desc: 'One dashboard showing per-client system health: listings live, ads spending in range, approval queue length, error rates. A 30-second daily glance tells Roger and Maciej if anything needs intervention. Reads from the chosen cloud platform\'s database + monitoring services.' },
+      { slug: 'notification-hub', title: 'Notification Hub', system: 'Brain', phase: 3, path: 'intelligence', status: 'planned',
+        desc: 'Every system emits signals ("CPC spiked," "angry review," "low stock," "compliance flag"). This is the central post office that routes each one to the right person: Roger if relational, Maciej if technical, client if they need to act. Built on a cloud event bus (Pub/Sub on GCP, EventBridge on AWS — same pattern).' },
+      { slug: 'avatar-studio', title: 'AI Influencer & Avatar Studio', system: 'Voice', phase: 3, path: 'revenue', status: 'planned',
+        desc: 'Creates a consistent AI persona per brand and uses it across both short-form videos (UGC-style ads, product demos, email VSLs) and graphics (Instagram posts, banner ads, thumbnails). One persona, infinite content, fraction of the cost of real influencers. Built on HeyGen/Synthesia for video, Gemini for graphics.' },
+      { slug: 'onboarding', title: 'Onboarding & CS Autopilot', system: 'Hands', phase: 3, path: 'revenue', status: 'future',
+        desc: 'When a new client signs, the AI runs a 30-day plan automatically: SKU audit, priority listing fixes, ad-account setup, first results report. After that, it watches a per-client "health score" and flags any drifting toward churn before they leave.' },
 
-      { id: 'bridge', name: 'The Bridge', phase: 4, path: 'foundation', status: 'future',
+      { slug: 'bridge', title: 'The Bridge', system: 'DNA', phase: 4, path: 'foundation', status: 'future',
         desc: 'Roger\'s voice/chat interface to the entire agency. Instead of asking Maciej "how\'s Scott doing?", he asks The Bridge, which queries the right systems and answers in plain English. Slack bot or web chat layered on top.' },
-      { id: 'ai-pulse', name: 'AI Pulse', phase: 4, path: 'intelligence', status: 'future',
-        desc: 'A daily morning briefing of the whole agency: yesterday\'s wins, problems, blockers, what the AI did autonomously. Like a news roundup of the business, written by the systems themselves.' },
-      { id: 'command-center', name: 'Business Command Center', phase: 4, path: 'intelligence', status: 'future',
-        desc: 'The full admin dashboard tying every system into one drillable view. Built last because it only makes sense after the systems exist. React-based, switched on per organ as each comes online.' },
-      { id: 'task-manager', name: 'Task Manager', phase: 4, path: 'foundation', status: 'future',
+      { slug: 'task-manager', title: 'Task Manager', system: 'Hands', phase: 4, path: 'foundation', status: 'future',
         desc: 'Internal task distribution between Roger, Maciej, and future VAs. Notion or ClickUp is fine until the team is 4+ people — no need to build custom.' },
-      { id: 'social-publisher', name: 'AI Social Media Publisher', phase: 4, path: 'revenue', status: 'future',
-        desc: 'Posts the agency\'s own thought leadership and case studies to LinkedIn and X to attract inbound clients. Built only after delivery is rock solid — worst time to acquire clients is when delivery isn\'t ready.' },
-      { id: 'legal-vault', name: 'IP & Legal Vault', phase: 4, path: 'foundation', status: 'future',
+      { slug: 'legal-vault', title: 'IP & Legal Vault', system: 'Immune', phase: 4, path: 'foundation', status: 'future',
         desc: 'Stores agency contracts, NDAs, GDPR records, supplier agreements. Encrypted Drive + Notion index until 10+ clients, then automated renewal reminders.' },
-      { id: 'quality-ux', name: 'Quality & UX Autopilot', phase: 4, path: 'intelligence', status: 'future',
+      { slug: 'ai-pulse', title: 'AI Pulse', system: 'Brain', phase: 4, path: 'intelligence', status: 'future',
+        desc: 'A daily morning briefing of the whole agency: yesterday\'s wins, problems, blockers, what the AI did autonomously. Like a news roundup of the business, written by the systems themselves.' },
+      { slug: 'command-center', title: 'Business Command Center', system: 'DNA', phase: 4, path: 'intelligence', status: 'future',
+        desc: 'The full admin dashboard tying every system into one drillable view. Built last because it only makes sense after the systems exist. React-based, switched on per organ as each comes online.' },
+      { slug: 'quality-ux', title: 'Quality & UX Autopilot', system: 'Immune', phase: 4, path: 'intelligence', status: 'future',
         desc: 'Monitors how client listings are converting: are the images working, do bullet A/B tests show lift, is the A+ section moving the needle. Used on client listings, not the agency\'s own site.' },
-      { id: 'opportunity-gate', name: 'Opportunity Gate', phase: 4, path: 'intelligence', status: 'future',
-        desc: 'When more leads come in than the agency can take, this filters them: pursue (good fit), park (revisit later), pass (not a fit). Built only when inbound exceeds capacity — premature otherwise.' }
+      { slug: 'opportunity-gate', title: 'Opportunity Gate', system: 'Brain', phase: 4, path: 'intelligence', status: 'future',
+        desc: 'When more leads come in than the agency can take, this filters them: pursue (good fit), park (revisit later), pass (not a fit). Built only when inbound exceeds capacity — premature otherwise.' },
+      { slug: 'social-publisher', title: 'AI Social Media Publisher', system: 'Voice', phase: 4, path: 'revenue', status: 'future',
+        desc: 'Posts the agency\'s own thought leadership and case studies to LinkedIn and X to attract inbound clients. Built only after delivery is rock solid — worst time to acquire clients is when delivery isn\'t ready.' }
     ];
 
-    const STATUS_LABELS = {
-      built: 'Built',
-      partial: 'Partial',
-      planned: 'Planned',
-      future: 'Future'
+    var DEPS = [
+      ['spike', 'cloud-cto'],
+      ['cloud-cto', 'cost-vault'],
+      ['cloud-cto', 'review-pipeline'],
+      ['knowledge-hub', 'listing-engine'],
+      ['knowledge-hub', 'image-studio'],
+      ['knowledge-hub', 'market-intel'],
+      ['market-intel', 'listing-engine'],
+      ['market-intel', 'amazon-ads'],
+      ['crm', 'email-ops'],
+      ['crm', 'review-manager'],
+      ['crm', 'finance'],
+      ['crm', 'onboarding'],
+      ['review-pipeline', 'listing-engine'],
+      ['review-pipeline', 'amazon-ads'],
+      ['review-pipeline', 'email-ops'],
+      ['amazon-ads', 'external-traffic'],
+      ['qr-email', 'email-ops'],
+      ['compliance', 'listing-engine'],
+      ['avatar-studio', 'external-traffic'],
+      ['avatar-studio', 'social-publisher'],
+      ['inventory', 'review-manager'],
+      ['onboarding', 'market-intel'],
+      ['monitoring', 'cloud-cto'],
+      ['monitoring', 'ai-pulse'],
+      ['notification-hub', 'bridge'],
+      ['notification-hub', 'ai-pulse'],
+      ['command-center', 'finance'],
+      ['command-center', 'monitoring']
+    ];
+
+    var BADGE_CLASS = {
+      Brain: 'smap-badge-brain',
+      Voice: 'smap-badge-voice',
+      Hands: 'smap-badge-hands',
+      Heart: 'smap-badge-heart',
+      Immune: 'smap-badge-immune',
+      DNA: 'smap-badge-dna'
     };
+    var STATUS_LABELS = { built: 'Built', partial: 'Partial', planned: 'Planned', future: 'Future' };
+    var PATH_LABELS = { foundation: 'Foundation & Ops', intelligence: 'Intelligence Loop', revenue: 'Revenue Engine' };
 
-    const PATH_LABELS = {
-      foundation: 'Foundation & Ops',
-      intelligence: 'Intelligence Loop',
-      revenue: 'Revenue Engine'
-    };
+    // Layout: assign x, y per system based on (phase, path, slot in path within phase)
+    var nodeMap = {};
+    var allNodes = [];
+    var phaseRanges = [];
+    var cursorY = HEADER_H;
 
-    let state = {
-      layout: 'a',
-      hover: 'side',
-      lockedId: null
-    };
-
-    const canvas = document.getElementById('mapCanvas');
-    const sidePanel = document.getElementById('sidePanel');
-    const popover = document.getElementById('popover');
-    const mapShell = document.getElementById('mapShell');
-
-    function cardHTML(sys) {
-      return `<div class="card path-${sys.path}" data-id="${sys.id}">
-        <span class="status-dot status-${sys.status}"></span>
-        <span class="card-name">${sys.name}</span>
-      </div>`;
-    }
-
-    function renderLayoutA() {
-      canvas.classList.remove('layout-b');
-      canvas.classList.add('layout-a');
-      const html = PHASES.map(phase => {
-        const cards = SYSTEMS.filter(s => s.phase === phase.id);
-        if (cards.length === 0) return '';
-        const sortedCards = [...cards].sort((a, b) => {
-          const order = { foundation: 0, intelligence: 1, revenue: 2 };
-          return order[a.path] - order[b.path];
-        });
-        return `<div class="phase-row">
-          <div class="phase-label">
-            <span class="ph-num" style="background:${phase.color}">${phase.label}</span>
-            <span class="ph-sub">${phase.subtitle}</span>
-          </div>
-          <div class="phase-cards">${sortedCards.map(cardHTML).join('')}</div>
-        </div>`;
-      }).join('');
-      canvas.innerHTML = html;
-    }
-
-    function renderLayoutB() {
-      canvas.classList.remove('layout-a');
-      canvas.classList.add('layout-b');
-      let html = `<div class="grid-table">
-        <div class="grid-header corner">Phase</div>
-        <div class="grid-header path-foundation">Foundation & Ops</div>
-        <div class="grid-header path-intelligence">Intelligence Loop</div>
-        <div class="grid-header path-revenue">Revenue Engine</div>`;
-      PHASES.forEach(phase => {
-        html += `<div class="phase-cell phase-rowhead">
-          <span class="ph-num" style="background:${phase.color}">${phase.label}</span>
-          <span class="ph-sub">${phase.subtitle}</span>
-        </div>`;
-        PATHS.forEach(path => {
-          const cards = SYSTEMS.filter(s => s.phase === phase.id && s.path === path.id);
-          html += `<div class="phase-cell"><div class="phase-cards">${cards.map(cardHTML).join('')}</div></div>`;
+    PHASES.forEach(function (phase) {
+      var start = cursorY;
+      var maxSlots = 1;
+      PATHS.forEach(function (path) {
+        var n = SYSTEMS.filter(function (s) { return s.phase === phase.id && s.path === path.key; }).length;
+        if (n > maxSlots) maxSlots = n;
+      });
+      var height = maxSlots * ROW_GAP;
+      // Place nodes
+      PATHS.forEach(function (path, pi) {
+        var nodes = SYSTEMS.filter(function (s) { return s.phase === phase.id && s.path === path.key; });
+        nodes.forEach(function (s, ni) {
+          var node = Object.assign({}, s);
+          node.x = PATH_X[pi];
+          node.y = start + ni * ROW_GAP + ROW_GAP / 2;
+          node.pathLabel = path.label;
+          node.pathColor = path.color;
+          node.phaseColor = phase.color;
+          node.phaseLabel = phase.label;
+          node.phaseSubtitle = phase.subtitle;
+          allNodes.push(node);
+          nodeMap[node.slug] = node;
         });
       });
-      html += `</div>`;
-      canvas.innerHTML = html;
-    }
+      phaseRanges.push({ phase: phase, startY: start, height: height });
+      cursorY = start + height + PHASE_GAP;
+    });
 
-    function renderMap() {
-      if (state.layout === 'a') renderLayoutA();
-      else renderLayoutB();
-      attachCardEvents();
-      if (state.lockedId) {
-        const card = canvas.querySelector(`[data-id="${state.lockedId}"]`);
-        if (card) card.classList.add('locked');
+    var MAP_H = cursorY + 20;
+
+    // Build edges
+    var edges = [];
+    var seenEdge = {};
+    function addEdge(from, to) {
+      var a = nodeMap[from], b = nodeMap[to];
+      if (!a || !b) return;
+      // Only flow downward (top-to-bottom); reverse if needed
+      if (a.y > b.y) { var tmp = from; from = to; to = tmp; a = nodeMap[from]; b = nodeMap[to]; }
+      if (seenEdge[from + '-' + to]) return;
+      seenEdge[from + '-' + to] = true;
+      var horizontal = (Math.abs(a.y - b.y) < 1);
+      edges.push({ from: from, to: to, horizontal: horizontal, color: 'rgba(176,91,64,0.45)' });
+    }
+    DEPS.forEach(function (d) { addEdge(d[0], d[1]); });
+
+    function edgePath(a, b, horizontal) {
+      if (horizontal) {
+        var x1 = a.x + NODE_W / 2, x2 = b.x - NODE_W / 2;
+        if (a.x > b.x) { x1 = a.x - NODE_W / 2; x2 = b.x + NODE_W / 2; }
+        return 'M ' + x1 + ' ' + a.y + ' L ' + x2 + ' ' + b.y;
       }
+      var x1 = a.x, y1 = a.y + NODE_H / 2, x2 = b.x, y2 = b.y - NODE_H / 2;
+      if (Math.abs(x1 - x2) < 2) return 'M ' + x1 + ' ' + y1 + ' L ' + x2 + ' ' + y2;
+      var ey = y1 + Math.max(12, Math.min(34, (y2 - y1) * 0.45));
+      return 'M ' + x1 + ' ' + y1 + ' L ' + x1 + ' ' + ey + ' L ' + x2 + ' ' + ey + ' L ' + x2 + ' ' + y2;
     }
 
-    function renderSidePanel(sys) {
-      if (!sys) {
-        sidePanel.innerHTML = `<div class="sp-empty">Hover or click any card to see its description here.</div>`;
+    // Prereq chain
+    function prereqChain(slug) {
+      var rev = {};
+      edges.forEach(function (e) { (rev[e.to] = rev[e.to] || []).push(e.from); });
+      var ns = {}, es = {};
+      ns[slug] = true;
+      var stack = [slug];
+      while (stack.length) {
+        var c = stack.pop();
+        (rev[c] || []).forEach(function (p) {
+          es[p + '-' + c] = true;
+          if (!ns[p]) { ns[p] = true; stack.push(p); }
+        });
+      }
+      return { nodes: ns, edges: es };
+    }
+
+    // Render
+    var viewport = document.getElementById('smapViewport');
+    var svg = document.getElementById('smapSvg');
+    var mobile = document.getElementById('smapMobile');
+    var sidePanel = document.getElementById('sidePanel');
+    var lockedSlug = null;
+    var hoverSlug = null;
+
+    function render() {
+      viewport.style.width = MAP_W + 'px';
+      viewport.style.height = MAP_H + 'px';
+      svg.setAttribute('viewBox', '0 0 ' + MAP_W + ' ' + MAP_H);
+      svg.setAttribute('width', MAP_W);
+      svg.setAttribute('height', MAP_H);
+
+      var focusSlug = lockedSlug || hoverSlug;
+      var chain = focusSlug ? prereqChain(focusSlug) : null;
+
+      // SVG: phase bands + path column header backgrounds + edges
+      var svgHtml = '';
+
+      // Phase bands (background tints across full width except phase axis)
+      phaseRanges.forEach(function (pr) {
+        svgHtml += '<rect x="' + (PHASE_AXIS_W + 6) + '" y="' + pr.startY + '" width="' + (MAP_W - PHASE_AXIS_W - 12) + '" height="' + pr.height + '" fill="' + pr.phase.color + '" opacity="0.04" rx="10" />';
+        // Phase axis pill background
+        svgHtml += '<rect x="6" y="' + pr.startY + '" width="' + (PHASE_AXIS_W - 12) + '" height="' + pr.height + '" fill="' + pr.phase.color + '" opacity="0.10" rx="10" />';
+      });
+
+      // Path column headers
+      PATHS.forEach(function (path, pi) {
+        var cx = PATH_X[pi];
+        svgHtml += '<rect x="' + (cx - NODE_W / 2) + '" y="6" width="' + NODE_W + '" height="38" fill="' + path.color + '" rx="8" />';
+        svgHtml += '<text x="' + cx + '" y="30" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="ui-sans-serif,system-ui,sans-serif" letter-spacing="0.06em">' + path.label.toUpperCase() + '</text>';
+      });
+
+      // Edges
+      edges.forEach(function (e) {
+        var a = nodeMap[e.from], b = nodeMap[e.to];
+        var hl = chain && chain.edges[e.from + '-' + e.to];
+        var dim = chain && !hl;
+        var sw = hl ? 2.6 : 2;
+        var op = dim ? 0.12 : (hl ? 1 : 0.55);
+        svgHtml += '<path d="' + edgePath(a, b, e.horizontal) + '" fill="none" stroke="' + e.color + '" stroke-width="' + sw + '" stroke-linecap="round" stroke-dasharray="6 5" style="opacity:' + op + '" />';
+      });
+
+      svg.innerHTML = svgHtml;
+
+      // Phase pill labels (DOM, on left)
+      viewport.querySelectorAll('.phase-pill').forEach(function (el) { el.remove(); });
+      phaseRanges.forEach(function (pr) {
+        var div = document.createElement('div');
+        div.className = 'phase-pill';
+        div.style.top = (pr.startY + 10) + 'px';
+        div.style.background = pr.phase.color;
+        div.innerHTML = '<span class="ph-num">' + pr.phase.label + '</span><span class="ph-sub">' + pr.phase.subtitle + '</span>';
+        viewport.appendChild(div);
+      });
+
+      // Cards
+      viewport.querySelectorAll('.smap-node').forEach(function (el) { el.remove(); });
+      allNodes.forEach(function (n) {
+        var cls = 'smap-node';
+        if (chain) {
+          if (chain.nodes[n.slug]) cls += ' highlighted';
+          else cls += ' dimmed';
+        }
+        if (n.slug === lockedSlug) cls += ' locked';
+        var badge = BADGE_CLASS[n.system] || 'smap-badge-dna';
+        var el = document.createElement('div');
+        el.className = cls;
+        el.style.left = (n.x - NODE_W / 2) + 'px';
+        el.style.top = (n.y - NODE_H / 2) + 'px';
+        el.dataset.slug = n.slug;
+        el.innerHTML =
+          '<span class="status-dot status-' + n.status + '"></span>' +
+          '<div class="smap-node-header">' +
+            '<span class="smap-node-stage">' + n.phaseLabel + '</span>' +
+            '<span class="smap-node-badge ' + badge + '">' + n.system + '</span>' +
+          '</div>' +
+          '<div class="smap-node-title">' + n.title + '</div>' +
+          '<div class="smap-node-path">' + n.pathLabel + '</div>';
+        el.addEventListener('mouseenter', function () {
+          if (lockedSlug) return;
+          hoverSlug = n.slug;
+          renderSidePanel(n);
+          render();
+        });
+        el.addEventListener('mouseleave', function () {
+          if (lockedSlug) return;
+          hoverSlug = null;
+          render();
+        });
+        el.addEventListener('click', function (ev) {
+          ev.stopPropagation();
+          if (lockedSlug === n.slug) {
+            lockedSlug = null;
+            renderSidePanel(null);
+          } else {
+            lockedSlug = n.slug;
+            renderSidePanel(n);
+          }
+          render();
+        });
+        viewport.appendChild(el);
+      });
+
+      // Mobile fallback
+      var sortedNodes = allNodes.slice().sort(function (a, b) { return a.y - b.y || a.x - b.x; });
+      var mobileHtml = '';
+      sortedNodes.forEach(function (n) {
+        var badge = BADGE_CLASS[n.system] || 'smap-badge-dna';
+        mobileHtml +=
+          '<div class="smap-mobile-card" data-slug="' + n.slug + '">' +
+            '<div class="smap-node-stage">' + n.phaseLabel + ' · ' + n.phaseSubtitle + '</div>' +
+            '<div class="smap-node-title">' + n.title + '</div>' +
+            '<div class="smap-node-path">' + n.pathLabel + ' | <span class="smap-node-badge ' + badge + '" style="display:inline;padding:0.1rem 0.3rem;font-size:0.6rem;">' + n.system + '</span></div>' +
+          '</div>';
+      });
+      mobile.innerHTML = mobileHtml;
+      mobile.querySelectorAll('.smap-mobile-card').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var node = nodeMap[el.dataset.slug];
+          renderSidePanel(node);
+        });
+      });
+    }
+
+    function renderSidePanel(n) {
+      if (!n) {
+        sidePanel.innerHTML = '<div class="sp-empty">Hover or click any card to see its description here.</div>';
         return;
       }
-      sidePanel.innerHTML = `
-        <div class="sp-status">
-          <span class="legend-dot status-${sys.status}"></span>${STATUS_LABELS[sys.status]}
-        </div>
-        <h2 class="sp-name">${sys.name}</h2>
-        <div class="sp-meta">
-          <span class="sp-tag" style="border-color:${PHASES[sys.phase].color};color:${PHASES[sys.phase].color}">${PHASES[sys.phase].label}</span>
-          <span class="sp-tag">${PATH_LABELS[sys.path]}</span>
-        </div>
-        <p class="sp-desc">${sys.desc}</p>
-      `;
+      sidePanel.innerHTML =
+        '<div class="sp-status"><span class="legend-dot status-' + n.status + '"></span>' + STATUS_LABELS[n.status] + '</div>' +
+        '<h2 class="sp-name">' + n.title + '</h2>' +
+        '<div class="sp-meta">' +
+          '<span class="sp-tag" style="border-color:' + n.phaseColor + ';color:' + n.phaseColor + '">' + n.phaseLabel + '</span>' +
+          '<span class="sp-tag">' + PATH_LABELS[n.path] + '</span>' +
+          '<span class="sp-tag">' + n.system + '</span>' +
+        '</div>' +
+        '<p class="sp-desc">' + n.desc + '</p>';
     }
 
-    function showPopover(sys, cardEl) {
-      popover.innerHTML = `
-        <h3 class="pv-name">${sys.name}</h3>
-        <div class="pv-meta">
-          <span class="pv-tag" style="border-color:${PHASES[sys.phase].color};color:${PHASES[sys.phase].color}">${PHASES[sys.phase].label}</span>
-          <span class="pv-tag">${PATH_LABELS[sys.path]}</span>
-          <span class="pv-tag"><span class="legend-dot status-${sys.status}" style="display:inline-block;margin-right:4px;vertical-align:middle"></span>${STATUS_LABELS[sys.status]}</span>
-        </div>
-        <p class="pv-desc">${sys.desc}</p>
-      `;
-      const rect = cardEl.getBoundingClientRect();
-      const scrollY = window.scrollY;
-      const scrollX = window.scrollX;
-      popover.style.top = (rect.bottom + scrollY + 8) + 'px';
-      popover.style.left = Math.max(8, Math.min(rect.left + scrollX, window.innerWidth - 340)) + 'px';
-      popover.classList.add('visible');
-    }
-
-    function hidePopover() {
-      popover.classList.remove('visible');
-    }
-
-    function attachCardEvents() {
-      canvas.querySelectorAll('.card').forEach(card => {
-        const sys = SYSTEMS.find(s => s.id === card.dataset.id);
-        card.addEventListener('mouseenter', () => {
-          if (state.lockedId) return;
-          if (state.hover === 'side') renderSidePanel(sys);
-          else showPopover(sys, card);
-        });
-        card.addEventListener('mouseleave', () => {
-          if (state.lockedId) return;
-          if (state.hover === 'popover') hidePopover();
-        });
-        card.addEventListener('click', (e) => {
-          e.stopPropagation();
-          canvas.querySelectorAll('.card.locked').forEach(c => c.classList.remove('locked'));
-          if (state.lockedId === sys.id) {
-            state.lockedId = null;
-            if (state.hover === 'side') renderSidePanel(null);
-            else hidePopover();
-          } else {
-            state.lockedId = sys.id;
-            card.classList.add('locked');
-            if (state.hover === 'side') renderSidePanel(sys);
-            else showPopover(sys, card);
-          }
-        });
-      });
-    }
-
-    document.addEventListener('click', () => {
-      if (state.lockedId) {
-        state.lockedId = null;
-        canvas.querySelectorAll('.card.locked').forEach(c => c.classList.remove('locked'));
-        if (state.hover === 'side') renderSidePanel(null);
-        else hidePopover();
+    document.addEventListener('click', function () {
+      if (lockedSlug) {
+        lockedSlug = null;
+        hoverSlug = null;
+        renderSidePanel(null);
+        render();
       }
     });
 
-    function applyHoverMode() {
-      if (state.hover === 'side') {
-        mapShell.classList.add('has-side-panel');
-        sidePanel.classList.remove('hidden');
-        hidePopover();
-      } else {
-        mapShell.classList.remove('has-side-panel');
-        sidePanel.classList.add('hidden');
-      }
-    }
-
-    document.querySelectorAll('.toggle').forEach(toggle => {
-      const key = toggle.dataset.toggle;
-      toggle.querySelectorAll('button').forEach(btn => {
-        btn.addEventListener('click', () => {
-          toggle.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          state[key] = btn.dataset.value;
-          if (key === 'layout') renderMap();
-          if (key === 'hover') {
-            applyHoverMode();
-            state.lockedId = null;
-            renderSidePanel(null);
-          }
-        });
-      });
-    });
-
-    applyHoverMode();
-    renderMap();
+    render();
+  })();
   </script>
 </body>
 </html>
