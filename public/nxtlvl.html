@@ -4,595 +4,132 @@
     <base href="https://www.aibizneslab.pl/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Biznes Lab - Next Level: Zbuduj firmę, która działa coraz bardziej bez Ciebie</title>
-    <link rel="canonical" href="https://aibizneslab.pl/nxtlvl.html">
-    <meta name="description" content="33 systemy AI. 6 organów. Sesje na żywo z Mirkiem. Zamknięta grupa przedsiębiorców. Zbuduj firmę, która działa coraz bardziej bez Ciebie.">
+    <title>Mapa systemów — robocze (private)</title>
+    <meta name="robots" content="noindex,nofollow">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.aibizneslab.pl/nxtlvl.html">
-    <meta property="og:title" content="Next Level | Zbuduj firmę, która działa bez Ciebie">
-    <meta property="og:description" content="Next Level to program dla przedsiębiorców, którzy budują firmę zautomatyzowaną AI, działającą bez ich codziennej obecności.">
-    <meta property="og:image" content="https://www.aibizneslab.pl/assets/images/og-image.png">
-    <meta property="og:site_name" content="AI Biznes Lab">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.aibizneslab.pl/nxtlvl.html">
-    <meta name="twitter:title" content="Next Level | Zbuduj firmę, która działa bez Ciebie">
-    <meta name="twitter:description" content="Next Level to program dla przedsiębiorców, którzy budują firmę zautomatyzowaną AI, działającą bez ich codziennej obecności.">
-    <meta name="twitter:image" content="https://www.aibizneslab.pl/assets/images/og-image.png">
-
-    <!-- Schema.org Course Markup -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Course",
-        "name": "AI Biznes Lab - Next Level",
-        "description": "Program dla przedsiębiorców, którzy budują firmę zautomatyzowaną AI, działającą coraz bardziej bez ich codziennej obecności. 33 systemy AI w 6 organach autonomicznej firmy. Sesje na żywo z Mirkiem Burnejko, zamknięta grupa przedsiębiorców.",
-        "provider": {
-            "@type": "Organization",
-            "name": "AI Biznes Lab",
-            "url": "https://www.aibizneslab.pl",
-            "logo": "https://www.aibizneslab.pl/assets/images/logo.png"
-        },
-        "instructor": {
-            "@type": "Person",
-            "name": "Mirek Burnejko",
-            "description": "Przedsiębiorca, twórca AI Biznes Lab i protokołu AI-First. Ex Microsoft Cloud Solutions Architect. 2 exity (Chmurowisko, Mazuko). Twórca Lab Club."
-        },
-        "hasCourseInstance": {
-            "@type": "CourseInstance",
-            "courseMode": "online",
-            "courseSchedule": {
-                "@type": "Schedule",
-                "repeatFrequency": "P1W"
-            }
-        },
-        "teaches": [
-            "Budowanie autonomicznych systemów AI dla firmy",
-            "Architektura 33 systemów w 6 organach firmy",
-            "Integracja Claude Code i OpenAI Codex",
-            "AI Email Operations Center",
-            "AI Sales Autopilot",
-            "Cost & Security Manager",
-            "Notification Intelligence Hub",
-            "AI Ads Manager"
-        ],
-        "coursePrerequisites": "Działający asystenci lub agenci AI. Znajomość Claude Code lub OpenAI Codex. Firma lub projekt do wdrażania.",
-        "educationalLevel": "Advanced",
-        "inLanguage": "pl",
-        "availableLanguage": "pl",
-        "offers": {
-            "@type": "Offer",
-            "price": "3470",
-            "priceCurrency": "PLN",
-            "availability": "https://schema.org/InStock"
-        }
-    }
-    </script>
-
-    <link rel="stylesheet" href="assets/css/cookie-consent.css">
-    <script defer src="assets/js/security-consent-loader.js"></script>
-
-    <!-- Google Tag Manager (loads Meta Pixel) -->
-    <script type="text/plain" data-consent="analytics">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-54QZGDM9');</script>
-
-    <!-- Plausible Analytics -->
-    <script async src="https://plausible.io/js/pa-sXf6nH0m9JxzMbnYHMepJ.js"></script>
-    <script src="assets/js/tracking-plausible.js" defer></script>
-
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-    <link rel="icon" type="image/png" href="assets/images/favicon-32.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="assets/images/favicon-180.png" sizes="180x180">
-    <!-- v2 Design System (Lab Club v2 DNA) - page-specific nxtlvl-v2.css -->
+    <!-- aibizneslab CSS used by the map JS (.smap-* classes) -->
     <link rel="stylesheet" href="assets/css/v2/tokens.css">
-    <link rel="stylesheet" href="assets/css/v2/fonts.css">
     <link rel="stylesheet" href="assets/css/v2/core.css">
     <link rel="stylesheet" href="assets/css/v2/components.css">
     <link rel="stylesheet" href="assets/css/v2/legacy.css">
     <link rel="stylesheet" href="assets/css/nxtlvl-v2.css">
-    <script defer src="assets/js/v2/legacy.js"></script>
+
+    <style>
+      :root {
+        --mm-bg: hsl(240 10% 3.9%);
+        --mm-fg: hsl(0 0% 98%);
+        --mm-muted: hsl(240 5% 64.9%);
+        --mm-blue: hsl(220 90% 56%);
+        --mm-card: hsl(240 6% 10%);
+        --mm-border: hsl(240 4% 16%);
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--mm-bg) !important;
+        color: var(--mm-fg) !important;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(ellipse at 20% 10%, hsl(220 90% 56% / 0.08), transparent 50%),
+          radial-gradient(ellipse at 80% 90%, hsl(220 75% 25% / 0.10), transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .wrap {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 24px 120px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--mm-blue);
+        background: hsl(220 90% 56% / 0.08);
+        border: 1px solid hsl(220 90% 56% / 0.25);
+        border-radius: 999px;
+        padding: 6px 14px;
+        margin-bottom: 28px;
+      }
+
+      h1.title {
+        font-size: clamp(36px, 5.5vw, 64px);
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin: 0 0 20px;
+        color: var(--mm-fg);
+      }
+
+      h1.title .accent {
+        background: linear-gradient(135deg, hsl(220 90% 56%) 0%, hsl(260 75% 65%) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      p.subtitle {
+        font-size: clamp(16px, 1.6vw, 19px);
+        line-height: 1.6;
+        color: var(--mm-muted);
+        max-width: 720px;
+        margin: 0 0 56px;
+      }
+
+      .map-shell {
+        background: var(--mm-card);
+        border: 1px solid var(--mm-border);
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: 0 20px 60px hsl(0 0% 0% / 0.4);
+      }
+
+      .map-note {
+        font-size: 13px;
+        color: var(--mm-muted);
+        margin: 0 0 16px;
+        opacity: 0.8;
+      }
+
+      .smap-wrapper { background: transparent !important; }
+      .smap-canvas { background: transparent !important; border-color: var(--mm-border) !important; }
+      .smap-mobile { background: transparent !important; }
+    </style>
 </head>
 <body>
+    <div class="wrap">
+        <span class="eyebrow">Roboczy dokument · Amazon Agency</span>
+        <h1 class="title">33 systemy. 6 organów.<br><span class="accent">Twoja mapa do autonomicznej firmy.</span></h1>
+        <p class="subtitle">Każdy system to osobna sesja. Budujesz żywy organizm firmy, organ po organie. Mapa pokazuje co masz, co możesz budować dalej i czego jeszcze potrzebujesz.</p>
 
-<!-- Top Bar -->
-<div class="top-bar">
-    <div class="top-bar-inner">
-        <span class="top-bar-label">AI Biznes Lab - Next Level</span>
-        <div class="top-bar-status">
-            <span class="status-dot"></span>
-            <span>OTWARTE</span>
-        </div>
-        <span class="top-bar-label">(cena rośnie co <span class="top-bar-price">50</span> osób)</span>
-    </div>
-</div>
+        <div class="map-shell">
+            <div class="map-note">Mapa w wersji beta. Bloczki i połączenia mogą się zmieniać w miarę rozwoju programu.</div>
 
-<header>
-    <div class="header-container">
-        <a href="index.html" class="logo">AI Biznes Lab</a>
-        <nav class="header-nav">
-            <div class="nav-dropdown">
-                <a href="#" class="nav-link" onclick="event.preventDefault()">Produkty <span class="nav-dropdown-caret" aria-hidden="true"></span></a>
-                <div class="nav-dropdown-content">
-                    <a href="web.html" class="nav-dropdown-item">
-                        <strong>AI Web Builder</strong>
-                        <span>Stwórz 4 strony w 4 tygodnie</span>
-                    </a>
-                    <a href="marketing.html" class="nav-dropdown-item">
-                        <strong>AI Marketing Lab</strong>
-                        <span>Strategia i Wykonanie</span>
-                    </a>
-                    <a href="premium.html" class="nav-dropdown-item">
-                        <strong>Master Program</strong>
-                        <span>Zbuduj firmę AI First</span>
-                    </a>
-                    <a href="nxtlvl.html" class="nav-dropdown-item">
-                        <strong>Next Level</strong>
-                        <span>Zbuduj firmę, która działa bez Ciebie</span>
-                    </a>
+            <div class="smap-wrapper">
+                <div class="smap-canvas" id="smapCanvas">
+                    <div class="smap-viewport" id="smapViewport">
+                        <svg class="smap-svg" id="smapSvg"></svg>
+                    </div>
                 </div>
-            </div>
-            <div class="nav-dropdown">
-                <a href="#" class="nav-link" onclick="event.preventDefault()">Narzędzia <span class="nav-dropdown-caret" aria-hidden="true"></span></a>
-                <div class="nav-dropdown-content">
-                    <a href="kredyty.html" class="nav-dropdown-item">
-                        <strong>Darmowe Kredyty <span class="is-dd226e1a">FREE</span></strong>
-                        <span>$3M+ w kredytach na narzędzia</span>
-                    </a>
-                    <a href="model.html" class="nav-dropdown-item">
-                        <strong>Który Model AI? <span class="is-dd226e1a">FREE</span></strong>
-                        <span>Znajdź najlepsze narzędzie AI</span>
-                    </a>
-                    <a href="pages/baza-wiedzy.html" class="nav-dropdown-item"><strong>Baza Wiedzy <span class="is-dd226e1a">FREE</span></strong><span>Przewodniki i checklisty AI</span></a>
-                </div>
-            </div>
-            <a href="https://labclub.ai" class="nav-link" target="_blank">Lab Club</a>
-        </nav>
-        <a href="#pricing" class="header-cta">APLIKUJ</a>
-        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</header>
-
-<div class="mobile-menu" id="mobile-menu">
-    <div class="mobile-menu-header">
-        <a href="#pricing" onclick="closeMobileMenu();" class="mobile-menu-header-cta">APLIKUJ</a>
-        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close Menu">X</button>
-    </div>
-    <nav class="mobile-menu-nav">
-        <div class="mobile-nav-section">
-            <span class="mobile-nav-section-title">Produkty</span>
-            <a href="web.html" class="mobile-nav-link mobile-nav-sub">AI Web Builder</a>
-            <a href="marketing.html" class="mobile-nav-link mobile-nav-sub">AI Marketing Lab</a>
-            <a href="premium.html" class="mobile-nav-link mobile-nav-sub">Master Program</a>
-            <a href="nxtlvl.html" class="mobile-nav-link mobile-nav-sub">Next Level</a>
-        </div>
-        <div class="mobile-nav-section">
-            <span class="mobile-nav-section-title">Narzędzia</span>
-            <a href="kredyty.html" class="mobile-nav-link mobile-nav-sub">Darmowe Kredyty (free)</a>
-            <a href="model.html" class="mobile-nav-link mobile-nav-sub">Który Model AI? (free)</a>
-        </div>
-        <a href="https://labclub.ai" class="mobile-nav-link" target="_blank">Lab Club</a>
-    </nav>
-</div>
-
-<!-- SECTION 1: Hero -->
-<section class="hero">
-    <div class="hero-content">
-        <div class="hero-badge fade-in">Start: 20 kwietnia</div>
-        <h1 class="fade-in fade-in-d1">Zbuduj firmę, która działa<br><span class="hero-fade-text">coraz bardziej</span> <span class="serif-accent">bez Ciebie</span></h1>
-        <p class="fade-in fade-in-d2">Firma, która obsługuje klientów, sprzedaje, monitoruje finanse i reaguje na problemy. Bez Twojego codziennego udziału. Co tydzień budujesz kolejny element.</p>
-        <a href="#pricing" class="btn btn-primary btn-lg fade-in fade-in-d3">Dołącz do AI Biznes Lab - Next Level →</a>
-    </div>
-    <div class="hero-image fade-in fade-in-d2">
-        <img src="assets/images/nxtlvl-hero-organs.jpg" alt="6 organów autonomicznej firmy: DNA, Mózg, Głos, Serce, Ręce, Układ Odpornościowy" width="340" height="453">
-    </div>
-</section>
-
-<!-- SECTION 2: Problem -->
-<section class="section section-narrow">
-    <div class="problem-card">
-        <h2>Masz asystentów.<br>Ale nie masz systemu.</h2>
-        <p>Korzystasz z Claude Code, OpenAI Codex, asystentów, agentów.</p>
-        <p>Pomagają Ci pisać maile, generować treści, analizować dane. Ale Twoja firma wciąż wymaga <strong>Ciebie</strong> do wszystkiego.</p>
-        <div class="before-after">
-            <div class="before-after-col before">
-                <span class="before-after-label">Teraz</span>
-                <p>Asystent czeka na polecenie.<br>Ty koordynujesz.<br>Firma stoi, kiedy śpisz.</p>
-            </div>
-            <div class="before-after-col after">
-                <span class="before-after-label">Po AI Biznes Lab - Next Level</span>
-                <p>System działa sam.<br>Firma sprzedaje i obsługuje.<br>Ty decydujesz strategicznie.</p>
+                <div class="smap-mobile" id="smapMobile"></div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- SECTION 3: Systems Map -->
-<section class="section section-wide">
-    <h2 class="section-title"><span class="ascii-decode">33 systemy.</span><br><span class="ascii-decode">6 organów.</span><br>Twoja mapa do autonomicznej firmy.</h2>
-    <p class="section-subtitle">Każdy system to osobna sesja. Budujesz żywy organizm firmy, organ po organie. Mapa pokazuje co masz, co możesz budować dalej i czego jeszcze potrzebujesz.</p>
-
-    <div class="smap-wrapper">
-        <!-- Beta notice -->
-        <div class="is-cd140556">Mapa w wersji beta. Bloczki i połączenia mogą się zmieniać w miarę rozwoju programu.</div>
-
-        <!-- Desktop SVG map -->
-        <div class="smap-canvas" id="smapCanvas">
-            <div class="smap-viewport" id="smapViewport">
-                <svg class="smap-svg" id="smapSvg"></svg>
-                <!-- Nodes rendered by JS -->
-            </div>
-        </div>
-
-        <!-- Mobile list fallback -->
-        <div class="smap-mobile" id="smapMobile"></div>
     </div>
 
     <script src="assets/js/nxtlvl-map.js"></script>
-</section>
-
-<!-- SECTION 4: How It Works -->
-<section class="section">
-    <h2 class="section-title">Jak to działa</h2>
-    <p class="section-subtitle">&nbsp;</p>
-    <div class="how-grid">
-        <div class="how-card">
-            <h3>Sesje na żywo z Mirkiem</h3>
-            <p>Minimum 3 razy w miesiącu, 2h. Teoria, wdrożenie na żywo, pytania i odpowiedzi. Prawdziwy kod, prawdziwe dane. Wszystko nagrywane.</p>
-        </div>
-        <div class="how-card">
-            <h3>Mapa jako kompas</h3>
-            <p>Widzisz co masz, co możesz budować dalej i co wymaga innych systemów. Budujesz we własnym tempie.</p>
-        </div>
-        <div class="how-card">
-            <h3>Bez edycji, bez startów</h3>
-            <p>Dołączasz kiedy chcesz. Nagrania dostępne od dnia 1. Wracamy do fundamentów dla nowych.</p>
-        </div>
-    </div>
-</section>
-
-<!-- SECTION 5: removed (duplicate of map + schedule) -->
-
-<!-- SECTION: Tech Stack -->
-<section class="section">
-    <h2 class="section-title">Na czym budujemy</h2>
-    <p class="section-subtitle">&nbsp;</p>
-    <div class="is-2ca74f2a">
-        <div class="is-c1405dff">
-            <div class="is-1cfede46">AI</div>
-            <p class="is-8a63a597">Claude Code + Opus 4.6<br>OpenAI Codex + GPT-5.4</p>
-        </div>
-        <div class="is-c1405dff">
-            <div class="is-1cfede46">Cloud</div>
-            <p class="is-8a63a597">Amazon Web Services<br>Google Cloud Platform</p>
-        </div>
-    </div>
-</section>
-
-<!-- SECTION 6: Schedule -->
-<section class="section section-narrow">
-    <h2 class="section-title">Najbliższe sesje</h2>
-    <p class="section-subtitle">&nbsp;</p>
-    <div class="schedule-list">
-        <div class="schedule-item" style="opacity:0.5;">
-            <span class="schedule-date">pon. 20.04, 10:00</span>
-            <span class="schedule-label"><strong>Sesja #1</strong> Cloud CTO (DNA) (nagranie w portalu)</span>
-        </div>
-        <div class="schedule-item" style="opacity:0.5;">
-            <span class="schedule-date">pon. 27.04, 10:00</span>
-            <span class="schedule-label"><strong>Sesja #2</strong> AI Email Operations Center (Voice) (nagranie w portalu)</span>
-        </div>
-        <div class="schedule-item">
-            <span class="schedule-date">pon. 04.05, 10:00</span>
-            <span class="schedule-label"><strong>Sesja #3</strong> Cost & Security Manager (DNA)</span>
-        </div>
-        <div class="schedule-item">
-            <span class="schedule-date">pon. 11.05, 10:00</span>
-            <span class="schedule-label"><strong>Sesja #4</strong> AI Sales Autopilot (Voice)</span>
-        </div>
-        <div class="schedule-item">
-            <span class="schedule-date">pon. 18.05, 10:00</span>
-            <span class="schedule-label"><strong>Sesja #5</strong> Notification Intelligence Hub (Brain)</span>
-        </div>
-        <div class="schedule-item">
-            <span class="schedule-date">pon. 01.06, 10:00</span>
-            <span class="schedule-label"><strong>Sesja #6</strong> AI Ads Manager (Voice)</span>
-        </div>
-        <div class="schedule-item" style="opacity:0.5;border-left:2px dashed rgba(44,38,37,0.15);padding-left:1rem;">
-            <span class="schedule-date">co poniedziałek</span>
-            <span class="schedule-label"><strong>Sesje #7-#33</strong> kolejne systemy z mapy (program trwa cały rok)</span>
-        </div>
-    </div>
-    <p class="schedule-note">Każda sesja: teoria (15-20 min), wdrożenie na żywo (60-80 min), Q&amp;A (20-30 min)</p>
-    <p class="schedule-note">Dołączasz kiedy chcesz. Każdy system działa samodzielnie, ale jest też częścią większej mapy. Na każdej sesji pokazujemy jak wdrożyć go osobno i jak wpina się w całość.</p>
-</section>
-
-<!-- SECTION 7: Gateway -->
-<section class="section">
-    <h2 class="section-title">AI Biznes Lab - Next Level NIE jest dla wszystkich.</h2>
-    <p class="section-subtitle">&nbsp;</p>
-    <div class="gateway-grid">
-        <div class="gateway-col gateway-yes">
-            <h3>Dla Ciebie, jeśli:</h3>
-            <p>Masz działających asystentów lub agentów AI.<br>Znasz Claude Code lub OpenAI Codex.<br>Masz firmę lub projekt, na którym budujesz.</p>
-        </div>
-        <div class="gateway-col gateway-no">
-            <h3>Nie dla Ciebie, jeśli:</h3>
-            <p>Nie masz jeszcze żadnego asystenta AI.<br>Nie wiesz czym jest Claude Code ani Codex.<br>Dopiero zaczynasz przygodę z AI.</p>
-        </div>
-    </div>
-    <p class="gateway-note">Przy zapisie wypełniasz krótki formularz.<br>Sprawdzamy, czy AI Biznes Lab - Next Level ma sens dla Twojego poziomu.</p>
-
-
-</section>
-
-<!-- SECTION 8: Testimonials -->
-<section class="section">
-    <h2 class="section-title">Oni już budują systemy</h2>
-    <p class="section-subtitle">Wyniki uczestników AI Biznes Lab - Master, naszego podstawowego programu. Next Level to ich naturalny kolejny krok.</p>
-    <div class="testi-grid">
-        <div class="testi-card">
-            <span class="testi-badge">8 asystentów, agent 24/7</span>
-            <blockquote>Mam teraz 8 asystentów, każdy z konkretną rolą. Podłączyłem narzędzia przez API i MCP. Zbudowałem pierwszego agenta, który pracuje 24/7. Dziś 30 minut dziennie wystarcza, żeby prowadzić projekt.</blockquote>
-            <div class="testi-footer">
-                <img src="assets/images/opinie-premium/przemyslaw-snowacki.jpg" alt="Przemysław Snowacki" class="testi-avatar">
-                <div>
-                    <div class="testi-author">Przemysław Snowacki</div>
-                    <div class="testi-company">NetDevOps | TheBackroom.ai <br>absolwent AI Biznes Lab - Master</div>
-                </div>
-            </div>
-        </div>
-        <div class="testi-card">
-            <span class="testi-badge">10-12k PLN/mies oszczędności</span>
-            <blockquote>6 spółek, 3 jurysdykcje, prawie 400 firm. Sam zbudowałem system 8 agentów AI i dashboard finansowy. Bez programistów. Oszczędzam równowartość jednego etatu.</blockquote>
-            <div class="testi-footer">
-                <img src="assets/images/opinie-premium/krzysztof-gos.jpeg" alt="Krzysztof Gos" class="testi-avatar">
-                <div>
-                    <div class="testi-author">Krzysztof Gos</div>
-                    <div class="testi-company">nFirma Tax / Lexea Group <br>absolwent AI Biznes Lab - Master</div>
-                </div>
-            </div>
-        </div>
-        <div class="testi-card">
-            <span class="testi-badge">92% czasu mniej, 12k PLN/mies</span>
-            <blockquote>To samo co zajmowało mi 3 godziny, teraz robię w 15 minut. Przełomowy moment to przejście z przeglądarki na terminal. Pierwszy stały klient i warsztaty AI za 12 000 PLN miesięcznie.</blockquote>
-            <div class="testi-footer">
-                <img src="assets/images/opinie-premium/dariusz-szuca.jpeg" alt="Dariusz Szuca" class="testi-avatar">
-                <div>
-                    <div class="testi-author">Dariusz Szuca</div>
-                    <div class="testi-company">Nieruchomości <br>absolwent AI Biznes Lab - Master</div>
-                </div>
-            </div>
-        </div>
-        <div class="testi-card">
-            <span class="testi-badge">5 000 EUR oszczędności/mies</span>
-            <blockquote>Zbudowałem dwóch asystentów AI. Miara DAX, którą dopracowywałbym 2-3 dni, z asystentem naprawiłem w godzinę. Zmiana, nad którą pracuję, ma szansę wygenerować 5 000 EUR oszczędności miesięcznie.</blockquote>
-            <div class="testi-footer">
-                <img src="assets/images/opinie-premium/tomasz-blicharski.jpg" alt="Tomasz Blicharski" class="testi-avatar">
-                <div>
-                    <div class="testi-author">Tomasz Blicharski</div>
-                    <div class="testi-company">Senior Manager, finanse <br>absolwent AI Biznes Lab - Master</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SECTION: Founder -->
-<section class="section section-narrow">
-    <div class="details-block founder-card-inner is-36af8ed7">
-        <img class="is-727f21f0" src="assets/images/mirek.jpg" alt="Mirek Burnejko">
-        <div>
-            <div class="is-9427e719">Kto prowadzi</div>
-            <h3 class="is-4e192643">Mirek Burnejko</h3>
-            <p class="is-18d8643b">Przedsiębiorca, twórca AI Biznes Lab i protokołu AI-First.</p>
-            <p class="is-63fd58c8">Ponad 8 lat doświadczenia w budowaniu i skalowaniu firm. Sprzedał Chmurowisko (IT, Cloud + AI) do Software Mind. Sprzedał JakNieUmrzeć/Mazuko (długowieczność) do uPacjenta. Były Cloud Solutions Architect w Microsoft.</p>
-            <p class="is-63fd58c8">Wyszkolił 13 000+ osób z biznesu online i 1 500+ osób z praktycznych zastosowań AI. Twórca aplikacji Lab Club. Dziś większość jego firmy jest zarządzana i budowana przez autonomicznych asystentów i agentów AI. To samo, co budujemy razem w AI Biznes Lab - Next Level.</p>
-            <div class="is-4ae80bb3">
-                <span class="is-d26d34f0">13 000+ przeszkolonych</span>
-                <span class="is-d26d34f0">2 exity (Chmurowisko, Mazuko)</span>
-                <span class="is-d26d34f0">ex Microsoft</span>
-                <span class="is-d26d34f0">Twórca Lab Club</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SECTION 9: Pricing -->
-<section class="section" id="pricing">
-    <h2 class="section-title">Im wcześniej dołączysz, tym mniej płacisz.</h2>
-    <p class="section-subtitle">Cena rośnie co 50 osób. Roczna subskrypcja. Dołączasz kiedy chcesz.</p>
-
-    <div class="pricing-wrapper">
-        <div class="pricing-card">
-            <div class="pricing-tier">Miejsca 101-150</div>
-            <div class="pricing-price ascii-decode">3 470 zł</div>
-            <div class="pricing-period">/rok</div>
-            <div class="pricing-badge">OTWARTE | 145/150 miejsc zajętych</div>
-            <ul class="pricing-features">
-                <li>12 miesięcy dostępu do zamkniętej społeczności</li>
-                <li>Minimum 3 sesje na żywo miesięcznie (2h)</li>
-                <li>Praca z Mirkiem 1:1 na Skool</li>
-                <li>Nagrania wszystkich sesji (obecnych i przeszłych)</li>
-                <li>Interaktywna mapa 33 systemów z Twoim postępem</li>
-                <li>Biblioteka gotowych promptów i metapromptów</li>
-                <li>Checklisty wdrożeniowe do każdego systemu</li>
-                <li>Zamknięta grupa przedsiębiorców budujących z AI</li>
-            </ul>
-            <a href="nxtlvl-apply.html" class="btn btn-primary btn-block">Dołącz do AI Biznes Lab - Next Level →</a>
-        </div>
-    </div>
-
-    <div class="future-batches">
-        <div class="future-batches-label">Kolejne progi cenowe</div>
-        <table>
-            <tr><td>151-200</td><td>3 970 PLN/rok</td></tr>
-            <tr><td>201-250</td><td>4 470 PLN/rok</td></tr>
-            <tr><td>251+</td><td>4 970 PLN/rok</td></tr>
-        </table>
-    </div>
-</section>
-
-<!-- SECTION 10: FAQ -->
-<section class="section">
-    <h2 class="section-title">Pytania i odpowiedzi</h2>
-    <p class="section-subtitle">&nbsp;</p>
-    <div class="faq-list">
-        <details>
-            <summary>Jak dołączyć? Jak wygląda proces?</summary>
-            <div class="faq-answer">Wypełniasz krótki formularz o swoim doświadczeniu z AI. Sprawdzamy, czy masz asystentów/agentów AI i znasz Claude Code lub OpenAI Codex. Jeśli Twój poziom pasuje, dostajesz dostęp. Jeśli nie, polecimy Ci AI Biznes Lab - Master jako lepszy punkt startu.</div>
-        </details>
-        <details>
-            <summary>Co jeśli dołączam po kilku miesiącach?</summary>
-            <div class="faq-answer">Pierwsza sesja odbywa się 20 kwietnia 2026. Nagrania będą dostępne od tego momentu. Jeśli dołączasz później, masz dostęp do wszystkich nagrań od dnia dołączenia. Otwierasz mapę systemów, zaczynasz od fundamentów, budujesz we własnym tempie.</div>
-        </details>
-        <details>
-            <summary>Czy muszę być na każdej sesji na żywo?</summary>
-            <div class="faq-answer">Nie. Każda sesja jest nagrywana. Budujesz we własnym tempie. Sesje na żywo są po to, żebyś mógł budować razem z Mirkiem i zadawać pytania.</div>
-        </details>
-        <details>
-            <summary>Czym AI Biznes Lab - Next Level różni się od AI Biznes Lab - Master?</summary>
-            <div class="faq-answer">AI Biznes Lab - Master uczy Cię narzędzi AI. Budujesz asystentów i agentów w 12 warsztatach. AI Biznes Lab - Next Level zakłada, że już to umiesz. Tutaj budujesz kompletne systemy, które razem tworzą autonomiczną firmę. Inna skala, inny cel.</div>
-        </details>
-        <details>
-            <summary>Co powinienem mieć przed dołączeniem?</summary>
-            <div class="faq-answer">Działających asystentów AI (min. 1-2 w codziennym użyciu). Znajomość Claude Code lub OpenAI Codex. Firmę lub projekt do wdrażania. 2-4h tygodniowo na budowanie.</div>
-        </details>
-        <details>
-            <summary>Czy mogę zrezygnować w trakcie?</summary>
-            <div class="faq-answer">Subskrypcja jest roczna. Nie ma opcji miesięcznej. Dołączasz na rok, bo budowanie autonomicznej firmy wymaga czasu i konsekwencji. Natomiast masz 30 dni bezproblemowej rezygnacji, jeżeli AI Biznes Lab - Next Level nie spełni Twoich oczekiwań. Nie zadajemy pytań. Zwrot od razu.</div>
-        </details>
-        <details>
-            <summary>Jakie narzędzia są potrzebne?</summary>
-            <div class="faq-answer">Claude Code lub OpenAI Codex (jedno z dwóch). Amazon Web Services i Google Cloud Platform. Nie musisz mieć kont przed startem. Na pierwszych sesjach stawiamy infrastrukturę od zera, krok po kroku.</div>
-        </details>
-        <details>
-            <summary>Kiedy są sesje na żywo?</summary>
-            <div class="faq-answer">Minimum 3 sesje w miesiącu (czasem 4). Sesja trwa 2h: teoria (15-20 min), wdrożenie na żywo (60-80 min), pytania i odpowiedzi (20-30 min). Terminy mogą się zmieniać. Wszystkie sesje nagrywane. Pierwsza sesja: 20 kwietnia 2026.</div>
-        </details>
-    </div>
-</section>
-
-<!-- SECTION 11: Final CTA -->
-<section class="final-cta">
-    <h2>Budujesz z AI od miesięcy.<br>Kiedy zbudujesz firmę, która działa <span class="serif-accent">coraz bardziej bez Ciebie</span>?</h2>
-    <p class="section-subtitle">33 systemy. 6 organów. Sesje na żywo z Mirkiem. Zamknięta grupa przedsiębiorców.</p>
-    <a href="nxtlvl-apply.html" class="btn btn-primary btn-lg">Dołącz do AI Biznes Lab - Next Level →</a>
-</section>
-
-<!-- Footer -->
-<footer>
-    <div class="footer-container">
-        <div class="footer-main">
-            <div class="footer-brand">
-                <div><span class="footer-brand-name">AI Biznes Lab</span></div>
-                <p class="footer-brand-description">Skalowanie, nie wypalenie.<br>AI dla przedsiębiorców.</p>
-            </div>
-            <div class="footer-links">
-                <div>
-                    <h4 class="footer-section-title">Ekosystem</h4>
-                    <ul class="footer-list">                        <li><a href="https://labclub.ai" target="_blank" class="footer-link">Lab Club</a></li>
-                        <li><a href="https://www.akademia.pl/" target="_blank" rel="noopener noreferrer" class="footer-link">Akademia</a></li>
-                        <li><a href="upgrade.html" class="footer-link">AI Upgrade Lab</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer-section-title">Zasoby</h4>
-                    <ul class="footer-list">
-                        <li><a href="model.html" class="footer-link">Który Model AI?</a></li>
-                        <li><a href="kredyty.html" class="footer-link">Darmowe Kredyty</a></li>
-                        <li><a href="pages/baza-wiedzy.html" class="footer-link">Baza Wiedzy</a></li>
-                        <li><a href="pages/ai-only.html" class="footer-link">Pure AI</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer-section-title">Informacje</h4>
-                    <ul class="footer-list">
-                        <li><a href="mailto:mirek@aibizneslab.pl" class="footer-link">Kontakt</a></li>
-                        <li><a href="regulamin.html" class="footer-link">Regulamin</a></li>
-                        <li><button onclick="showCookieManager()" class="footer-cookie-btn">Ustawienia Cookies</button></li>
-                        <li><a href="polityka-prywatnosci.html" class="footer-link">Polityka Prywatności</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="footer-credits">
-                <span>&copy; 2026 AI Biznes Lab</span>
-                <span> &bull; </span>
-                <span>Stworzone przez <a href="https://www.miroburn.pl/" target="_blank" rel="noopener noreferrer" class="footer-brand-link">MiroBurn</a></span>
-                <span> &bull; </span>
-                <span>Portal <a href="https://www.transparentworld.pl/" target="_blank" rel="noopener noreferrer" class="footer-brand-link">Transparent World</a></span>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- Cookie Consent Banner -->
-<div id="cookie-banner-container" class="cookie-banner-container">
-    <div class="cookie-banner">
-        <div id="cookie-banner-simple" class="cookie-banner-simple">
-            <div class="cookie-message">
-                <h3>Szanujemy Twoją prywatność</h3>
-                <p>Używamy cookies, aby zapewnić lepsze doświadczenia na naszej stronie. Niektóre cookies są niezbędne do działania strony, inne pomagają nam analizować ruch i ulepszać nasze usługi.</p>
-                <p>Możesz w każdej chwili zmienić swoje preferencje lub dowiedzieć się więcej w naszej <a href="polityka-prywatnosci.html">Polityce Prywatności</a>.</p>
-            </div>
-            <div class="cookie-actions">
-                <button class="cookie-btn cookie-btn-accept" onclick="acceptAllCookies()">Akceptuj wszystkie</button>
-                <button class="cookie-btn cookie-btn-reject" onclick="rejectOptionalCookies()">Tylko niezbędne</button>
-                <button class="cookie-btn cookie-btn-settings" onclick="openCookieSettings()">Dostosuj ustawienia</button>
-            </div>
-        </div>
-        <div id="cookie-banner-settings" class="cookie-banner-settings">
-            <div class="cookie-settings-header">
-                <h3>Ustawienia prywatności</h3>
-                <p>Wybierz, które pliki cookie chcesz zaakceptować. Twoja decyzja zostanie zapisana tylko dla tej domeny.</p>
-            </div>
-            <div class="cookie-settings-options">
-                <div class="cookie-option disabled">
-                    <input type="checkbox" id="necessary-cookies" class="cookie-checkbox" checked disabled>
-                    <div class="cookie-option-content">
-                        <h4>Niezbędne cookies</h4>
-                        <p>Te pliki cookie są wymagane do działania podstawowych funkcji strony i nie można ich wyłączyć.</p>
-                    </div>
-                </div>
-                <div class="cookie-option">
-                    <input type="checkbox" id="analytics-cookies" class="cookie-checkbox">
-                    <div class="cookie-option-content">
-                        <h4>Analityczne cookies</h4>
-                        <p>Pomagają nam zrozumieć, w jaki sposób użytkownicy korzystają z naszej strony, co pozwala nam ją ulepszać.</p>
-                    </div>
-                </div>
-                <div class="cookie-option">
-                    <input type="checkbox" id="functional-cookies" class="cookie-checkbox">
-                    <div class="cookie-option-content">
-                        <h4>Funkcjonalne cookies</h4>
-                        <p>Umożliwiają zapamiętywanie Twoich preferencji i ustawień.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="cookie-settings-actions">
-                <button class="cookie-btn cookie-btn-reject" onclick="rejectOptionalCookies()">Odrzuć opcjonalne</button>
-                <button class="cookie-btn cookie-btn-accept" onclick="saveSelectedPreferences()">Zapisz ustawienia</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="assets/js/cookie-consent.js"></script>
-
-<script defer src="assets/js/nxtlvl-effects.js"></script>
-<script defer src="assets/js/nxtlvl-ref.js"></script>
-<script src="feedback-widget.js?v=20260425-fbw2" data-project="aibizneslab" data-endpoint="https://jrmglajzhl.execute-api.eu-central-1.amazonaws.com/prod/feedback" data-accent="#FF5630" data-lang="pl" data-controller="AI Biznes Lab" data-purpose="obsługa opinii i poprawa jakości usług" data-privacy-url="https://aibizneslab.pl/polityka-prywatnosci" defer></script>
-
 </body>
 </html>
