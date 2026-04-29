@@ -16,12 +16,12 @@
 
     <style>
       :root {
-        --mm-bg: hsl(240 10% 3.9%);
-        --mm-fg: hsl(0 0% 98%);
-        --mm-muted: hsl(240 5% 64.9%);
+        --mm-bg: hsl(0 0% 100%);
+        --mm-fg: hsl(220 80% 20%);
+        --mm-muted: hsl(220 15% 45%);
         --mm-blue: hsl(220 90% 56%);
-        --mm-card: hsl(240 6% 10%);
-        --mm-border: hsl(240 4% 16%);
+        --mm-card: hsl(0 0% 98%);
+        --mm-border: hsl(220 13% 91%);
       }
 
       html, body {
@@ -38,8 +38,8 @@
         position: fixed;
         inset: 0;
         background:
-          radial-gradient(ellipse at 20% 10%, hsl(220 90% 56% / 0.08), transparent 50%),
-          radial-gradient(ellipse at 80% 90%, hsl(220 75% 25% / 0.10), transparent 50%);
+          radial-gradient(ellipse at 20% 10%, hsl(220 90% 56% / 0.05), transparent 50%),
+          radial-gradient(ellipse at 80% 90%, hsl(260 75% 55% / 0.04), transparent 50%);
         pointer-events: none;
         z-index: 0;
       }
@@ -95,7 +95,7 @@
         border: 1px solid var(--mm-border);
         border-radius: 20px;
         padding: 28px;
-        box-shadow: 0 20px 60px hsl(0 0% 0% / 0.4);
+        box-shadow: 0 10px 40px hsl(220 30% 30% / 0.08);
       }
 
       .map-note {
