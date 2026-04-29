@@ -367,7 +367,7 @@
         desc: 'Watches FBA stock levels, predicts when each product will run out, and alerts the client to reorder. Stockouts are the silent revenue killer on Amazon — this prevents them. Built on a Seller Central scraper plus a simple forecasting model.' },
       { slug: 'monitoring', title: 'Monitoring Portal', system: 'Immune', phase: 3, path: 'foundation', status: 'planned',
         desc: 'One dashboard showing per-client system health: listings live, ads spending in range, approval queue length, error rates. A 30-second daily glance tells Roger and Maciej if anything needs intervention. Reads from the chosen cloud platform\'s database + monitoring services.' },
-      { slug: 'notification-hub', title: 'Notification Hub', system: 'Brain', phase: 3, path: 'intelligence', status: 'planned',
+      { slug: 'notification-hub', title: 'Notification Hub', system: 'Brain', phase: 2, path: 'intelligence', status: 'planned',
         desc: 'Every system emits signals ("CPC spiked," "angry review," "low stock," "compliance flag"). This is the central post office that routes each one to the right person: Roger if relational, Maciej if technical, client if they need to act. Built on a cloud event bus (Pub/Sub on GCP, EventBridge on AWS — same pattern).' },
       { slug: 'avatar-studio', title: 'AI Influencer & Avatar Studio', system: 'Voice', phase: 3, path: 'revenue', status: 'planned',
         desc: 'Creates a consistent AI persona per brand and uses it across both short-form videos (UGC-style ads, product demos, email VSLs) and graphics (Instagram posts, banner ads, thumbnails). One persona, infinite content, fraction of the cost of real influencers. Built on HeyGen/Synthesia for video, Gemini for graphics.' },
