@@ -18,15 +18,6 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: Deploy to runsitself.co via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          local-dir: ./dist/
-          server-dir: ${{ secrets.FTP_DIR }}
-
       - name: Deploy to maciejmarek.com via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
