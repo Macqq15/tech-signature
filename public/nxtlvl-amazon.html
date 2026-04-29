@@ -5,21 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Amazon Agency Systems Map — working draft (private)</title>
   <meta name="robots" content="noindex,nofollow" />
-
-  <link rel="stylesheet" href="/assets/css/tokens.css">
-  <link rel="stylesheet" href="/assets/css/core.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
-  <link rel="stylesheet" href="/assets/css/legacy.css">
-  <link rel="stylesheet" href="/assets/css/nxtlvl-v2.css">
-
   <style>
     :root {
-      --mm-bg: hsl(0 0% 100%);
-      --mm-fg: hsl(220 80% 20%);
-      --mm-muted: hsl(220 15% 45%);
-      --mm-blue: hsl(220 90% 56%);
-      --mm-card: hsl(0 0% 98%);
-      --mm-border: hsl(220 13% 91%);
+      --bg: hsl(0 0% 100%);
+      --fg: hsl(220 80% 20%);
+      --muted: hsl(220 15% 45%);
+      --blue: hsl(220 90% 56%);
+      --card: hsl(0 0% 98%);
+      --card-hover: hsl(220 30% 96%);
+      --border: hsl(220 13% 91%);
+      --shadow: 0 4px 16px hsl(220 30% 30% / 0.08);
 
       --phase-0: #6366f1;
       --phase-1: #3b82f6;
@@ -27,18 +22,31 @@
       --phase-3: #a855f7;
       --phase-4: #6b7280;
 
+      --path-foundation: #c94a2a;
+      --path-intelligence: #a27436;
+      --path-revenue: #2a5c4e;
+
+      --organ-dna: #1e293b;
+      --organ-brain: #3b82f6;
+      --organ-voice: #ff5630;
+      --organ-heart: #ec4899;
+      --organ-hands: #22c55e;
+      --organ-immune: #a855f7;
+
       --status-built: #10b981;
       --status-partial: #f59e0b;
       --status-planned: #3b82f6;
       --status-future: #9ca3af;
     }
 
+    * { box-sizing: border-box; }
+
     html, body {
       margin: 0;
       padding: 0;
-      background: var(--mm-bg) !important;
-      color: var(--mm-fg) !important;
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -47,8 +55,8 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse at 20% 10%, hsl(220 90% 56% / 0.05), transparent 50%),
-        radial-gradient(ellipse at 80% 90%, hsl(260 75% 55% / 0.04), transparent 50%);
+        radial-gradient(ellipse at 20% 10%, hsl(220 90% 56% / 0.04), transparent 50%),
+        radial-gradient(ellipse at 80% 90%, hsl(260 75% 55% / 0.03), transparent 50%);
       pointer-events: none;
       z-index: 0;
     }
@@ -56,7 +64,7 @@
     .wrap {
       position: relative;
       z-index: 1;
-      max-width: 1400px;
+      max-width: 1500px;
       margin: 0 auto;
       padding: 60px 24px 100px;
     }
@@ -67,7 +75,7 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--mm-blue);
+      color: var(--blue);
       background: hsl(220 90% 56% / 0.08);
       border: 1px solid hsl(220 90% 56% / 0.25);
       border-radius: 999px;
@@ -81,7 +89,6 @@
       font-weight: 800;
       letter-spacing: -0.02em;
       margin: 0 0 16px;
-      color: var(--mm-fg);
     }
 
     h1.title .accent {
@@ -94,9 +101,9 @@
     p.subtitle {
       font-size: clamp(15px, 1.4vw, 18px);
       line-height: 1.6;
-      color: var(--mm-muted);
+      color: var(--muted);
       max-width: 720px;
-      margin: 0 0 40px;
+      margin: 0 0 28px;
     }
 
     .legend {
@@ -104,122 +111,190 @@
       gap: 18px;
       flex-wrap: wrap;
       font-size: 12px;
-      color: var(--mm-muted);
-      margin-bottom: 20px;
+      color: var(--muted);
+      margin-bottom: 24px;
     }
     .legend-item { display: flex; align-items: center; gap: 6px; }
-    .legend-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
     .map-and-panel {
       display: grid;
       grid-template-columns: 1fr 340px;
-      gap: 20px;
+      gap: 24px;
       align-items: start;
     }
 
     .map-shell {
-      background: var(--mm-card);
-      border: 1px solid var(--mm-border);
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 18px;
       padding: 22px;
-      box-shadow: 0 8px 28px hsl(220 30% 30% / 0.08);
+      box-shadow: var(--shadow);
     }
 
     .map-note {
       font-size: 12px;
-      color: var(--mm-muted);
-      margin: 0 0 12px;
+      color: var(--muted);
+      margin: 0 0 14px;
       opacity: 0.85;
     }
 
-    .smap-wrapper { background: transparent !important; }
-    .smap-canvas { background: transparent !important; border-color: var(--mm-border) !important; max-height: none !important; padding: 6px; }
-    .smap-mobile { background: transparent !important; }
-
-    /* Card override — depth, organ stripe, stronger border */
-    .smap-node {
-      box-shadow: 0 2px 6px hsl(220 30% 30% / 0.06), 0 1px 2px hsl(220 30% 30% / 0.04) !important;
-      border-left-width: 3px !important;
-      transition: box-shadow 0.15s ease, transform 0.15s ease !important;
+    /* ======= GRID TABLE ======= */
+    .grid-table {
+      display: grid;
+      grid-template-columns: 130px repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: white;
     }
-    .smap-node:hover {
-      box-shadow: 0 8px 22px hsl(220 30% 30% / 0.12), 0 2px 6px hsl(220 30% 30% / 0.08) !important;
+
+    .grid-header {
+      padding: 14px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: white;
+      border-right: 1px solid hsl(0 0% 100% / 0.18);
+      background: var(--path-foundation);
+    }
+    .grid-header.corner {
+      background: hsl(220 13% 94%);
+      color: var(--muted);
+      border-right: 1px solid var(--border);
+    }
+    .grid-header.path-foundation { background: var(--path-foundation); }
+    .grid-header.path-intelligence { background: var(--path-intelligence); }
+    .grid-header.path-revenue { background: var(--path-revenue); }
+    .grid-header:last-child { border-right: none; }
+
+    .phase-rowhead {
+      padding: 16px 14px;
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      background: hsl(220 13% 99%);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      justify-content: center;
+    }
+    .phase-rowhead .ph-num {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .phase-rowhead .ph-sub {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .phase-cell {
+      padding: 14px 12px;
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .phase-cell:last-child { border-right: none; }
+    .phase-cell.empty {
+      background: repeating-linear-gradient(45deg, hsl(220 13% 98%), hsl(220 13% 98%) 8px, hsl(220 13% 96%) 8px, hsl(220 13% 96%) 16px);
+    }
+
+    /* ======= CARD ======= */
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--organ-dna);
+      border-radius: 10px;
+      padding: 12px 14px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 1px 3px hsl(220 30% 30% / 0.05);
+    }
+    .card:hover {
       transform: translateY(-1px);
+      box-shadow: 0 6px 18px hsl(220 30% 30% / 0.12);
+      background: var(--card-hover);
     }
-    .smap-node.locked {
-      box-shadow: 0 0 0 2px var(--mm-blue), 0 8px 22px hsl(220 30% 30% / 0.18) !important;
-      transform: translateY(-1px);
+    .card.locked {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px hsl(220 90% 56% / 0.18), 0 6px 18px hsl(220 30% 30% / 0.14);
     }
 
-    /* Organ-specific left stripe colors */
-    .smap-node[data-organ="DNA"]    { border-left-color: #1e293b !important; }
-    .smap-node[data-organ="Brain"]  { border-left-color: #3b82f6 !important; }
-    .smap-node[data-organ="Voice"]  { border-left-color: #ff5630 !important; }
-    .smap-node[data-organ="Heart"]  { border-left-color: #ec4899 !important; }
-    .smap-node[data-organ="Hands"]  { border-left-color: #22c55e !important; }
-    .smap-node[data-organ="Immune"] { border-left-color: #a855f7 !important; }
+    .card[data-organ="DNA"]    { border-left-color: var(--organ-dna); }
+    .card[data-organ="Brain"]  { border-left-color: var(--organ-brain); }
+    .card[data-organ="Voice"]  { border-left-color: var(--organ-voice); }
+    .card[data-organ="Heart"]  { border-left-color: var(--organ-heart); }
+    .card[data-organ="Hands"]  { border-left-color: var(--organ-hands); }
+    .card[data-organ="Immune"] { border-left-color: var(--organ-immune); }
 
-    /* Override organ badges with distinct colors */
-    .smap-node-badge.smap-badge-dna    { background: #1e293b !important; color: white !important; border-color: #1e293b !important; }
-    .smap-node-badge.smap-badge-brain  { background: rgba(59,130,246,0.12) !important; color: #1d4ed8 !important; border-color: rgba(59,130,246,0.35) !important; }
-    .smap-node-badge.smap-badge-voice  { background: rgba(255,86,48,0.12) !important; color: #c2410c !important; border-color: rgba(255,86,48,0.35) !important; }
-    .smap-node-badge.smap-badge-heart  { background: rgba(236,72,153,0.12) !important; color: #be185d !important; border-color: rgba(236,72,153,0.35) !important; }
-    .smap-node-badge.smap-badge-hands  { background: rgba(34,197,94,0.12) !important; color: #15803d !important; border-color: rgba(34,197,94,0.35) !important; }
-    .smap-node-badge.smap-badge-immune { background: rgba(168,85,247,0.12) !important; color: #7e22ce !important; border-color: rgba(168,85,247,0.35) !important; }
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-organ {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid;
+    }
+    .card-organ[data-organ="DNA"]    { background: hsl(220 30% 95%); color: var(--organ-dna);    border-color: hsl(220 30% 85%); }
+    .card-organ[data-organ="Brain"]  { background: hsl(217 91% 95%); color: #1d4ed8;             border-color: hsl(217 91% 85%); }
+    .card-organ[data-organ="Voice"]  { background: hsl(14 100% 95%); color: #c2410c;             border-color: hsl(14 100% 85%); }
+    .card-organ[data-organ="Heart"]  { background: hsl(330 81% 95%); color: #be185d;             border-color: hsl(330 81% 85%); }
+    .card-organ[data-organ="Hands"]  { background: hsl(142 71% 95%); color: #15803d;             border-color: hsl(142 71% 85%); }
+    .card-organ[data-organ="Immune"] { background: hsl(271 91% 95%); color: #7e22ce;             border-color: hsl(271 91% 85%); }
 
-    /* Status dot in card corner */
-    .smap-node .status-dot {
-      position: absolute;
-      top: 10px;
-      right: 10px;
+    .card-status {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      box-shadow: 0 0 0 2px white;
+      flex-shrink: 0;
     }
-
     .status-built   { background: var(--status-built); }
     .status-partial { background: var(--status-partial); }
     .status-planned { background: var(--status-planned); }
     .status-future  { background: var(--status-future); }
 
-    /* Phase axis pills */
-    .phase-pill {
-      position: absolute;
-      left: 4px;
-      width: 100px;
-      padding: 8px 10px;
-      border-radius: 8px;
-      color: white;
-      pointer-events: none;
-      box-shadow: 0 2px 6px hsl(220 30% 30% / 0.10);
-    }
-    .phase-pill .ph-num {
-      font-size: 10.5px;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 3px;
-    }
-    .phase-pill .ph-sub {
-      font-size: 10px;
-      line-height: 1.35;
-      opacity: 0.95;
-      display: block;
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--fg);
+      margin: 0;
     }
 
-    /* Side panel */
+    /* ======= SIDE PANEL ======= */
     .side-panel {
-      background: var(--mm-card);
-      border: 1px solid var(--mm-border);
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 22px;
+      padding: 24px;
       position: sticky;
       top: 24px;
       max-height: calc(100vh - 48px);
       overflow-y: auto;
-      box-shadow: 0 8px 28px hsl(220 30% 30% / 0.08);
+      box-shadow: var(--shadow);
     }
     .sp-status {
       display: inline-flex;
@@ -229,34 +304,39 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--mm-muted);
-      margin-bottom: 10px;
+      color: var(--muted);
+      margin-bottom: 12px;
     }
     .sp-name {
       font-size: 22px;
       font-weight: 800;
       line-height: 1.2;
       margin: 0 0 8px;
-      color: var(--mm-fg);
+      color: var(--fg);
     }
-    .sp-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+    .sp-meta {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
     .sp-tag {
       font-size: 11px;
       font-weight: 600;
       padding: 3px 9px;
       border-radius: 999px;
       background: white;
-      border: 1px solid var(--mm-border);
-      color: var(--mm-muted);
+      border: 1px solid var(--border);
+      color: var(--muted);
     }
     .sp-desc {
       font-size: 14px;
       line-height: 1.6;
-      color: var(--mm-fg);
+      color: var(--fg);
       margin: 0;
     }
     .sp-empty {
-      color: var(--mm-muted);
+      color: var(--muted);
       font-size: 14px;
       line-height: 1.5;
       font-style: italic;
@@ -265,6 +345,7 @@
     @media (max-width: 1100px) {
       .map-and-panel { grid-template-columns: 1fr; }
       .side-panel { position: static; max-height: none; }
+      .grid-table { grid-template-columns: 100px repeat(3, 1fr); }
     }
   </style>
 </head>
@@ -272,26 +353,25 @@
   <div class="wrap">
     <span class="eyebrow">Working document · Amazon Agency</span>
     <h1 class="title">29 systems. 5 phases. 6 organs.<br><span class="accent">Map to an autonomous Amazon agency.</span></h1>
-    <p class="subtitle">Each card is a system the agency runs. Hover or click to see what it does, why it matters, and how it works. Phases run top-to-bottom; paths run as columns; arrows show dependencies.</p>
+    <p class="subtitle">Each card is a system the agency runs. Hover or click for what it does, why it matters, and how it works. Phases run top-to-bottom; paths run as columns.</p>
 
     <div class="legend">
       <div class="legend-item"><span class="legend-dot status-built"></span>Built</div>
       <div class="legend-item"><span class="legend-dot status-partial"></span>Partial</div>
       <div class="legend-item"><span class="legend-dot status-planned"></span>Planned</div>
       <div class="legend-item"><span class="legend-dot status-future"></span>Future (post-MVP)</div>
+      <div class="legend-item" style="margin-left:14px"><span class="legend-dot" style="background:var(--organ-dna)"></span>DNA</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--organ-brain)"></span>Brain</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--organ-voice)"></span>Voice</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--organ-heart)"></span>Heart</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--organ-hands)"></span>Hands</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--organ-immune)"></span>Immune</div>
     </div>
 
     <div class="map-and-panel">
       <div class="map-shell">
-        <p class="map-note">Map in beta. Blocks and connections may change as the program evolves.</p>
-        <div class="smap-wrapper">
-          <div class="smap-canvas" id="smapCanvas">
-            <div class="smap-viewport" id="smapViewport" style="position:relative;">
-              <svg class="smap-svg" id="smapSvg" style="position:absolute;inset:0;width:100%;height:100%;"></svg>
-            </div>
-          </div>
-          <div class="smap-mobile" id="smapMobile"></div>
-        </div>
+        <p class="map-note">Map in beta. Blocks may shift as the program evolves.</p>
+        <div class="grid-table" id="gridTable"></div>
       </div>
 
       <aside class="side-panel" id="sidePanel">
@@ -301,18 +381,6 @@
   </div>
 
   <script>
-  (function () {
-    var NODE_W = 200, NODE_H = 88;
-    var PHASE_AXIS_W = 116;
-    var ROW_GAP = 108;
-    var PHASE_GAP = 18;
-    var HEADER_H = 16;
-    var COL_GAP = 56;
-    var PATH_X = [PHASE_AXIS_W + 24 + NODE_W / 2,
-                  PHASE_AXIS_W + 24 + NODE_W / 2 + NODE_W + COL_GAP,
-                  PHASE_AXIS_W + 24 + NODE_W / 2 + 2 * (NODE_W + COL_GAP)];
-    var MAP_W = PHASE_AXIS_W + 24 + 3 * NODE_W + 2 * COL_GAP + 24;
-
     var PHASES = [
       { id: 0, label: 'Phase 0', subtitle: 'Spike (week 1)', color: '#6366f1' },
       { id: 1, label: 'Phase 1', subtitle: 'Foundation, listings, ads, research (weeks 2-4)', color: '#3b82f6' },
@@ -322,344 +390,159 @@
     ];
 
     var PATHS = [
-      { key: 'foundation', label: 'Foundation & Ops', color: 'rgba(201,74,42,0.5)' },
-      { key: 'intelligence', label: 'Intelligence Loop', color: 'rgba(162,116,54,0.52)' },
-      { key: 'revenue', label: 'Revenue Engine', color: 'rgba(42,92,78,0.5)' }
+      { id: 'foundation', label: 'Foundation & Ops' },
+      { id: 'intelligence', label: 'Intelligence Loop' },
+      { id: 'revenue', label: 'Revenue Engine' }
     ];
 
     var SYSTEMS = [
-      { slug: 'spike', title: 'Foundation Spike', system: 'DNA', phase: 0, path: 'foundation', status: 'planned',
+      { id: 'spike', name: 'Foundation Spike', phase: 0, path: 'foundation', organ: 'DNA', status: 'planned',
         desc: 'A one-week test build to validate the whole stack: which cloud (GCP vs. AWS), which AI agent runtime (Hermes, custom Claude Agent SDK, or other), and whether they can run our existing playbooks on a real client without breaking. Like renting a car before buying — we plug in one task (writing his listings), measure cost/speed/quality, then commit. Output: a go/no-go on the platform.' },
 
-      { slug: 'cloud-cto', title: 'Cloud CTO', system: 'DNA', phase: 1, path: 'foundation', status: 'partial',
+      { id: 'cloud-cto', name: 'Cloud CTO', phase: 1, path: 'foundation', organ: 'DNA', status: 'partial',
         desc: 'The engine room. Every AI system runs on a managed cloud platform (GCP or AWS — TBD), with each client walled off in their own memory space so brand voice, data, and credentials never cross between clients. Like a serviced office — same building, locked suites.' },
-      { slug: 'cost-vault', title: 'Cost & Security Vault', system: 'Immune', phase: 1, path: 'foundation', status: 'planned',
+      { id: 'cost-vault', name: 'Cost & Security Vault', phase: 1, path: 'foundation', organ: 'Immune', status: 'planned',
         desc: 'Caps daily spending per client (so a buggy script can\'t blow $1,000 overnight), stores API keys in an encrypted secret store, and controls which AI can touch which client. The specific tooling depends on whether we land on GCP or AWS — same pattern either way.' },
-      { slug: 'review-pipeline', title: 'Human Review Pipeline', system: 'Hands', phase: 1, path: 'foundation', status: 'planned',
+      { id: 'review-pipeline', name: 'Human Review Pipeline', phase: 1, path: 'foundation', organ: 'Hands', status: 'planned',
         desc: 'The brake pedal. The AI sends "I want to do X — approve?" requests to a queue: small stuff (bid tweaks) auto-runs, medium stuff (new ad campaigns, listing copy) waits for a human "yes," and anything client-facing always needs a human. Stops the AI from going rogue.' },
-      { slug: 'knowledge-hub', title: 'Knowledge Hub', system: 'Brain', phase: 1, path: 'intelligence', status: 'partial',
+      { id: 'knowledge-hub', name: 'Knowledge Hub', phase: 1, path: 'intelligence', organ: 'Brain', status: 'partial',
         desc: 'The agency\'s brain. Every SOP, playbook, Amazon\'s rulebook, and each client\'s brand guide is loaded into a searchable AI library. The AI looks up our documents before writing anything, instead of guessing.' },
-      { slug: 'crm', title: 'Client CRM', system: 'Brain', phase: 1, path: 'intelligence', status: 'planned',
+      { id: 'crm', name: 'Client CRM', phase: 1, path: 'intelligence', organ: 'Brain', status: 'planned',
         desc: 'A single source of truth: each client\'s products, work history, payments, churn risk. Every other system reads from here. Lightweight (Notion, Airtable, or a managed cloud database — picked once Phase 0 settles the platform).' },
-      { slug: 'market-intel', title: 'Market Intelligence Engine', system: 'Brain', phase: 1, path: 'intelligence', status: 'partial',
+      { id: 'market-intel', name: 'Market Intelligence Engine', phase: 1, path: 'intelligence', organ: 'Brain', status: 'partial',
         desc: 'The diagnostic that opens every engagement. Scrapes competitor products, pulls keyword data, tracks competitor pricing, finds gaps in the marketplace, and looks at Amazon-specific signals (best-seller ranks, trending niches). Outputs a clean client-facing positioning brief: "This is where you are. This is where we\'ll get you in 90 days."' },
-      { slug: 'listing-engine', title: 'Listing Optimization Engine', system: 'Voice', phase: 1, path: 'revenue', status: 'built',
+      { id: 'listing-engine', name: 'Listing Optimization Engine', phase: 1, path: 'revenue', organ: 'Voice', status: 'built',
         desc: 'The agency\'s #1 paid service, automated. AI generates titles, bullets, descriptions, and search terms for each product; a second AI audits the result against compliance rules and brand guides; a human approves before publishing. Built on skills that already work — we plug them into the agent.' },
-      { slug: 'image-studio', title: 'Image & A+ Studio', system: 'Voice', phase: 1, path: 'revenue', status: 'built',
+      { id: 'image-studio', name: 'Image & A+ Studio', phase: 1, path: 'revenue', organ: 'Voice', status: 'built',
         desc: 'Generates the visual side of every listing: hero shots, lifestyle photos, infographics, premium "A+" pages. Each client\'s brand colors, fonts, and overlays are baked in, so every visual feels consistent across their catalog. Built on Python image-compositing plus Google\'s Gemini AI.' },
-      { slug: 'amazon-ads', title: 'Amazon Ads Manager', system: 'Voice', phase: 1, path: 'revenue', status: 'planned',
+      { id: 'amazon-ads', name: 'Amazon Ads Manager', phase: 1, path: 'revenue', organ: 'Voice', status: 'planned',
         desc: 'Runs Sponsored Products, Brands, and Display campaigns across each client\'s account. AI auto-pauses bad ads and tweaks bids hourly within ±15% (no human needed), proposes new campaigns and keyword sets for human approval. Most immediate ROI lever for clients.' },
 
-      { slug: 'compliance', title: 'Compliance Guardian', system: 'Immune', phase: 2, path: 'foundation', status: 'planned',
+      { id: 'compliance', name: 'Compliance Guardian', phase: 2, path: 'foundation', organ: 'Immune', status: 'planned',
         desc: 'Watches each client\'s account daily for silent killers: product suppressions, policy violations, restricted-category flags, label issues. When something flags, the client gets an alert and the AI drafts the fix or appeal. One missed compliance issue can shut a client\'s whole account.' },
-      { slug: 'external-traffic', title: 'External Traffic Manager', system: 'Voice', phase: 2, path: 'revenue', status: 'partial',
+      { id: 'notification-hub', name: 'Notification Hub', phase: 2, path: 'intelligence', organ: 'Brain', status: 'planned',
+        desc: 'Every system emits signals ("CPC spiked," "angry review," "low stock," "compliance flag"). This is the central post office that routes each one to the right person: Roger if relational, Maciej if technical, client if they need to act. Built on a cloud event bus (Pub/Sub on GCP, EventBridge on AWS — same pattern).' },
+      { id: 'external-traffic', name: 'External Traffic Manager', phase: 2, path: 'revenue', organ: 'Voice', status: 'partial',
         desc: 'Drives traffic from Meta, Google, and TikTok into Amazon listings or QR landing pages — outside traffic Amazon rewards with better organic ranking. AI generates ad variants, manages bids per platform, and routes performance data back into Amazon Ads Manager so the two channels work together. Same Tier 1/2/3 approval logic.' },
-      { slug: 'qr-email', title: 'QR → Email Capture', system: 'Voice', phase: 2, path: 'revenue', status: 'planned',
+      { id: 'qr-email', name: 'QR → Email Capture', phase: 2, path: 'revenue', organ: 'Voice', status: 'planned',
         desc: 'A unique angle. A QR on the product label sends customers to a landing page; they enter their email for a discount or guide, and join a per-client email list the agency owns (not Amazon\'s). This builds the client an email asset that compounds even if Amazon shuts their account.' },
-      { slug: 'email-ops', title: 'AI Email Operations', system: 'Voice', phase: 2, path: 'revenue', status: 'planned',
+      { id: 'email-ops', name: 'AI Email Operations', phase: 2, path: 'revenue', organ: 'Voice', status: 'planned',
         desc: 'Handles all client email work: weekly newsletters, post-purchase flows, win-backs, support replies. AI drafts and queues; a human approves the first version of each sequence, then proven sequences auto-run forever. Same Tier 1/2/3 gating.' },
-      { slug: 'review-manager', title: 'Review Manager', system: 'Heart', phase: 2, path: 'revenue', status: 'planned',
+      { id: 'review-manager', name: 'Review Manager', phase: 2, path: 'revenue', organ: 'Heart', status: 'planned',
         desc: 'Reads every new review on every client\'s products. Drafts a response in the brand\'s voice, flags patterns ("three reviews this week mention the lid breaking" → escalate to client), tracks rating trends. The agency catches problems before the client even notices.' },
-      { slug: 'finance', title: 'AI Finance Controller', system: 'Heart', phase: 2, path: 'revenue', status: 'planned',
+      { id: 'finance', name: 'AI Finance Controller', phase: 2, path: 'revenue', organ: 'Heart', status: 'planned',
         desc: 'Per-client profit & loss tracking: what they pay us minus actual cost (cloud time, API fees, management hours). Auto-generates invoices and alerts if a client is unprofitable. Built on Stripe + the chosen cloud platform\'s billing API.' },
 
-      { slug: 'inventory', title: 'Inventory & Shipment Intel', system: 'Immune', phase: 3, path: 'foundation', status: 'future',
+      { id: 'inventory', name: 'Inventory & Shipment Intel', phase: 3, path: 'foundation', organ: 'Immune', status: 'future',
         desc: 'Watches FBA stock levels, predicts when each product will run out, and alerts the client to reorder. Stockouts are the silent revenue killer on Amazon — this prevents them. Built on a Seller Central scraper plus a simple forecasting model.' },
-      { slug: 'monitoring', title: 'Monitoring Portal', system: 'Immune', phase: 3, path: 'foundation', status: 'planned',
+      { id: 'monitoring', name: 'Monitoring Portal', phase: 3, path: 'foundation', organ: 'Immune', status: 'planned',
         desc: 'One dashboard showing per-client system health: listings live, ads spending in range, approval queue length, error rates. A 30-second daily glance tells Roger and Maciej if anything needs intervention. Reads from the chosen cloud platform\'s database + monitoring services.' },
-      { slug: 'notification-hub', title: 'Notification Hub', system: 'Brain', phase: 2, path: 'intelligence', status: 'planned',
-        desc: 'Every system emits signals ("CPC spiked," "angry review," "low stock," "compliance flag"). This is the central post office that routes each one to the right person: Roger if relational, Maciej if technical, client if they need to act. Built on a cloud event bus (Pub/Sub on GCP, EventBridge on AWS — same pattern).' },
-      { slug: 'avatar-studio', title: 'AI Influencer & Avatar Studio', system: 'Voice', phase: 3, path: 'revenue', status: 'planned',
-        desc: 'Creates a consistent AI persona per brand and uses it across both short-form videos (UGC-style ads, product demos, email VSLs) and graphics (Instagram posts, banner ads, thumbnails). One persona, infinite content, fraction of the cost of real influencers. Built on HeyGen/Synthesia for video, Gemini for graphics.' },
-      { slug: 'onboarding', title: 'Onboarding & CS Autopilot', system: 'Hands', phase: 3, path: 'revenue', status: 'future',
-        desc: 'When a new client signs, the AI runs a 30-day plan automatically: SKU audit, priority listing fixes, ad-account setup, first results report. After that, it watches a per-client "health score" and flags any drifting toward churn before they leave.' },
-
-      { slug: 'bridge', title: 'The Bridge', system: 'DNA', phase: 4, path: 'foundation', status: 'future',
-        desc: 'Roger\'s voice/chat interface to the entire agency. Instead of asking Maciej "how\'s Scott doing?", he asks The Bridge, which queries the right systems and answers in plain English. Slack bot or web chat layered on top.' },
-      { slug: 'task-manager', title: 'Task Manager', system: 'Hands', phase: 4, path: 'foundation', status: 'future',
-        desc: 'Internal task distribution between Roger, Maciej, and future VAs. Notion or ClickUp is fine until the team is 4+ people — no need to build custom.' },
-      { slug: 'legal-vault', title: 'IP & Legal Vault', system: 'Immune', phase: 4, path: 'foundation', status: 'future',
-        desc: 'Stores agency contracts, NDAs, GDPR records, supplier agreements. Encrypted Drive + Notion index until 10+ clients, then automated renewal reminders.' },
-      { slug: 'ai-pulse', title: 'AI Pulse', system: 'Brain', phase: 4, path: 'intelligence', status: 'future',
-        desc: 'A daily morning briefing of the whole agency: yesterday\'s wins, problems, blockers, what the AI did autonomously. Like a news roundup of the business, written by the systems themselves.' },
-      { slug: 'command-center', title: 'Business Command Center', system: 'DNA', phase: 4, path: 'intelligence', status: 'future',
-        desc: 'The full admin dashboard tying every system into one drillable view. Built last because it only makes sense after the systems exist. React-based, switched on per organ as each comes online.' },
-      { slug: 'quality-ux', title: 'Quality & UX Autopilot', system: 'Immune', phase: 4, path: 'intelligence', status: 'future',
+      { id: 'quality-ux', name: 'Quality & UX Autopilot', phase: 3, path: 'intelligence', organ: 'Immune', status: 'future',
         desc: 'Monitors how client listings are converting: are the images working, do bullet A/B tests show lift, is the A+ section moving the needle. Used on client listings, not the agency\'s own site.' },
-      { slug: 'opportunity-gate', title: 'Opportunity Gate', system: 'Brain', phase: 4, path: 'intelligence', status: 'future',
-        desc: 'When more leads come in than the agency can take, this filters them: pursue (good fit), park (revisit later), pass (not a fit). Built only when inbound exceeds capacity — premature otherwise.' },
-      { slug: 'social-publisher', title: 'AI Social Media Publisher', system: 'Voice', phase: 4, path: 'revenue', status: 'future',
-        desc: 'Posts the agency\'s own thought leadership and case studies to LinkedIn and X to attract inbound clients. Built only after delivery is rock solid — worst time to acquire clients is when delivery isn\'t ready.' }
+      { id: 'avatar-studio', name: 'AI Influencer & Avatar Studio', phase: 3, path: 'revenue', organ: 'Voice', status: 'planned',
+        desc: 'Creates a consistent AI persona per brand and uses it across both short-form videos (UGC-style ads, product demos, email VSLs) and graphics (Instagram posts, banner ads, thumbnails). One persona, infinite content, fraction of the cost of real influencers. Built on HeyGen/Synthesia for video, Gemini for graphics.' },
+      { id: 'onboarding', name: 'Onboarding & CS Autopilot', phase: 3, path: 'revenue', organ: 'Hands', status: 'future',
+        desc: 'When a new client signs, the AI runs a 30-day plan automatically: SKU audit, priority listing fixes, ad-account setup, first results report. After that, it watches a per-client "health score" and flags any drifting toward churn before they leave.' },
+      { id: 'social-publisher', name: 'AI Social Media Publisher', phase: 3, path: 'revenue', organ: 'Voice', status: 'future',
+        desc: 'Posts the agency\'s own thought leadership and case studies to LinkedIn and X to attract inbound clients. Built only after delivery is rock solid — worst time to acquire clients is when delivery isn\'t ready.' },
+
+      { id: 'bridge', name: 'The Bridge', phase: 4, path: 'foundation', organ: 'DNA', status: 'future',
+        desc: 'Roger\'s voice/chat interface to the entire agency. Instead of asking Maciej "how\'s Scott doing?", he asks The Bridge, which queries the right systems and answers in plain English. Slack bot or web chat layered on top.' },
+      { id: 'task-manager', name: 'Task Manager', phase: 4, path: 'foundation', organ: 'Hands', status: 'future',
+        desc: 'Internal task distribution between Roger, Maciej, and future VAs. Notion or ClickUp is fine until the team is 4+ people — no need to build custom.' },
+      { id: 'legal-vault', name: 'IP & Legal Vault', phase: 4, path: 'foundation', organ: 'Immune', status: 'future',
+        desc: 'Stores agency contracts, NDAs, GDPR records, supplier agreements. Encrypted Drive + Notion index until 10+ clients, then automated renewal reminders.' },
+      { id: 'ai-pulse', name: 'AI Pulse', phase: 4, path: 'intelligence', organ: 'Brain', status: 'future',
+        desc: 'A daily morning briefing of the whole agency: yesterday\'s wins, problems, blockers, what the AI did autonomously. Like a news roundup of the business, written by the systems themselves.' },
+      { id: 'command-center', name: 'Business Command Center', phase: 4, path: 'intelligence', organ: 'DNA', status: 'future',
+        desc: 'The full admin dashboard tying every system into one drillable view. Built last because it only makes sense after the systems exist. React-based, switched on per organ as each comes online.' },
+      { id: 'opportunity-gate', name: 'Opportunity Gate', phase: 4, path: 'intelligence', organ: 'Brain', status: 'future',
+        desc: 'When more leads come in than the agency can take, this filters them: pursue (good fit), park (revisit later), pass (not a fit). Built only when inbound exceeds capacity — premature otherwise.' }
     ];
 
-    var DEPS = [
-      ['spike', 'cloud-cto'],
-      ['cloud-cto', 'cost-vault'],
-      ['cloud-cto', 'review-pipeline'],
-      ['knowledge-hub', 'listing-engine'],
-      ['knowledge-hub', 'image-studio'],
-      ['knowledge-hub', 'market-intel'],
-      ['market-intel', 'listing-engine'],
-      ['market-intel', 'amazon-ads'],
-      ['crm', 'email-ops'],
-      ['crm', 'review-manager'],
-      ['crm', 'finance'],
-      ['crm', 'onboarding'],
-      ['review-pipeline', 'listing-engine'],
-      ['review-pipeline', 'amazon-ads'],
-      ['review-pipeline', 'email-ops'],
-      ['amazon-ads', 'external-traffic'],
-      ['qr-email', 'email-ops'],
-      ['compliance', 'listing-engine'],
-      ['avatar-studio', 'external-traffic'],
-      ['avatar-studio', 'social-publisher'],
-      ['inventory', 'review-manager'],
-      ['onboarding', 'market-intel'],
-      ['monitoring', 'cloud-cto'],
-      ['monitoring', 'ai-pulse'],
-      ['notification-hub', 'bridge'],
-      ['notification-hub', 'ai-pulse'],
-      ['command-center', 'finance'],
-      ['command-center', 'monitoring']
-    ];
-
-    var BADGE_CLASS = {
-      Brain: 'smap-badge-brain',
-      Voice: 'smap-badge-voice',
-      Hands: 'smap-badge-hands',
-      Heart: 'smap-badge-heart',
-      Immune: 'smap-badge-immune',
-      DNA: 'smap-badge-dna'
-    };
     var STATUS_LABELS = { built: 'Built', partial: 'Partial', planned: 'Planned', future: 'Future' };
     var PATH_LABELS = { foundation: 'Foundation & Ops', intelligence: 'Intelligence Loop', revenue: 'Revenue Engine' };
 
-    // Layout: assign x, y per system based on (phase, path, slot in path within phase)
-    var nodeMap = {};
-    var allNodes = [];
-    var phaseRanges = [];
-    var cursorY = HEADER_H;
-
-    PHASES.forEach(function (phase) {
-      var start = cursorY;
-      var maxSlots = 1;
-      PATHS.forEach(function (path) {
-        var n = SYSTEMS.filter(function (s) { return s.phase === phase.id && s.path === path.key; }).length;
-        if (n > maxSlots) maxSlots = n;
-      });
-      var height = maxSlots * ROW_GAP;
-      // Place nodes
-      PATHS.forEach(function (path, pi) {
-        var nodes = SYSTEMS.filter(function (s) { return s.phase === phase.id && s.path === path.key; });
-        nodes.forEach(function (s, ni) {
-          var node = Object.assign({}, s);
-          node.x = PATH_X[pi];
-          node.y = start + ni * ROW_GAP + ROW_GAP / 2;
-          node.pathLabel = path.label;
-          node.pathColor = path.color;
-          node.phaseColor = phase.color;
-          node.phaseLabel = phase.label;
-          node.phaseSubtitle = phase.subtitle;
-          allNodes.push(node);
-          nodeMap[node.slug] = node;
-        });
-      });
-      phaseRanges.push({ phase: phase, startY: start, height: height });
-      cursorY = start + height + PHASE_GAP;
-    });
-
-    var MAP_H = cursorY + 20;
-
-    // Build edges
-    var edges = [];
-    var seenEdge = {};
-    function addEdge(from, to) {
-      var a = nodeMap[from], b = nodeMap[to];
-      if (!a || !b) return;
-      // Only flow downward (top-to-bottom); reverse if needed
-      if (a.y > b.y) { var tmp = from; from = to; to = tmp; a = nodeMap[from]; b = nodeMap[to]; }
-      if (seenEdge[from + '-' + to]) return;
-      seenEdge[from + '-' + to] = true;
-      var horizontal = (Math.abs(a.y - b.y) < 1);
-      edges.push({ from: from, to: to, horizontal: horizontal, color: 'rgba(255,86,48,0.85)' });
-    }
-    DEPS.forEach(function (d) { addEdge(d[0], d[1]); });
-
-    function edgePath(a, b, horizontal) {
-      if (horizontal) {
-        var x1 = a.x + NODE_W / 2, x2 = b.x - NODE_W / 2;
-        if (a.x > b.x) { x1 = a.x - NODE_W / 2; x2 = b.x + NODE_W / 2; }
-        return 'M ' + x1 + ' ' + a.y + ' L ' + x2 + ' ' + b.y;
-      }
-      var x1 = a.x, y1 = a.y + NODE_H / 2, x2 = b.x, y2 = b.y - NODE_H / 2;
-      if (Math.abs(x1 - x2) < 2) return 'M ' + x1 + ' ' + y1 + ' L ' + x2 + ' ' + y2;
-      var ey = y1 + Math.max(12, Math.min(34, (y2 - y1) * 0.45));
-      return 'M ' + x1 + ' ' + y1 + ' L ' + x1 + ' ' + ey + ' L ' + x2 + ' ' + ey + ' L ' + x2 + ' ' + y2;
-    }
-
-    // Prereq chain
-    function prereqChain(slug) {
-      var rev = {};
-      edges.forEach(function (e) { (rev[e.to] = rev[e.to] || []).push(e.from); });
-      var ns = {}, es = {};
-      ns[slug] = true;
-      var stack = [slug];
-      while (stack.length) {
-        var c = stack.pop();
-        (rev[c] || []).forEach(function (p) {
-          es[p + '-' + c] = true;
-          if (!ns[p]) { ns[p] = true; stack.push(p); }
-        });
-      }
-      return { nodes: ns, edges: es };
-    }
-
-    // Render
-    var viewport = document.getElementById('smapViewport');
-    var svg = document.getElementById('smapSvg');
-    var mobile = document.getElementById('smapMobile');
+    var grid = document.getElementById('gridTable');
     var sidePanel = document.getElementById('sidePanel');
-    var lockedSlug = null;
-    var hoverSlug = null;
+    var lockedId = null;
 
     function render() {
-      viewport.style.width = MAP_W + 'px';
-      viewport.style.height = MAP_H + 'px';
-      svg.setAttribute('viewBox', '0 0 ' + MAP_W + ' ' + MAP_H);
-      svg.setAttribute('width', MAP_W);
-      svg.setAttribute('height', MAP_H);
-
-      var focusSlug = lockedSlug || hoverSlug;
-      var chain = focusSlug ? prereqChain(focusSlug) : null;
-
-      // SVG: subtle phase bands + edges
-      var svgHtml = '';
-
-      // Subtle phase axis tint only (no full-width bands — keep map clean)
-      phaseRanges.forEach(function (pr) {
-        svgHtml += '<rect x="2" y="' + pr.startY + '" width="' + (PHASE_AXIS_W - 4) + '" height="' + pr.height + '" fill="' + pr.phase.color + '" opacity="0.06" rx="10" />';
+      var html = '<div class="grid-header corner">Phase</div>';
+      PATHS.forEach(function (p) {
+        html += '<div class="grid-header path-' + p.id + '">' + p.label + '</div>';
       });
-
-      // Edges (coral, prominent — like aibizneslab)
-      edges.forEach(function (e) {
-        var a = nodeMap[e.from], b = nodeMap[e.to];
-        var hl = chain && chain.edges[e.from + '-' + e.to];
-        var dim = chain && !hl;
-        var sw = hl ? 2.8 : 2.2;
-        var op = dim ? 0.12 : (hl ? 1 : 0.85);
-        svgHtml += '<path d="' + edgePath(a, b, e.horizontal) + '" fill="none" stroke="' + e.color + '" stroke-width="' + sw + '" stroke-linecap="round" stroke-dasharray="6 5" style="opacity:' + op + '" />';
-      });
-
-      svg.innerHTML = svgHtml;
-
-      // Phase pill labels (DOM, on left)
-      viewport.querySelectorAll('.phase-pill').forEach(function (el) { el.remove(); });
-      phaseRanges.forEach(function (pr) {
-        var div = document.createElement('div');
-        div.className = 'phase-pill';
-        div.style.top = (pr.startY + 10) + 'px';
-        div.style.background = pr.phase.color;
-        div.innerHTML = '<span class="ph-num">' + pr.phase.label + '</span><span class="ph-sub">' + pr.phase.subtitle + '</span>';
-        viewport.appendChild(div);
-      });
-
-      // Cards
-      viewport.querySelectorAll('.smap-node').forEach(function (el) { el.remove(); });
-      allNodes.forEach(function (n) {
-        var cls = 'smap-node';
-        if (chain) {
-          if (chain.nodes[n.slug]) cls += ' highlighted';
-          else cls += ' dimmed';
-        }
-        if (n.slug === lockedSlug) cls += ' locked';
-        var badge = BADGE_CLASS[n.system] || 'smap-badge-dna';
-        var el = document.createElement('div');
-        el.className = cls;
-        el.style.left = (n.x - NODE_W / 2) + 'px';
-        el.style.top = (n.y - NODE_H / 2) + 'px';
-        el.dataset.slug = n.slug;
-        el.dataset.organ = n.system;
-        el.innerHTML =
-          '<span class="status-dot status-' + n.status + '"></span>' +
-          '<div class="smap-node-header">' +
-            '<span class="smap-node-stage">' + n.phaseLabel + '</span>' +
-            '<span class="smap-node-badge ' + badge + '">' + n.system + '</span>' +
-          '</div>' +
-          '<div class="smap-node-title">' + n.title + '</div>' +
-          '<div class="smap-node-path">' + n.pathLabel + '</div>';
-        el.addEventListener('mouseenter', function () {
-          if (lockedSlug) return;
-          hoverSlug = n.slug;
-          renderSidePanel(n);
-          render();
+      PHASES.forEach(function (phase) {
+        html += '<div class="phase-rowhead">'
+          + '<span class="ph-num" style="background:' + phase.color + '">' + phase.label + '</span>'
+          + '<span class="ph-sub">' + phase.subtitle + '</span>'
+          + '</div>';
+        PATHS.forEach(function (path) {
+          var cards = SYSTEMS.filter(function (s) { return s.phase === phase.id && s.path === path.id; });
+          var cls = 'phase-cell' + (cards.length === 0 ? ' empty' : '');
+          html += '<div class="' + cls + '">' + cards.map(cardHTML).join('') + '</div>';
         });
-        el.addEventListener('mouseleave', function () {
-          if (lockedSlug) return;
-          hoverSlug = null;
-          render();
-        });
-        el.addEventListener('click', function (ev) {
-          ev.stopPropagation();
-          if (lockedSlug === n.slug) {
-            lockedSlug = null;
-            renderSidePanel(null);
+      });
+      grid.innerHTML = html;
+      attachEvents();
+    }
+
+    function cardHTML(s) {
+      return '<div class="card" data-id="' + s.id + '" data-organ="' + s.organ + '">'
+        + '<div class="card-top">'
+        +   '<span class="card-organ" data-organ="' + s.organ + '">' + s.organ + '</span>'
+        +   '<span class="card-status status-' + s.status + '" title="' + STATUS_LABELS[s.status] + '"></span>'
+        + '</div>'
+        + '<h3 class="card-title">' + s.name + '</h3>'
+        + '</div>';
+    }
+
+    function attachEvents() {
+      grid.querySelectorAll('.card').forEach(function (card) {
+        var s = SYSTEMS.find(function (x) { return x.id === card.dataset.id; });
+        card.addEventListener('mouseenter', function () { if (!lockedId) renderPanel(s); });
+        card.addEventListener('mouseleave', function () { if (!lockedId) renderPanel(null); });
+        card.addEventListener('click', function (e) {
+          e.stopPropagation();
+          grid.querySelectorAll('.card.locked').forEach(function (c) { c.classList.remove('locked'); });
+          if (lockedId === s.id) {
+            lockedId = null;
+            renderPanel(null);
           } else {
-            lockedSlug = n.slug;
-            renderSidePanel(n);
+            lockedId = s.id;
+            card.classList.add('locked');
+            renderPanel(s);
           }
-          render();
-        });
-        viewport.appendChild(el);
-      });
-
-      // Mobile fallback
-      var sortedNodes = allNodes.slice().sort(function (a, b) { return a.y - b.y || a.x - b.x; });
-      var mobileHtml = '';
-      sortedNodes.forEach(function (n) {
-        var badge = BADGE_CLASS[n.system] || 'smap-badge-dna';
-        mobileHtml +=
-          '<div class="smap-mobile-card" data-slug="' + n.slug + '">' +
-            '<div class="smap-node-stage">' + n.phaseLabel + ' · ' + n.phaseSubtitle + '</div>' +
-            '<div class="smap-node-title">' + n.title + '</div>' +
-            '<div class="smap-node-path">' + n.pathLabel + ' | <span class="smap-node-badge ' + badge + '" style="display:inline;padding:0.1rem 0.3rem;font-size:0.6rem;">' + n.system + '</span></div>' +
-          '</div>';
-      });
-      mobile.innerHTML = mobileHtml;
-      mobile.querySelectorAll('.smap-mobile-card').forEach(function (el) {
-        el.addEventListener('click', function () {
-          var node = nodeMap[el.dataset.slug];
-          renderSidePanel(node);
         });
       });
     }
 
-    function renderSidePanel(n) {
-      if (!n) {
+    function renderPanel(s) {
+      if (!s) {
         sidePanel.innerHTML = '<div class="sp-empty">Hover or click any card to see its description here.</div>';
         return;
       }
+      var phase = PHASES[s.phase];
       sidePanel.innerHTML =
-        '<div class="sp-status"><span class="legend-dot status-' + n.status + '"></span>' + STATUS_LABELS[n.status] + '</div>' +
-        '<h2 class="sp-name">' + n.title + '</h2>' +
-        '<div class="sp-meta">' +
-          '<span class="sp-tag" style="border-color:' + n.phaseColor + ';color:' + n.phaseColor + '">' + n.phaseLabel + '</span>' +
-          '<span class="sp-tag">' + PATH_LABELS[n.path] + '</span>' +
-          '<span class="sp-tag">' + n.system + '</span>' +
-        '</div>' +
-        '<p class="sp-desc">' + n.desc + '</p>';
+        '<div class="sp-status"><span class="legend-dot status-' + s.status + '"></span>' + STATUS_LABELS[s.status] + '</div>'
+        + '<h2 class="sp-name">' + s.name + '</h2>'
+        + '<div class="sp-meta">'
+        +   '<span class="sp-tag" style="border-color:' + phase.color + ';color:' + phase.color + '">' + phase.label + '</span>'
+        +   '<span class="sp-tag">' + PATH_LABELS[s.path] + '</span>'
+        +   '<span class="sp-tag" style="border-color:var(--organ-' + s.organ.toLowerCase() + ');color:var(--organ-' + s.organ.toLowerCase() + ')">' + s.organ + '</span>'
+        + '</div>'
+        + '<p class="sp-desc">' + s.desc + '</p>';
     }
 
     document.addEventListener('click', function () {
-      if (lockedSlug) {
-        lockedSlug = null;
-        hoverSlug = null;
-        renderSidePanel(null);
-        render();
+      if (lockedId) {
+        lockedId = null;
+        grid.querySelectorAll('.card.locked').forEach(function (c) { c.classList.remove('locked'); });
+        renderPanel(null);
       }
     });
 
     render();
-  })();
   </script>
 </body>
 </html>
