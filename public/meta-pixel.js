@@ -63,23 +63,29 @@
     }
 
     if (path === '/agency-oto1') {
-      fbq('track', 'Purchase', {
-        value: 14.95,
-        currency: 'USD',
-        content_name: 'AI Board (LTO)',
-        content_category: 'Digital Product',
-        content_ids: ['ai-board-lto']
-      });
+      if (!sessionStorage.getItem('rs_purchase_lto_fired')) {
+        fbq('track', 'Purchase', {
+          value: 14.95,
+          currency: 'USD',
+          content_name: 'AI Board (LTO)',
+          content_category: 'Digital Product',
+          content_ids: ['ai-board-lto']
+        });
+        try { sessionStorage.setItem('rs_purchase_lto_fired', '1'); } catch (e) {}
+      }
     }
 
     if (path === '/wiring-booked.html' || path === '/wiring-booked') {
-      fbq('track', 'Purchase', {
-        value: 297,
-        currency: 'USD',
-        content_name: 'AI Board Wiring Service',
-        content_category: 'Service',
-        content_ids: ['wiring-service']
-      });
+      if (!sessionStorage.getItem('rs_purchase_wiring_fired')) {
+        fbq('track', 'Purchase', {
+          value: 297,
+          currency: 'USD',
+          content_name: 'AI Board Wiring Service',
+          content_category: 'Service',
+          content_ids: ['wiring-service']
+        });
+        try { sessionStorage.setItem('rs_purchase_wiring_fired', '1'); } catch (e) {}
+      }
     }
   }
 
