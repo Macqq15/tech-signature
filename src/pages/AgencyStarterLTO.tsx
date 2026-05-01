@@ -103,7 +103,7 @@ function BumpModal({ onClose }: { onClose: () => void }) {
           <div>
             <h4 className="text-amber-700 font-bold text-sm mb-1">+ AI Lead Gen Agent — $7</h4>
             <p className="text-slate-600 text-xs leading-relaxed">
-              Paste a lead (LinkedIn/website) → personalized cold email + 3 follow-ups + pitch angle. Built for founders who hate cold outreach.
+              Paste a company URL → 4-email sequence + pitch angle in your voice. AI does the company research; asks you for 30 seconds of LinkedIn copy-paste it can't fetch. For founders who hate cold outreach.
             </p>
           </div>
         </label>
