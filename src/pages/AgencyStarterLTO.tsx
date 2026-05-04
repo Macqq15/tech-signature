@@ -40,7 +40,7 @@ const STRIPE_LINKS = {
 const faqs = [
   {
     q: "What exactly do I get for $14.95?",
-    a: "A .zip containing 10 files: 5 executive prompts (CEO/CMO/CSO/CTO/COO), a SETUP-PROMPT.md that guides you through 12 questions in 5 minutes, a PROJECT-INSTRUCTIONS.md, a shared-context.md template (your business memory), a 00-START-HERE.md install guide, and LICENSE.md. Works on Claude.ai, ChatGPT Plus, Gemini Advanced, Claude Code. Lifetime v1 access."
+    a: "5 AI executives — CMO, CSO, CTO, COO + a CEO dispatcher — that read YOUR business context and answer in it. One zip, 5-minute guided setup (no technical skills required). Works on Claude.ai, ChatGPT Plus, Gemini Advanced, Claude Code. Lifetime v1 access."
   },
   {
     q: "Is this just ChatGPT prompts?",
@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: "What happens after I buy?",
-    a: "You get email delivery within an hour (manual review) with download links for what you bought. Open Claude.ai (or ChatGPT Plus / Gemini Advanced), upload SETUP-PROMPT.md, type \"Run this setup prompt\", answer 12 questions. Then create a project and upload 6 files (5 execs + your filled shared-context.md) to project knowledge. Your AI Board is live and thinking about your business."
+    a: "Email delivery within an hour — I review every order personally. Setup takes 5 minutes: a guided prompt asks 12 questions about your business and does the work for you. Full step-by-step instructions in your delivery email. By minute 6, your AI Board is live and thinking about YOUR agency."
   },
   {
     q: "Who is this for?",
@@ -63,8 +63,8 @@ const faqs = [
     a: "Optional, no pushy upsells: $297 Wiring Service (2-hour hands-on call — we configure everything together, you walk out with a tested system), Tier 2 Done-For-You AI Agents ($3.5-5K setup + monthly) — custom-built automation generating briefings, reports, alerts 24/7."
   },
   {
-    q: "Sahil Lavingia's skills are free on GitHub. Why pay you?",
-    a: "Sahil's free skills are excellent — for solopreneurs building generic bootstrapped businesses. AI Board is built for agency owners and small business founders running client retainers. Our executives understand ROAS, client churn, scope creep, pipeline stages, fractional-hire decisions. Plus the shared context file personalizes every output to YOUR business. Different problem, different solution."
+    q: "Can I use this for multiple clients?",
+    a: "Yes. The shared-context.md is your business memory — for client work, you can spin up a separate project per client with their own context file. Same 5 executives, different business memories. One purchase, unlimited projects."
   },
 ];
 
