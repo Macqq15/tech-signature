@@ -6,17 +6,17 @@ export default function AgencyThankYou() {
     {
       icon: <Mail className="text-emerald-600" size={22} />,
       title: "Check your email",
-      desc: "Delivery arrives within 2 minutes at the address you used at checkout. Look for \"Your AI Board is ready\". If not in inbox, check spam.",
+      desc: "Delivery arrives within an hour — I review every order personally. Look for \"Your AI Board is ready\". If not in inbox, check spam.",
     },
     {
       icon: <Upload className="text-emerald-600" size={22} />,
-      title: "Open Claude.ai (or ChatGPT Plus / Gemini Advanced)",
-      desc: "Easiest: claude.ai → New Project → name it \"AI Board\". Upload the 3 files from the zip to Project Knowledge. For ChatGPT/Gemini, see README.md inside the zip.",
+      title: "Open Claude, ChatGPT, or Gemini",
+      desc: "Upload SETUP-PROMPT.md and type \"Run this setup prompt\". The AI walks you through 12 questions about your business (5 min) and generates your filled shared-context.md.",
     },
     {
       icon: <Play className="text-emerald-600" size={22} />,
-      title: "Type \"Run onboarding\"",
-      desc: "AI Board asks you 8 questions about your business (5 min). It generates your filled agency-context.md. Then it's live and thinking about YOUR agency.",
+      title: "Create your project + upload 6 files",
+      desc: "Make a Claude Project / ChatGPT Custom GPT / Gemini Gem named \"AI Board of Directors\". Paste PROJECT-INSTRUCTIONS.md into instructions, then upload 5 executive files (01-CEO → 05-COO) + your filled shared-context.md to project knowledge.",
     },
     {
       icon: <MessageCircle className="text-emerald-600" size={22} />,

@@ -40,7 +40,7 @@ const STRIPE_LINKS = {
 const faqs = [
   {
     q: "What exactly do I get for $14.95?",
-    a: "A .zip containing: (1) the AI Board skill file with 5 executives (CEO/CMO/CSO/CTO/COO) + their coordination logic, (2) a shared agency-context.md template, (3) an onboarding prompt that guides you through 8-question setup in 5 minutes, (4) platform-specific instructions for Claude.ai, ChatGPT Plus, Gemini Advanced, Claude Code. Lifetime v1 access."
+    a: "A .zip containing 10 files: 5 executive prompts (CEO/CMO/CSO/CTO/COO), a SETUP-PROMPT.md that guides you through 12 questions in 5 minutes, a PROJECT-INSTRUCTIONS.md, a shared-context.md template (your business memory), a 00-START-HERE.md install guide, and LICENSE.md. Works on Claude.ai, ChatGPT Plus, Gemini Advanced, Claude Code. Lifetime v1 access."
   },
   {
     q: "Is this just ChatGPT prompts?",
@@ -48,11 +48,11 @@ const faqs = [
   },
   {
     q: "Do I need any technical skills?",
-    a: "If you can upload a .zip file or paste text into ChatGPT, you can use this. The onboarding prompt asks 8 questions, generates your filled context file. 5 minutes from purchase to productive use."
+    a: "If you can upload a file or paste text into ChatGPT, you can use this. The setup prompt asks 12 questions and generates your filled shared-context.md. 5 minutes from purchase to productive use."
   },
   {
     q: "What happens after I buy?",
-    a: "You get email delivery within 2 minutes: the .zip with AI Board files. Open Claude.ai (or ChatGPT/Gemini), new project, upload 3 files, type \"Run onboarding\". 8 questions later, your AI Board is live and thinking about your business."
+    a: "You get email delivery within an hour (manual review) with download links for what you bought. Open Claude.ai (or ChatGPT Plus / Gemini Advanced), upload SETUP-PROMPT.md, type \"Run this setup prompt\", answer 12 questions. Then create a project and upload 6 files (5 execs + your filled shared-context.md) to project knowledge. Your AI Board is live and thinking about your business."
   },
   {
     q: "Who is this for?",
