@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const scrollToSection = (id: string) => {
@@ -77,7 +78,15 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 text-center text-white/60 text-sm">
+        <div className="border-t border-white/10 pt-8 text-center text-white/60 text-sm space-y-3">
+          <div className="flex items-center justify-center gap-6">
+            <Link to="/privacy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+          </div>
           <p>
             © {new Date().getFullYear()} Maciek Zawadzki. All rights reserved.
           </p>

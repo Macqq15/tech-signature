@@ -19,6 +19,8 @@ import AgencyThankYou from "./pages/AgencyThankYou";
 import TikTokFlowPrivacy from "./pages/TikTokFlowPrivacy";
 import TikTokFlowTerms from "./pages/TikTokFlowTerms";
 import TikTokFlowCallback from "./pages/TikTokFlowCallback";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -52,6 +54,10 @@ const App = () => (
             <Route path="/tiktokflow/privacy" element={<TikTokFlowPrivacy />} />
             <Route path="/tiktokflow/terms" element={<TikTokFlowTerms />} />
             <Route path="/tiktokflow/callback" element={<TikTokFlowCallback />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/privacy-policy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/terms-of-service" element={<Terms />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
