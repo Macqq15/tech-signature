@@ -14,6 +14,12 @@ type FlowState =
 
 const STAGE_COUNT = 7;
 
+// Backend URL — Cloud Run service for prod, localhost for dev.
+// Set VITE_TEMULTUOUS_API_URL via GitHub Actions secret at build time.
+const API_BASE_URL =
+  (import.meta.env.VITE_TEMULTUOUS_API_URL as string | undefined)?.replace(/\/+$/, "") ||
+  (import.meta.env.DEV ? "http://localhost:8080" : "");
+
 export default function Temultuous() {
   const { setTheme, resolvedTheme } = useTheme();
   const [previousTheme, setPreviousTheme] = useState<string | undefined>(undefined);
@@ -41,57 +47,69 @@ export default function Temultuous() {
   const handleSubmit = useCallback(async (submission: FormSubmission) => {
     setFlow({ step: "loading", submission, stage: 0, leadId: null });
 
-    // POST to /api/temultuous/submit. If the endpoint isn't wired yet (404 / network error),
-    // we fall back to mock-mode so the UI is testable end-to-end without API keys.
-    let leadId: string | null = null;
+    // If no backend is configured (preview/dev without API URL), fall back to mock mode
+    // so the UX is still demoable end-to-end.
+    if (!API_BASE_URL) {
+      runMockFlow(submission);
+      return;
+    }
+
+    // The Cloud Run /submit endpoint is synchronous: it scrapes Apify + builds the report
+    // in one round-trip (typically 30-90 seconds). While the fetch is pending we animate
+    // the loading narrative on a timer so the user sees progress, even though the real
+    // backend stage is "everything happening at once".
+    advanceLoadingTimer(submission);
+
     try {
-      const res = await fetch("/api/temultuous/submit", {
+      const res = await fetch(`${API_BASE_URL}/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(submission),
       });
-      if (res.ok) {
-        const json = await res.json();
-        leadId = json.leadId ?? null;
-      }
-    } catch {
-      // network error — fall through to mock mode
-    }
 
-    if (leadId) {
-      pollStatus(leadId, submission);
-    } else {
-      runMockFlow(submission);
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        setFlow({
+          step: "error",
+          submission,
+          message: body.error || `Server returned ${res.status}. Please try again.`,
+        });
+        return;
+      }
+
+      const { report } = (await res.json()) as { leadId: string; report: ReportData };
+      setFlow({ step: "report", submission, data: report });
+    } catch (err) {
+      console.error("[temultuous] submit failed", err);
+      setFlow({
+        step: "error",
+        submission,
+        message: "We couldn't reach the analysis service. Check your connection or try again in a minute.",
+      });
     }
   }, []);
 
-  const pollStatus = useCallback((leadId: string, submission: FormSubmission) => {
-    let cancelled = false;
-    setFlow({ step: "loading", submission, stage: 0, leadId });
+  // Drive the LoadingNarrative stages on a timer while the real fetch is pending.
+  // 7 stages over ~84 seconds. If the real fetch resolves earlier, the timer is
+  // cancelled by the state transition.
+  const advanceLoadingTimer = useCallback((submission: FormSubmission) => {
+    let stage = 0;
+    setFlow({ step: "loading", submission, stage, leadId: null });
+    const stageDurationMs = 12000;
 
-    const tick = async () => {
-      if (cancelled) return;
-      try {
-        const r = await fetch(`/api/temultuous/status?leadId=${encodeURIComponent(leadId)}`);
-        if (r.ok) {
-          const j = await r.json();
-          if (j.state === "ready" && j.report) {
-            setFlow({ step: "report", submission, data: j.report });
-            return;
-          }
-          if (j.state === "failed") {
-            setFlow({ step: "error", submission, message: j.error || "Something went wrong on our side." });
-            return;
-          }
-          setFlow((prev) => prev.step === "loading" ? { ...prev, stage: Math.min(STAGE_COUNT - 1, j.stage ?? prev.stage) } : prev);
-        }
-      } catch {
-        // ignore transient errors
+    const tick = () => {
+      stage += 1;
+      setFlow((prev) => {
+        // If state has moved off "loading" (because the real fetch resolved or failed),
+        // the timer is effectively cancelled — we just no-op.
+        if (prev.step !== "loading") return prev;
+        return { ...prev, stage: Math.min(STAGE_COUNT - 1, stage) };
+      });
+      if (stage < STAGE_COUNT - 1) {
+        setTimeout(tick, stageDurationMs);
       }
-      setTimeout(tick, 3000);
     };
-    tick();
-    return () => { cancelled = true; };
+    setTimeout(tick, stageDurationMs);
   }, []);
 
   /**

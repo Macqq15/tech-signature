@@ -16,7 +16,13 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npm run build
+      - name: Build (with Temultuous API URL injected)
+        env:
+          # Set this in repo settings → Secrets and variables → Actions → New repository secret.
+          # Value: the Cloud Run service URL, e.g. https://temultuous-api-xxxxx-ew.a.run.app
+          # If unset, Temultuous page falls back to mock-mode (still demoable, no live data).
+          VITE_TEMULTUOUS_API_URL: ${{ secrets.TEMULTUOUS_API_URL }}
+        run: npm run build
 
       - name: Deploy to maciejmarek.com via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
