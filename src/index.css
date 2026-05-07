@@ -62,6 +62,32 @@ All colors MUST be HSL.
     --section-alt: 46 18% 97%;
   }
 
+  /* Temu orange palette scoped to Temultuous lead magnet (Temu primary #FB7701) */
+  .temultuous-theme {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 28 99% 49%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 28 100% 96%;
+    --secondary-foreground: 28 90% 25%;
+    --muted: 28 20% 96%;
+    --muted-foreground: 222 15% 40%;
+    --accent: 28 100% 95%;
+    --accent-foreground: 28 90% 25%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 28 25% 90%;
+    --input: 28 25% 90%;
+    --ring: 28 99% 49%;
+    --section-alt: 28 80% 98%;
+    --gradient-temu: linear-gradient(135deg, hsl(28 99% 49%) 0%, hsl(18 95% 55%) 100%);
+    --gradient-temu-soft: linear-gradient(135deg, hsl(28 100% 96%) 0%, hsl(28 100% 92%) 100%);
+  }
+
   .dark {
     /* Deep Black Theme */
     --background: 240 10% 3.9%;
