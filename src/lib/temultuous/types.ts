@@ -1,6 +1,8 @@
 // Shared types for the Temultuous lead magnet flow.
 
-export type Tier = "RED" | "AMBER" | "BLUE" | "GREEN" | "UNKNOWN";
+// Moat-based taxonomy (replaced traffic-light RED/AMBER/BLUE/GREEN 2026-05-08).
+// Each tier names a *mechanism* of advantage rather than implying a hierarchy.
+export type Tier = "LOCKED_OUT" | "MARGIN_MOAT" | "TRUST_MOAT" | "UNKNOWN";
 
 export type CurrentStatus =
   | "never_sold"
@@ -37,7 +39,25 @@ export interface ScrapedProduct {
   link: string;
 }
 
+export type HeatLabel = "COOL" | "WARM" | "HOT" | "WHITE_HOT";
+
+export interface HeatBreakdown {
+  mechanism: number;     // 0-60
+  ukScarcity: number;    // 0-20
+  demandSignal: number;  // 0-15
+  marketDepth: number;   // 0-5
+}
+
 export interface Report {
+  // User-facing opportunity score (0-95). Calculated from tier mechanism + UK
+  // seller scarcity + demand signal + market depth. Replaces traffic-light
+  // hierarchy with a personalised number that anchors the sales conversation.
+  heatScore: number;
+  heatLabel: HeatLabel;
+  heatBreakdown: HeatBreakdown;
+
+  // tier is now an internal mechanism reference that powers narrative; not the
+  // primary display element. See HeatGauge component.
   tier: Tier;
   tierName: string;
   tierAdvantage: string;
@@ -63,4 +83,9 @@ export interface Report {
   };
   hooks: string[]; // 3 colleague-tone bullets
   generatedAt: string;
+  dataSource?: {
+    mode: "live" | "cached";
+    provider: "apify-amit123" | "apify-crw" | "brightdata" | "cache" | "mock";
+    snapshotAt: string;
+  };
 }

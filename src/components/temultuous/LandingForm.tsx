@@ -21,7 +21,7 @@ const STATUS_OPTIONS: Array<{ value: CurrentStatus; label: string }> = [
 const TRUST_BULLETS = [
   { icon: Zap, text: "Live data. We pull Temu UK in front of you." },
   { icon: Globe, text: "Built for UK manufacturers. Hazmat. Furniture. Anything Chinese sellers can't ship." },
-  { icon: ShieldCheck, text: "Free until you've sold £5,000. Then we take a cut. Aligned." },
+  { icon: ShieldCheck, text: "Built by 7-figure marketplace sellers." },
 ];
 
 export default function LandingForm({ onSubmit }: Props) {
@@ -54,12 +54,11 @@ export default function LandingForm({ onSubmit }: Props) {
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" /> Temu UK · Live opportunity scanner
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-[1.05]">
-            Britain's manufacturers are missing the easiest{" "}
-            <span className="text-primary">£20M opportunity</span> of 2026.
+            Temu UK has <span className="text-primary">20 million monthly shoppers</span>. Almost none are buying from British factories yet.
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-            Temu UK promised the government 50% of sales would come from UK sellers. Right now? Nowhere near. Especially in your category.
-            Tell us what you make. We'll show you live what's selling, what's missing, and where you fit.
+            Temu told the UK government half their sales would come from UK sellers by end of 2025. They missed it. Especially in your category.
+            Tell us what you make — we'll show you live what's selling, what's missing, and where you fit.
           </p>
         </motion.div>
 
@@ -119,7 +118,7 @@ export default function LandingForm({ onSubmit }: Props) {
                   autoComplete="email"
                 />
                 {touched && !/.+@.+\..+/.test(email) && (
-                  <p className="mt-1 text-xs text-destructive">Real email please — that's where we'll send the report.</p>
+                  <p className="mt-1 text-xs text-destructive">Real email please — your report appears on screen, but we'll also email a copy.</p>
                 )}
               </div>
             </div>
@@ -156,7 +155,7 @@ export default function LandingForm({ onSubmit }: Props) {
               size="lg"
               className="mt-2 h-14 text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/30 transition-all hover:scale-[1.01] active:scale-[0.99]"
             >
-              Show me my Temu opportunity
+              Run my live Temu UK scan
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
 

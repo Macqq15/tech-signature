@@ -64,14 +64,23 @@ export default function CalendlyEmbed({ onOpen }: Props) {
   }, [onOpen]);
 
   if (!CALENDLY_URL) {
-    // Pre-keys fallback — looks intentional, not broken
+    // Calendly URL not yet wired — fall back to a real mailto so warm leads
+    // never hit a dead end. Maciej forwards to Roger from this address.
     return (
-      <div ref={ref} className="bg-card border-2 border-dashed border-primary/30 rounded-2xl p-6 text-center">
+      <div ref={ref} className="bg-card border-2 border-primary/30 rounded-2xl p-6 text-center">
         <Calendar className="w-10 h-10 text-primary mx-auto mb-3" />
-        <p className="text-base font-bold mb-1">Booking goes live with the Calendly link.</p>
-        <p className="text-sm text-muted-foreground">
-          Set <code className="text-xs bg-muted px-1 py-0.5 rounded">VITE_CALENDLY_URL</code> in <code className="text-xs bg-muted px-1 py-0.5 rounded">.env.local</code>.
+        <p className="text-base font-bold mb-3">Ready to talk?</p>
+        <p className="text-sm text-muted-foreground mb-5">
+          Email Roger directly — he'll book you a 30-min call within 24 hours.
         </p>
+        <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+          <a
+            href="mailto:maciej@maciejmarek.com?subject=Temu%20UK%20opportunity%20call&body=Hi%20Roger%2C%0A%0AI%20just%20ran%20a%20Temu%20UK%20scan%20for%20my%20category%20and%20I%27d%20like%20to%20talk%20about%20the%20%22free%20until%20%C2%A35K%22%20offer.%0A%0ABusiness%3A%20%0AProduct%20type%3A%20"
+            onClick={() => onOpen?.()}
+          >
+            Email Roger <ArrowRight className="ml-2 h-4 w-4" />
+          </a>
+        </Button>
       </div>
     );
   }
