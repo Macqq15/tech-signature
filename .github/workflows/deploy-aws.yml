@@ -1,0 +1,55 @@
+name: Deploy to AWS
+
+on:
+  push:
+    branches:
+      - main
+      - feat/temultuous
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: deploy-aws-tech-signature
+  cancel-in-progress: true
+
+env:
+  AWS_REGION: eu-central-1
+  S3_BUCKET: maciej-tech-signature-116584140121-eu-central-1
+  CLOUDFRONT_DISTRIBUTION_ID: E2XPCE55CZQMV3
+  VITE_TEMULTUOUS_API_URL: https://cj4ggtule7dbuzwvvbt6nsgbdq0jlekg.lambda-url.eu-central-1.on.aws
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::116584140121:role/github-deploy-tech-signature
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Sync S3
+        run: aws s3 sync dist "s3://${S3_BUCKET}" --delete
+
+      - name: Invalidate CloudFront
+        run: aws cloudfront create-invalidation --distribution-id "${CLOUDFRONT_DISTRIBUTION_ID}" --paths "/*"
