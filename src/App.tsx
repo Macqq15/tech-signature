@@ -32,7 +32,7 @@ const queryClient = new QueryClient();
 
 const RootRoute = () => {
   const isMaciejmarek = typeof window !== "undefined" && window.location.hostname.includes("maciejmarek");
-  return isMaciejmarek ? <Index /> : <AgenticEngineering />;
+  return isMaciejmarek ? <ModernIndex /> : <AgenticEngineering />;
 };
 
 // Minimal fallback while a route chunk loads. Intentionally invisible at first
