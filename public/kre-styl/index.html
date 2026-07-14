@@ -1,0 +1,50 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Kre-Styl · Maciej Marek</title><style>
+:root{
+ --paper:#F6F4EF;--ink:#161A20;--mut:#6B7280;--line:#DED9CF;--card:#FFFFFF;
+ --blue:#1C4E6B;--blue-soft:#EAF1F5;--amber:#C9761E;--amber-ink:#fff;--tick:#C9C2B4}
+@media (prefers-color-scheme:dark){:root{
+ --paper:#12151A;--ink:#E9EBEF;--mut:#959CA8;--line:#282E38;--card:#171B22;
+ --blue:#7FBEE0;--blue-soft:#16222B;--amber:#E0912F;--amber-ink:#12151A;--tick:#333A45}}
+:root[data-theme=light]{--paper:#F6F4EF;--ink:#161A20;--mut:#6B7280;--line:#DED9CF;--card:#fff;--blue:#1C4E6B;--blue-soft:#EAF1F5;--amber:#C9761E;--amber-ink:#fff;--tick:#C9C2B4}
+:root[data-theme=dark]{--paper:#12151A;--ink:#E9EBEF;--mut:#959CA8;--line:#282E38;--card:#171B22;--blue:#7FBEE0;--blue-soft:#16222B;--amber:#E0912F;--amber-ink:#12151A;--tick:#333A45}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--paper);line-height:1.58;-webkit-font-smoothing:antialiased}
+.wrap{max-width:600px;margin:0 auto;padding:0 20px 72px}
+.top{display:flex;align-items:center;gap:12px;padding:20px 0 16px;border-bottom:1px solid var(--line)}
+.mark{width:34px;height:34px;border:2px solid var(--blue);border-radius:6px;position:relative;flex:0 0 auto}
+.mark::before,.mark::after{content:"";position:absolute;background:var(--blue)}
+.mark::before{left:6px;right:6px;top:50%;height:2px;transform:translateY(-1px)}
+.mark::after{top:6px;bottom:6px;left:50%;width:2px;transform:translateX(-1px)}
+.wordmark{font-weight:800;letter-spacing:.5px;font-size:15px;line-height:1.15}
+.wordmark small{display:block;font-weight:600;color:var(--mut);font-size:11.5px;letter-spacing:.4px}
+.eyebrow{margin:32px 0 10px;font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:9px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--blue);opacity:.6}
+h1{font-size:29px;line-height:1.15;margin:0 0 12px;font-weight:800;letter-spacing:-.5px;text-wrap:balance}
+.sub{color:var(--ink);font-weight:700;margin:0 0 16px;font-size:17px}
+.intro{color:var(--mut);margin:0 0 30px;font-size:16.5px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:20px 0}
+.card h2{font-size:12px;margin:0 0 13px;color:var(--mut);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.ratio{position:relative;width:100%;padding-top:56.25%;border-radius:8px;overflow:hidden;background:var(--blue-soft)}
+.ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--blue);font-weight:600;text-align:center;padding:18px;gap:6px}
+.ph b{font-size:15px}.ph span{font-size:12.5px;color:var(--mut);font-weight:500}
+.calc{width:100%;height:540px;border:0;border-radius:8px;background:#fff}
+.cta{display:block;text-align:center;background:var(--amber);color:var(--amber-ink);font-weight:800;font-size:17px;text-decoration:none;padding:17px;border-radius:11px;margin:8px 0;letter-spacing:.2px}
+.cta:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.phone{text-align:center;margin:24px 0 0;color:var(--mut);font-size:15px}
+.phone a{display:inline-block;margin-top:4px;color:var(--ink);font-weight:800;font-size:22px;text-decoration:none;font-variant-numeric:tabular-nums;letter-spacing:.5px}
+.foot{margin-top:38px;padding-top:16px;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px;text-align:center}
+</style></head><body>
+<div class="wrap">
+ <div class="top"><div class="mark"></div><div class="wordmark">Maciej Marek<small>automatyzacja wyceny i ofertowania</small></div></div>
+ <div class="eyebrow">Przygotowane dla · Kre-Styl</div>
+ <h1>Ile zapytań ucieka, zanim wróci wycena?</h1>
+ <p class="sub">Panie Piotrze, tę stronę przygotowałem dla Kre-Stylu.</p>
+ <p class="intro">Klient pyta pięciu naraz — bierze tego, kto pierwszy wróci z wyceną i przypomni się po niej. Przy marży 5% to o tym jest cała gra.</p>
+ <div class="card"><h2>Policz swój przeciek</h2><iframe class="calc" src="https://maciejmarek.com/kalkulator-rfq.html?firma=Kre-Styl%20Meble%20Piotr%20Kr%C4%99cid%C5%82o" title="kalkulator RFQ"></iframe></div>
+ <a class="cta" href="tel:+48732012041" onclick="track('calendar_click')">Zadzwoń: +48 732 012 041 &rarr;</a>
+ <p class="phone">oddzwonię też, jeśli zostawisz kontakt w kalkulatorze wyżej.</p>
+ <div class="foot">Maciej Marek · strona przygotowana indywidualnie dla: Kre-Styl Meble Piotr Kręcidło</div>
+</div>
+<script>var SLUG="kre-styl";function track(ev){try{fetch("{{TRACK_ENDPOINT}}",{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify({slug:SLUG,event:ev,ts:new Date().toISOString()})});}catch(e){}}track("visit");</script>
+</body></html>

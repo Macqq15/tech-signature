@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator przecieku ofertowego (RFQ) — ile zapytań tracisz</title>
+<meta name="description" content="Policz na swoich liczbach, ile zapytań ofertowych traci Twój zakład miesięcznie i ile to kosztuje. 30 sekund.">
+<style>
+  :root{--bg:#0f1115;--card:#171a21;--line:#262b36;--txt:#e7e9ee;--mut:#9aa3b2;--acc:#2563eb;--good:#16a34a;--warn:#f59e0b}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.55}
+  .wrap{max-width:680px;margin:0 auto;padding:32px 20px 64px}
+  h1{font-size:1.7rem;margin:0 0 8px}
+  .sub{color:var(--mut);margin:0 0 28px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:18px}
+  label{display:block;font-size:.92rem;margin:14px 0 6px;color:var(--txt)}
+  .hint{color:var(--mut);font-size:.8rem;font-weight:400}
+  input[type=number]{width:100%;padding:11px 12px;background:#0c0e12;border:1px solid var(--line);border-radius:9px;color:var(--txt);font-size:1rem}
+  input:focus{outline:none;border-color:var(--acc)}
+  .res{display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line)}
+  .row:last-child{border-bottom:none}
+  .row .k{color:var(--mut);font-size:.9rem}
+  .row .v{font-size:1.25rem;font-weight:700;white-space:nowrap}
+  .big{background:linear-gradient(135deg,#1e293b,#0c1322);border:1px solid var(--acc);border-radius:12px;padding:18px;text-align:center;margin-bottom:6px}
+  .big .lab{color:var(--mut);font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+  .big .num{font-size:2.3rem;font-weight:800;color:#fff;margin-top:4px}
+  .note{color:var(--mut);font-size:.78rem;margin-top:10px}
+  .cta h2{font-size:1.2rem;margin:0 0 6px}
+  .cta p{color:var(--mut);margin:0 0 16px;font-size:.95rem}
+  .field{display:flex;gap:10px;flex-wrap:wrap}
+  .field input[type=email],.field input[type=text]{flex:1;min-width:200px;padding:12px;background:#0c0e12;border:1px solid var(--line);border-radius:9px;color:var(--txt);font-size:1rem}
+  button{background:var(--acc);color:#fff;border:0;border-radius:9px;padding:12px 22px;font-size:1rem;font-weight:600;cursor:pointer}
+  button:hover{filter:brightness(1.08)}
+  .ok{color:var(--good);font-size:.95rem;margin-top:12px;display:none}
+  .foot{color:var(--mut);font-size:.82rem;text-align:center;margin-top:26px}
+  .foot b{color:var(--txt)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Ile zapytań ofertowych tracisz miesięcznie?</h1>
+  <p id="dla" style="color:#2563eb;font-weight:600;margin:0 0 10px;display:none"></p>
+  <p class="sub">Policz na swoich liczbach. 30 sekund, bez zapisu. Dla producentów na zlecenie: CNC, stolarka, meble, opakowania.</p>
+
+  <div class="card">
+    <label>Liczba zapytań ofertowych miesięcznie <span class="hint">(ile RFQ wpada)</span></label>
+    <input type="number" id="q" value="40" min="0">
+    <label>Na ile % zapytań realnie odpowiadacie? <span class="hint">(reszta ginie/nie zdążacie)</span></label>
+    <input type="number" id="r" value="70" min="0" max="100">
+    <label>Średni czas przygotowania wyceny (dni)</label>
+    <input type="number" id="t" value="3" min="0" step="0.5">
+    <label>Win-rate na wysłanych ofertach (%) <span class="hint">(ile wygrywacie)</span></label>
+    <input type="number" id="w" value="30" min="0" max="100">
+    <label>Średnia wartość zlecenia (zł)</label>
+    <input type="number" id="v" value="8000" min="0" step="100">
+  </div>
+
+  <div class="card">
+    <div class="big">
+      <div class="lab">Roczny przeciek (konserwatywny szacunek)</div>
+      <div class="num" id="total">—</div>
+    </div>
+    <div class="res">
+      <div class="row"><span class="k">Zapytania bez odpowiedzi / mies.</span><span class="v" id="unans">—</span></div>
+      <div class="row"><span class="k">Stracony przychód z nieodpowiedzianych zapytań / rok</span><span class="v" id="lost">—</span></div>
+      <div class="row"><span class="k">Potencjał z szybszej wyceny (+5 pkt win-rate) / rok</span><span class="v" id="speed">—</span></div>
+    </div>
+    <p class="note">Liczone wprost na Twoich danych: nieodpowiedziane zapytania × Twój win-rate × średnia wartość zlecenia. Scenariusz „szybszej wyceny" to ostrożne +5 pkt win-rate na zapytaniach, na które już odpowiadacie. To szacunek, nie obietnica — pełny obraz daje przegląd realnych wycen.</p>
+  </div>
+
+  <div class="card cta">
+    <h2>Chcesz zobaczyć, jak Wasze ofertowanie wygląda z zewnątrz?</h2>
+    <p>Zostaw maila — wyślę Wam krótkie nagranie: prześlę zapytanie jak klient, zmierzę czas reakcji i pokażę 3 miejsca, gdzie uciekają zlecenia. Za darmo, bez zobowiązań.</p>
+    <form id="lead" class="field">
+      <input type="text" id="firma" placeholder="Nazwa firmy (opcjonalnie)">
+      <input type="email" id="email" placeholder="Twój email" required>
+      <button type="submit">Wyślij i odbierz nagranie</button>
+    </form>
+    <div class="ok" id="ok">Dzięki — odezwę się z nagraniem w ciągu 1-2 dni roboczych.</div>
+  </div>
+
+  <p class="foot"><b>Maciej Marek</b> — wcześniej zbudowałem i sprzedałem firmę obsługującą 250 tys. zapytań tygodniowo. Pomagam zakładom produkcyjnym przestać tracić zapytania ofertowe.</p>
+</div>
+
+<script>
+  // === Wpisz tu endpoint do zbierania leadów (Formspree URL albo Google Apps Script web app) ===
+  const LEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbxwaHZrfFQekPmXlePgr0QHjkXErYGwJBnXmJMP0hEaTb3lv5vvRkShV3ZuFYDIBHkEig/exec";
+
+  const plN = new Intl.NumberFormat('pl-PL',{style:'currency',currency:'PLN',maximumFractionDigits:0});
+  const $ = id => document.getElementById(id);
+  const num = id => Math.max(0, parseFloat($(id).value) || 0);
+
+  // Personalizacja z QR: ?firma=Nazwa
+  const _params = new URLSearchParams(location.search), _firma = _params.get('firma');
+  if(_firma){ const d=$('dla'); d.textContent='Przygotowane dla: '+_firma; d.style.display='block'; const fi=$('firma'); if(fi) fi.value=_firma; }
+
+  function calc(){
+    const q=num('q'), r=num('r')/100, w=num('w')/100, v=num('v');
+    const unanswered = q*(1-r);
+    const lostAnnual = unanswered*w*v*12;
+    const speedAnnual = q*r*0.05*v*12;
+    $('unans').textContent = Math.round(unanswered).toLocaleString('pl-PL')+' szt.';
+    $('lost').textContent = plN.format(lostAnnual);
+    $('speed').textContent = plN.format(speedAnnual);
+    $('total').textContent = plN.format(lostAnnual+speedAnnual);
+    return {q,r,w,v,unanswered,lostAnnual,speedAnnual};
+  }
+  ['q','r','t','w','v'].forEach(id=>$(id).addEventListener('input',calc));
+  calc();
+
+  $('lead').addEventListener('submit', async e=>{
+    e.preventDefault();
+    const payload = {
+      email: $('email').value,
+      firma: $('firma').value,
+      ...calc(),
+      ts: new Date().toISOString()
+    };
+    try{
+      if(LEAD_ENDPOINT){
+        await fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)});
+      } else {
+        console.log('LEAD (ustaw LEAD_ENDPOINT aby zapisywać):', payload);
+      }
+      $('lead').style.display='none';
+      $('ok').style.display='block';
+    }catch(err){ console.error(err); $('ok').textContent='Coś poszło nie tak — napisz bezpośrednio na maciej@...'; $('ok').style.display='block'; }
+  });
+</script>
+</body>
+</html>
