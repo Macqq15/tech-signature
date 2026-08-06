@@ -11,6 +11,10 @@ import { ThemeProvider } from "next-themes";
 const Index = lazy(() => import("./pages/Index"));
 const ModernIndex = lazy(() => import("./pages/ModernIndex"));
 const LetterOperators = lazy(() => import("./pages/LetterOperators"));
+const RunItSelfHome = lazy(() => import("./pages/RunItSelfHome"));
+const RunItSelfHomePL = lazy(() => import("./pages/RunItSelfHomePL"));
+const RunItSelfAgencies = lazy(() => import("./pages/RunItSelfAgencies"));
+const RunItSelfEcommerce = lazy(() => import("./pages/RunItSelfEcommerce"));
 const AgenticEngineering = lazy(() => import("./pages/AgenticEngineering"));
 const AgenticEngineeringV2 = lazy(() => import("./pages/AgenticEngineeringV2"));
 const AgenticEngineeringV3 = lazy(() => import("./pages/AgenticEngineeringV3"));
@@ -32,7 +36,7 @@ const queryClient = new QueryClient();
 
 const RootRoute = () => {
   const isMaciejmarek = typeof window !== "undefined" && window.location.hostname.includes("maciejmarek");
-  return isMaciejmarek ? <ModernIndex /> : <AgenticEngineering />;
+  return isMaciejmarek ? <ModernIndex /> : <RunItSelfHome />;
 };
 
 // Minimal fallback while a route chunk loads. Intentionally invisible at first
@@ -58,7 +62,14 @@ const App = () => (
               <Route path="/modern" element={<ModernIndex />} />
               <Route path="/old" element={<Index />} />
               <Route path="/letter-operators" element={<LetterOperators />} />
-              <Route path="/agentic-engineering" element={<AgenticEngineering />} />
+              <Route path="/pl" element={<RunItSelfHomePL />} />
+              <Route path="/agentic-engineering" element={<RunItSelfHome />} />
+              <Route path="/agencies" element={<RunItSelfAgencies />} />
+              <Route path="/agency" element={<RunItSelfAgencies />} />
+              <Route path="/ecommerce" element={<RunItSelfEcommerce />} />
+              <Route path="/e-commerce" element={<RunItSelfEcommerce />} />
+              <Route path="/ecom" element={<RunItSelfEcommerce />} />
+              <Route path="/agentic-engineering-old" element={<AgenticEngineering />} />
               <Route path="/agentic-engineering-v2" element={<AgenticEngineeringV2 />} />
               <Route path="/agentic-engineering-v3" element={<AgenticEngineeringV3 />} />
               <Route path="/agency-starter" element={<AgencyStarter />} />
