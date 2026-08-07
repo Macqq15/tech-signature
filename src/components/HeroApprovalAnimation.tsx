@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { MessageSquare, TrendingUp, Package, Check, Bell, MousePointer2 } from "lucide-react";
 
+type Lang = "en" | "pl";
+
 interface Scenario {
   notification: string;
   subtitle: string;
@@ -12,38 +14,88 @@ interface Scenario {
   icon: React.ReactElement;
 }
 
-const scenarios: Scenario[] = [
-  {
-    notification: "23 support tickets overnight",
-    subtitle: "Customer Support Queue",
-    agentLabel: "Support Agent",
-    agentLetter: "S",
-    agentColor: "text-emerald-600",
-    agentBg: "bg-emerald-100 border-emerald-300",
-    result: "✓ 21/23 resolved automatically",
-    icon: <MessageSquare className="w-4 h-4 text-emerald-500" />,
+const scenariosByLang: Record<Lang, Scenario[]> = {
+  en: [
+    {
+      notification: "23 support tickets overnight",
+      subtitle: "Customer Support Queue",
+      agentLabel: "Support Agent",
+      agentLetter: "S",
+      agentColor: "text-emerald-600",
+      agentBg: "bg-emerald-100 border-emerald-300",
+      result: "✓ 21/23 resolved automatically",
+      icon: <MessageSquare className="w-4 h-4 text-emerald-500" />,
+    },
+    {
+      notification: "Ad campaign underperforming",
+      subtitle: "Facebook Ads · CPA +42%",
+      agentLabel: "Ad Manager",
+      agentLetter: "A",
+      agentColor: "text-purple-600",
+      agentBg: "bg-purple-100 border-purple-300",
+      result: "✓ Budget rebalanced, ROAS +34%",
+      icon: <TrendingUp className="w-4 h-4 text-purple-500" />,
+    },
+    {
+      notification: "Stockout risk: 3 SKUs below threshold",
+      subtitle: "Inventory · Reorder needed",
+      agentLabel: "Inventory Agent",
+      agentLetter: "I",
+      agentColor: "text-amber-600",
+      agentBg: "bg-amber-100 border-amber-300",
+      result: "✓ Reorder placed with supplier",
+      icon: <Package className="w-4 h-4 text-amber-500" />,
+    },
+  ],
+  pl: [
+    {
+      notification: "23 zgłoszenia w nocy",
+      subtitle: "Kolejka obsługi klienta",
+      agentLabel: "Obsługa",
+      agentLetter: "O",
+      agentColor: "text-emerald-600",
+      agentBg: "bg-emerald-100 border-emerald-300",
+      result: "✓ 21 z 23 rozwiązane automatycznie",
+      icon: <MessageSquare className="w-4 h-4 text-emerald-500" />,
+    },
+    {
+      notification: "Kampania traci skuteczność",
+      subtitle: "Facebook Ads · CPA +42%",
+      agentLabel: "Kampanie",
+      agentLetter: "K",
+      agentColor: "text-purple-600",
+      agentBg: "bg-purple-100 border-purple-300",
+      result: "✓ Budżet przesunięty, ROAS +34%",
+      icon: <TrendingUp className="w-4 h-4 text-purple-500" />,
+    },
+    {
+      notification: "3 produkty poniżej progu",
+      subtitle: "Magazyn · potrzebne zamówienie",
+      agentLabel: "Magazyn",
+      agentLetter: "M",
+      agentColor: "text-amber-600",
+      agentBg: "bg-amber-100 border-amber-300",
+      result: "✓ Zamówienie złożone u dostawcy",
+      icon: <Package className="w-4 h-4 text-amber-500" />,
+    },
+  ],
+};
+
+// Chrome around the scenarios (labels that are not part of a scenario itself).
+const chromeByLang: Record<Lang, { alert: string; panel: string; working: string; timestamp: string }> = {
+  en: {
+    alert: "New Alert",
+    panel: "Agentic HQ",
+    working: "Working...",
+    timestamp: "Just now · No human effort needed",
   },
-  {
-    notification: "Ad campaign underperforming",
-    subtitle: "Facebook Ads · CPA +42%",
-    agentLabel: "Ad Manager",
-    agentLetter: "A",
-    agentColor: "text-purple-600",
-    agentBg: "bg-purple-100 border-purple-300",
-    result: "✓ Budget rebalanced, ROAS +34%",
-    icon: <TrendingUp className="w-4 h-4 text-purple-500" />,
+  pl: {
+    alert: "Nowy sygnał",
+    panel: "Panel akceptacji",
+    working: "Pracuje...",
+    timestamp: "Przed chwilą · bez udziału człowieka",
   },
-  {
-    notification: "Stockout risk: 3 SKUs below threshold",
-    subtitle: "Inventory · Reorder needed",
-    agentLabel: "Inventory Agent",
-    agentLetter: "I",
-    agentColor: "text-amber-600",
-    agentBg: "bg-amber-100 border-amber-300",
-    result: "✓ Reorder placed with supplier",
-    icon: <Package className="w-4 h-4 text-amber-500" />,
-  },
-];
+};
 
 const CYCLE_MS = 8000;
 
@@ -57,7 +109,9 @@ const phaseTimings: { phase: Phase; at: number }[] = [
   { phase: "fade", at: 7200 },
 ];
 
-export default function HeroApprovalAnimation() {
+export default function HeroApprovalAnimation({ lang = "en" }: { lang?: Lang }) {
+  const scenarios = scenariosByLang[lang];
+  const chrome = chromeByLang[lang];
   const [scenarioIdx, setScenarioIdx] = useState(0);
   const [phase, setPhase] = useState<Phase>("enter");
 
@@ -66,7 +120,7 @@ export default function HeroApprovalAnimation() {
       setScenarioIdx((prev) => (prev + 1) % scenarios.length);
     }, CYCLE_MS);
     return () => clearInterval(interval);
-  }, []);
+  }, [scenarios.length]);
 
   useEffect(() => {
     setPhase("enter");
@@ -100,7 +154,7 @@ export default function HeroApprovalAnimation() {
           <div className="flex items-center gap-2 mb-2">
             <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
             <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600">
-              New Alert
+              {chrome.alert}
             </span>
           </div>
           <p className="text-sm font-bold text-slate-800 leading-snug">{s.notification}</p>
@@ -139,7 +193,7 @@ export default function HeroApprovalAnimation() {
             {/* Screen content */}
             <div className="p-4 flex flex-col h-[calc(100%-24px)]">
               <p className="text-[9px] font-bold uppercase tracking-widest text-slate-300 mb-3">
-                Agentic HQ
+                {chrome.panel}
               </p>
               {/* Task card */}
               <div className="bg-slate-50 rounded-lg border border-slate-100 p-3 mb-3">
@@ -256,7 +310,7 @@ export default function HeroApprovalAnimation() {
           >
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-[9px] font-bold text-emerald-600">
-              Working...
+              {chrome.working}
             </span>
           </div>
         </div>
@@ -280,7 +334,7 @@ export default function HeroApprovalAnimation() {
             <div>
               <p className="text-sm font-bold text-emerald-800">{s.result}</p>
               <p className="text-[10px] text-emerald-600 mt-0.5">
-                Just now · No human effort needed
+                {chrome.timestamp}
               </p>
             </div>
           </div>

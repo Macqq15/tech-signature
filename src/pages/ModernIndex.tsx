@@ -13,7 +13,7 @@ import hpLogo from "@/assets/HP-Logo.webp";
 import trebitLogo from "@/assets/trebit.webp";
 import monumoLogo from "@/assets/monumo logo.svg";
 import cameronHairLogo from "@/assets/Cameron_hair_logo_sklep(3).svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { translations, Language } from "@/lib/translations";
 
 // --- DATA ---
@@ -37,6 +37,17 @@ const ModernIndex = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
   const t = translations[lang];
+
+  // index.html is shared across every domain served from this bucket, so its
+  // lang and <title> say RunItSelf. On maciejmarek.com both are wrong, and the
+  // language toggle is client state that never reached the document.
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.title =
+      lang === "en"
+        ? "Maciej Marek | Systems That Turn Manual Work Into Products"
+        : "Maciej Marek | Systemy, które zamieniają ręczną pracę w produkty";
+  }, [lang]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -215,7 +226,7 @@ const ModernIndex = () => {
                       {model.desc}
                     </p>
                     <div className="pt-4 border-t border-border">
-                      <p className="text-xs font-semibold text-foreground mb-3 uppercase tracking-wider">What you get:</p>
+                      <p className="text-xs font-semibold text-foreground mb-3 uppercase tracking-wider">{t.engagement.whatYouGet}</p>
                       <div className="space-y-2">
                         {model.features.map((feature, k) => (
                           <div key={k} className="flex items-start gap-3 text-sm text-foreground/90">

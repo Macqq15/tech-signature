@@ -34,6 +34,7 @@ export const translations = {
     engagement: {
       title: "How We Work Together",
       subtitle: "Three ways to partner, depending on where you are.",
+      whatYouGet: "What you get:",
     },
     testimonials: {
       title: "What People Say",
@@ -176,172 +177,173 @@ export const translations = {
   },
   pl: {
     hero: {
-      badge: "Dostępny do Projektów",
-      titleLine1: "Buduję Systemy, Które Zamieniają",
-      titleLine2: "Ręczną Pracę w Skalowalne Produkty",
-      desc: "Od newsletterów wysyłających 250k+ maili tygodniowo po aplikacje produktyzujące wiedzę ekspercką - pomagam founderom, twórcom i firmom deep tech budować infrastrukturę, która działa bez nich.",
-      ctaPrimary: "Zobacz Projekty",
+      badge: "Dostępny do projektów",
+      titleLine1: "Buduję systemy, które zamieniają",
+      titleLine2: "ręczną pracę w skalowalne produkty",
+      desc: "Od newsletterów wysyłających ponad 250 tys. maili tygodniowo po aplikacje, które produktyzują wiedzę ekspercką. Pomagam founderom, twórcom i firmom deep tech budować infrastrukturę, która działa bez nich.",
+      ctaPrimary: "Zobacz projekty",
       ctaSecondary: "Kontakt",
     },
-    logos: "Zbudowałem systemy dla marek i platform m.in.",
+    logos: "Systemy, które zbudowałem dla marek i platform, m.in.",
     whySection: {
-      title: "Dlaczego To Robię",
-      p1: "Większość founderów i ekspertów, których spotykam, ma ten sam problem: wykonują wartościową pracę ręcznie - konsulting, content, analiza - i wiedzą, że powinna się skalować. Ale nie wiedzą, od czego zacząć technicznie, albo próbowali automatyzacji i się zepsuła.",
-      p2: "Byłem po obu stronach. Enterprise procurement w HP i Akamai, gdzie systemy nie mogą zawodzić. Potem startupy i biznesy twórców, gdzie prędkość bije perfekcję.",
-      p3: "Współtworzyłem LetterOperators w silnik newsletterowy wysyłający 250k+ maili tygodniowo - a następnie pomyślnie sprzedałem biznes w 2026. Pomagałem ekspertom zamienić ich metodologię w oprogramowanie. Budowałem systemy contentowe dla firm technologicznych, które musiały komunikować złożone idee na skalę.",
-      p4: "Wzorzec jest zawsze taki sam: ktoś ma wartościową wiedzę lub procesy uwięzione w ręcznej pracy. Buduję system, który to uwalnia.",
+      title: "Dlaczego to robię",
+      p1: "Większość founderów i ekspertów, których spotykam, ma ten sam problem. Robią wartościową rzecz ręcznie, czyli konsulting, treści, analizy, i wiedzą, że to powinno się skalować. Tylko nie wiedzą, od czego zacząć technicznie, albo próbowali już automatyzacji i im się rozsypała.",
+      p2: "Byłem po obu stronach. Zakupy i operacje w HP oraz Akamai, gdzie system nie ma prawa się wywrócić. Potem startupy i biznesy oparte na treściach, gdzie tempo liczy się bardziej niż dopracowanie.",
+      p3: "Współtworzyłem LetterOperators, silnik newsletterowy wysyłający ponad 250 tys. maili tygodniowo, i sprzedałem ten biznes w 2026. Pomagałem ekspertom zamienić ich metodę pracy w oprogramowanie. Budowałem systemy treści dla firm technologicznych, które musiały tłumaczyć trudne rzeczy na dużą skalę.",
+      p4: "Wzorzec jest zawsze ten sam. Ktoś ma wartościową wiedzę albo proces uwięziony w ręcznej pracy. Ja buduję system, który to uwalnia.",
       listTitle: "Jak pomagam:",
       listItems: [
-        "Skalowalne Produkty - Zamiana wiedzy eksperckiej w aplikacje i platformy",
-        "Systemy Contentowe - Zautomatyzowane badania, pisanie i publikowanie dla firm deep tech",
-        "Infrastruktura Wzrostu - Systemy pozwalające skalować bez zwiększania headcount"
+        "Skalowalne produkty. Zamiana wiedzy eksperckiej w aplikacje i platformy.",
+        "Systemy treści. Zautomatyzowany research, pisanie i publikacja dla firm deep tech.",
+        "Infrastruktura wzrostu. Systemy, które pozwalają rosnąć bez zatrudniania kolejnych osób."
       ]
     },
     work: {
-      title: "Wybrane Projekty",
-      subtitle: "Systemy, które zbudowałem i teraz działają beze mnie.",
+      title: "Wybrane projekty",
+      subtitle: "Systemy, które zbudowałem i które dziś działają beze mnie.",
     },
     partners: {
-      title: "Z Kim Pracuję",
+      title: "Z kim pracuję",
     },
     engagement: {
-      title: "Jak Współpracujemy",
-      subtitle: "Trzy sposoby na partnerstwo, w zależności od tego, gdzie jesteś.",
+      title: "Jak współpracujemy",
+      subtitle: "Trzy sposoby na współpracę, zależnie od tego, na jakim jesteś etapie.",
+      whatYouGet: "Co dostajesz:",
     },
     testimonials: {
-      title: "Co Mówią Ludzie",
+      title: "Co mówią klienci",
     },
     about: {
       label: "Historia",
-      title: "Dlaczego Buduję Systemy",
-      p1: "Zaczynałem w enterprise procurement w HP i Akamai - środowiskach, gdzie systemy nie mogą zawodzić, a procesy muszą przetrwać skalę.",
-      p2: "Potem poszedłem w przeciwnym kierunku. Startupy, biznesy contentowe, creator economy. Miejsca, gdzie prędkość liczy się bardziej niż perfekcja i budujesz z czymkolwiek, co działa.",
-      p3: "Budowałem automatyzację marketingu i systemy emailowe dla marek e-commerce jak JewelryLab, Monumo i Cameron Hair - napędzając $10M+ łącznej sprzedaży. Zarządzałem operacjami i contentem w Trebit, generując $60K z raportów trendów. Współtworzyłem LetterOperators w silnik newsletterowy wysyłający 250k+ maili tygodniowo - i pomyślnie sprzedałem biznes (exit) w 2026. Pomogłem twórcy tech rosnąć z 10K do 50K followersów poprzez ghostwriting.",
-      p4: "Teraz pomagam founderom, ekspertom i firmom deep tech budować systemy, które pozwalają im przestać robić wszystko ręcznie.",
+      title: "Dlaczego buduję systemy",
+      p1: "Zaczynałem w zakupach korporacyjnych w HP i Akamai, czyli tam, gdzie system nie ma prawa się wywrócić, a proces musi wytrzymać skalę.",
+      p2: "Potem poszedłem w drugą stronę. Startupy, biznesy oparte na treściach, creator economy. Miejsca, gdzie tempo liczy się bardziej niż dopracowanie i budujesz z tego, co akurat działa.",
+      p3: "Budowałem automatyzację marketingu i systemy mailowe dla marek e-commerce, m.in. JewelryLab, Monumo i Cameron Hair, co przełożyło się na ponad 10 mln USD sprzedaży. Prowadziłem operacje i treści w Trebit, gdzie raporty o trendach dały 60 tys. USD przychodu. Współtworzyłem LetterOperators, silnik newsletterowy na ponad 250 tys. maili tygodniowo, i sprzedałem ten biznes w 2026. Pomogłem twórcy z branży tech urosnąć z 10 tys. do 50 tys. obserwujących, pisząc za niego.",
+      p4: "Dziś pomagam founderom, ekspertom i firmom deep tech budować systemy, dzięki którym przestają robić wszystko ręcznie.",
     },
     comingSoon: {
       title: "New Space Medium",
-      desc: "Mój następny projekt: publikacja zagłębiająca się w Space 2.0 - firmy, technologie i możliwości kształtujące nową ekonomię kosmiczną.",
+      desc: "Mój następny projekt. Publikacja o Space 2.0, czyli o firmach, technologiach i okazjach, które budują nową gospodarkę kosmiczną.",
       status: "Wkrótce start."
     },
     contact: {
       badge: "Kontakt",
       title: "Porozmawiajmy",
-      subtitle: "Powiedz mi, nad czym pracujesz. Powiem Ci, czy mogę pomóc.",
+      subtitle: "Napisz, nad czym pracujesz. Powiem ci, czy mogę pomóc.",
       name: "Imię",
       namePlaceholder: "Twoje imię",
-      email: "Email",
+      email: "E-mail",
       emailPlaceholder: "twoj@email.pl",
-      message: "W czym potrzebujesz pomocy?",
-      messagePlaceholder: "Opowiedz o swoim projekcie...",
-      submit: "Wyślij Wiadomość",
-      responseTime: "Zazwyczaj odpowiadam w ciągu 24 godzin.",
-      footer: "Stworzone z React & Tailwind.",
+      message: "W czym mogę pomóc?",
+      messagePlaceholder: "Napisz kilka zdań o projekcie...",
+      submit: "Wyślij wiadomość",
+      responseTime: "Zwykle odpowiadam w ciągu 24 godzin.",
+      footer: "Zbudowane w React i Tailwind.",
     },
     engagementModels: [
       {
-        title: "Audyt Głęboki",
-        price: "Stała Cena",
-        desc: "Utknąłeś. Wiesz, że coś trzeba zmienić, ale nie jesteś pewien, co zbudować najpierw. Analizuję Twoje obecne operacje, identyfikuję gdzie ręczna praca kosztuje Cię najwięcej i mapuję dokładną architekturę systemu, której potrzebujesz - w kolejności priorytetów.",
+        title: "Audyt operacyjny",
+        price: "Stała cena",
+        desc: "Utknąłeś. Wiesz, że coś trzeba zmienić, ale nie wiesz, co zbudować najpierw. Przeglądam twoje obecne operacje, pokazuję, gdzie ręczna praca kosztuje cię najwięcej, i rozpisuję architekturę systemu, której potrzebujesz, w kolejności od najważniejszego.",
         features: [
           "Mapa architektury systemu",
-          "Analiza wąskich gardeł z szacunkami ROI",
-          "Rekomendacje stosu narzędzi",
-          "Jasny plan działania \"zbuduj to najpierw\""
+          "Wąskie gardła z szacunkiem zwrotu",
+          "Rekomendacje narzędzi",
+          "Jasna odpowiedź, co zbudować najpierw"
         ],
       },
       {
-        title: "Budowa Systemu na Zamówienie",
-        price: "Wycena Projektowa",
-        desc: "Wiesz czego potrzebujesz. Teraz potrzebujesz kogoś, kto to zbuduje. Projektuję i wdrażam kompletny system - czy to aplikację produktyzującej ekspertyzy, silnik automatyzacji contentu czy workflow operacyjny. Otrzymujesz rozwiązanie pod klucz, w pełni udokumentowane, ze szkoleniem żeby Twój zespół mógł je obsługiwać.",
+        title: "System na zamówienie",
+        price: "Wycena projektowa",
+        desc: "Wiesz, czego potrzebujesz. Teraz potrzebujesz kogoś, kto to zbuduje. Projektuję i wdrażam cały system, czy to aplikację produktyzującą twoją wiedzę, silnik do treści, czy proces operacyjny. Dostajesz rozwiązanie pod klucz, z dokumentacją i szkoleniem, żeby zespół umiał je obsługiwać.",
         features: [
-          "Rozwój full-stack",
-          "Wdrożenie n8n / AI",
-          "Integracja z Twoimi istniejącymi narzędziami",
+          "Programowanie full-stack",
+          "Wdrożenie n8n i AI",
+          "Integracja z twoimi narzędziami",
           "Przekazanie i szkolenie"
         ],
       },
       {
-        title: "Partner Wzrostu",
-        price: "Miesięczny Retainer",
-        desc: "Potrzebujesz ciągłego wsparcia, nie jednorazowego projektu. Staję się Twoim frakcyjnym partnerem technicznym. Ciągle optymalizujemy istniejące systemy, budujemy nowe w miarę wzrostu i upewniamy się, że Twoja infrastruktura skaluje się z przychodami.",
+        title: "Partner wzrostu",
+        price: "Miesięczny abonament",
+        desc: "Potrzebujesz stałego wsparcia, a nie jednorazowego projektu. Wchodzę jako twój partner techniczny na część etatu. Optymalizujemy to, co już działa, budujemy nowe rzeczy w miarę wzrostu i pilnujemy, żeby infrastruktura nadążała za przychodem.",
         features: [
-          "Priorytetowe wsparcie",
-          "Ciągła optymalizacja",
-          "Miesięczne rozmowy strategiczne",
-          "Budowa nowych systemów w razie potrzeby"
+          "Wsparcie priorytetowe",
+          "Stała optymalizacja",
+          "Miesięczne rozmowy o strategii",
+          "Nowe systemy w miarę potrzeb"
         ],
       },
     ],
     sectors: [
       {
-        title: "Eksperci i Twórcy",
-        range: "Nieskalowalna Ekspertyza",
-        desc: "Robisz konsulting za $200-500/godz lub tworzysz content ręcznie. Masz metodologię, która działa. Chcesz zamienić to w produkt, który skaluje - aplikację, platformę, system docierający do tysięcy, podczas gdy Ty skupiasz się na high-ticket pracy.",
+        title: "Eksperci i twórcy",
+        range: "Wiedza, która się nie skaluje",
+        desc: "Prowadzisz konsulting za 200 do 500 USD za godzinę albo tworzysz treści ręcznie. Masz metodę, która działa. Chcesz zamienić ją w produkt: aplikację, platformę, system, który dotrze do tysięcy ludzi, podczas gdy ty zajmujesz się najdroższymi zleceniami.",
       },
       {
-        title: "Firmy Deep Tech",
-        range: "Złożona Tech",
-        desc: "Budujesz coś złożonego - space, biotech, AI, hardware. Potrzebujesz systemów contentowych napędzających fundusze i sprzedaż: raporty trendów, deep-dives, aktualizacje dla inwestorów, zautomatyzowane publikowanie. Buduję to tylko dla deep tech.",
+        title: "Firmy deep tech",
+        range: "Trudna technologia",
+        desc: "Budujesz coś skomplikowanego: kosmos, biotech, AI, hardware. Potrzebujesz systemu treści, który przyciąga finansowanie i sprzedaż: raporty o trendach, analizy, aktualizacje dla inwestorów, automatyczna publikacja. Robię to wyłącznie dla deep tech.",
       },
       {
-        title: "Małe Firmy",
-        range: "Szybki Wzrost",
-        desc: "Rosniesz ale jesteś pogrzebany w ręcznych operacjach. Potrzebujesz automatyzacji, która się zwraca - workflow marketingowe, systemy emailowe, integracje zwalniające Twój czas bez zatrudniania.",
+        title: "Małe firmy",
+        range: "Szybki wzrost",
+        desc: "Rośniesz, ale toniesz w ręcznej robocie. Potrzebujesz automatyzacji, która się zwraca: procesy marketingowe, systemy mailowe, integracje, które oddają ci czas bez zatrudniania kolejnych osób.",
       },
     ],
     projects: [
       {
         title: "LetterOperators",
-        tag: "Automatyzacja Newsletterów",
+        tag: "Automatyzacja newsletterów",
         exited: true,
-        desc: "Współzałożyłem i zbudowałem silnik automatyzacji za LetterOperators - serwisem newsletterów done-for-you. Wzrost od zera do 20+ publikacji klientów, 250k+ maili tygodniowo, czas produkcji skrócony z 12 godzin do 45 minut. Pomyślny exit (przejęcie) w 2026.",
+        desc: "Współzałożyłem i zbudowałem silnik automatyzacji stojący za LetterOperators, usługą newsletterową done for you. Od zera do ponad 20 publikacji klientów i ponad 250 tys. maili tygodniowo, przy czasie produkcji skróconym z 12 godzin do 45 minut. Biznes sprzedany w 2026.",
         link: "letteroperators.com"
       },
       {
         title: "WeAreFastTrack",
-        tag: "Compliance Amazon",
-        desc: "Budowa zautomatyzowanych systemów compliance dla sprzedawców Amazon z Rogerem Percy - obsługa Safety Data Sheets, klasyfikacje hazmat i workflow reinstatement.",
+        tag: "Compliance na Amazonie",
+        desc: "Budowa automatycznych systemów compliance dla sprzedawców Amazona razem z Rogerem Percym. Karty charakterystyki, klasyfikacja materiałów niebezpiecznych i procesy przywracania zablokowanych kont.",
         link: "wearefasttrack.com"
       },
       {
-        title: "Systemy Wzrostu E-commerce",
-        tag: "Automatyzacja Marketingu",
-        desc: "Budowałem automatyzację marketingu, systemy emailowe i workflow analityczne dla globalnych marek e-commerce w tym JewelryLab, Monumo i Cameron Hair. Zautomatyzowałem marketing lifecycle, alerty magazynowe i workflow kampanii. Łączny wpływ na przychody: $10M+ sprzedaży.",
+        title: "Systemy wzrostu w e-commerce",
+        tag: "Automatyzacja marketingu",
+        desc: "Automatyzacja marketingu, systemy mailowe i procesy analityczne dla globalnych marek e-commerce, m.in. JewelryLab, Monumo i Cameron Hair. Maile cyklu życia, alerty magazynowe i obsługa kampanii. Łączny wpływ na sprzedaż: ponad 10 mln USD.",
         link: null
       },
       {
         title: "Produkty Expert-Tech",
-        tag: "Produktyzowana Ekspertyza",
-        desc: "Współpraca z ekspertami domenowymi w celu zamiany ich ręcznych metodologii konsultingowych w skalowalne produkty softwarowe. Obecnie buduję z partnerami w health tech i compliance. Model: Znajdź ekspertów robiących ręczną pracę za $200-500/godz. Zautomatyzuj 60% ich metodologii w produkt docierający do tysięcy.",
-        link: "W rozwoju"
+        tag: "Produktyzacja wiedzy",
+        desc: "Praca z ekspertami nad zamianą ich ręcznych metod konsultingowych w skalowalne produkty. Buduję dziś z partnerami w health tech i compliance. Model jest prosty: znajdź eksperta, który ręcznie robi robotę wartą 200 do 500 USD za godzinę, i zautomatyzuj 60 procent jego metody w produkt, który dotrze do tysięcy.",
+        link: "W budowie"
       },
       {
         title: "Trebit",
-        tag: "Operacje Contentowe",
-        desc: "Zarządzałem operacjami i tworzyłem głębokie raporty trendów o wertykalach tech - creator economy, voice AI, space tech, niszowe LLM. Budowałem systemy contentowe, obsługiwałem marketing i prowadziłem launchie produktów. Wygenerowano $60K przychodu.",
+        tag: "Operacje i treści",
+        desc: "Prowadziłem operacje i pisałem pogłębione raporty o trendach w branżach technologicznych: creator economy, voice AI, kosmos, niszowe modele językowe. Budowałem systemy treści, prowadziłem marketing i premiery produktów. Przychód: 60 tys. USD.",
         link: null
       },
       {
-        title: "Wzrost Twórcy Treści",
+        title: "Wzrost twórcy",
         tag: "Ghostwriting",
-        desc: "Ghostwriting dla twórcy tech, pomagając rosnąć ich audytorium z 10K do 50K followersów w ciągu dwóch lat.",
+        desc: "Pisałem za twórcę z branży tech i pomogłem mu urosnąć z 10 tys. do 50 tys. obserwujących w ciągu dwóch lat.",
         link: null
       },
     ],
     testimonials_list: [
       {
-        quote: "Richard i Maciej przenieśli naszą listę do beehiiv i uruchomili newsletter Smart Seller, który natychmiast został zmonetyzowany przez Ad Network. Nie mogę ich wystarczająco polecić.",
+        quote: "Richard i Maciej przenieśli naszą listę na beehiiv i uruchomili newsletter Smart Seller, który od razu zaczął zarabiać przez Ad Network. Polecam ich z całego serca.",
         author: "Nate Ginsburg",
         company: "SellerPlex.com"
       },
       {
-        quote: "Letter Operators to fantastyczna współpraca przy naszym newsletterze Franzy Five. Poświęcili czas, by naprawdę zrozumieć osobowość naszej marki i byli super responsywni na wszystkie nasze uwagi dotyczące contentu, przekazu i głosu.",
+        quote: "Współpraca z Letter Operators przy naszym newsletterze Franzy Five była świetna. Poświęcili czas, żeby naprawdę zrozumieć charakter naszej marki, i błyskawicznie reagowali na każdą uwagę o treści, przekazie i tonie.",
         author: "Chris Wright",
         company: "Franzy"
       },
       {
-        quote: "Mieliśmy świetne doświadczenie współpracując z Richardem i zespołem Letter Operators przy uruchomieniu naszego newslettera AI. Otrzymaliśmy doskonałe opinie od naszej publiczności, a ich dbałość o szczegóły sprawiła, że proces był gładki i przyjemny.",
+        quote: "Bardzo dobrze wspominamy współpracę z Richardem i zespołem Letter Operators przy uruchomieniu naszego newslettera o AI. Czytelnicy zareagowali świetnie, a dbałość zespołu o szczegóły sprawiła, że wszystko poszło gładko.",
         author: "Nick La Maina",
         company: "Guiding Tech Media"
       }
