@@ -448,7 +448,7 @@ export default function RunItSelfHomePL() {
           <div className="mt-6 flex items-start gap-4 rounded-2xl border border-emerald-400 bg-emerald-900 p-6">
             <Server className="mt-0.5 h-6 w-6 shrink-0 text-emerald-300" />
             <p className="leading-relaxed text-emerald-50">
-              Jeśli dane w ogóle nie mogą wyjść z firmy, stawiam model lokalnie, na Twoim sprzęcie. Wtedy nic nie idzie do zewnętrznego dostawcy.
+              Jeśli dane nie mogą wyjść z firmy nawet w formie zanonimizowanej, da się postawić model lokalnie, na Twoim sprzęcie. To osobny projekt i osobny budżet, więc schodzimy tam tylko wtedy, kiedy naprawdę trzeba.
             </p>
           </div>
         </div>

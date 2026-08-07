@@ -448,7 +448,7 @@ export default function RunItSelfHome() {
           <div className="mt-6 flex items-start gap-4 rounded-2xl border border-emerald-400 bg-emerald-900 p-6">
             <Server className="mt-0.5 h-6 w-6 shrink-0 text-emerald-300" />
             <p className="leading-relaxed text-emerald-50">
-              If the data cannot leave at all, I run the model locally on your hardware. Nothing goes to an outside provider.
+              If the data cannot leave the building even anonymised, the model can run locally on your hardware. That is a separate project with a separate budget, so we only go there when it is genuinely required.
             </p>
           </div>
         </div>
